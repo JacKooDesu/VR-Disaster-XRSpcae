@@ -6,6 +6,8 @@ using UnityStandardAssets.ImageEffects;
 
 public class Down : Stage
 {
+    [SerializeField]
+    float height = 1.3f;
     public UIQuickSetting UI;
     public float hintDisplayTime = 3f;
     public ObjectTweener tweener;
@@ -13,38 +15,23 @@ public class Down : Stage
     public override void OnBegin()
     {
         base.OnBegin();
-
-        UI.TurnOn();
-
-        JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
-        audio.PlaySound(audio.goUnderTable);
-        audio.currentPlayingSound = null;
-
-        GameHandler.Singleton.cam.GetComponent<UnityStandardAssets.ImageEffects.Grayscale>().enabled = true;
-
-        GameHandler.Singleton.BlurCamera(true);
-
-        StartCoroutine(GameHandler.Singleton.Counter(
-            hintDisplayTime, hintDisplayTime,
-            delegate
-            {
-                UI.TurnOff();
-                GameHandler.Singleton.BlurCamera(false);
-            }));
-
-        if (spawnpoint != null)
-            GameHandler.Singleton.SetLineGuider(true, spawnpoint.position);
+        GameHandler.Singleton.player.hintCanvas.SetHintText("請趴低找掩護", true, true);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
+
+        if (GameHandler.Singleton.player.head.position.y < height)
+        {
+            isFinish = true;
+        }
     }
 
     public override void OnFinish()
     {
         base.OnFinish();
-        UI.TurnOff();
-        tweener.MoveNextPoint();
+        // UI.TurnOff();
+        // tweener.MoveNextPoint();
     }
 }

@@ -20,16 +20,25 @@ public class HintCanvas : MonoBehaviour
     public float trackingAngle;
 
     public Text hintText;
+    public GameObject currentActiveCanvas;
+    List<GameObject> handlingCanvas = new List<GameObject>();
 
-    public void SetHintText(string str, bool show)
+    private void Start()
+    {
+        currentActiveCanvas = transform.GetChild(0).gameObject;
+    }
+
+    public void SetHintText(string str, bool show, bool forceToForward = true)
     {
         SetHintText(str);
         ShowHintText(show);
     }
 
-    public void ShowHintText(bool show)
+    public void ShowHintText(bool show, bool forceToForward = true)
     {
         hintText.gameObject.SetActive(show);
+        if (forceToForward)
+            StartCoroutine(LerpToHeadAngle());
     }
 
     public void SetHintText(string str)
@@ -37,13 +46,35 @@ public class HintCanvas : MonoBehaviour
         hintText.text = str;
     }
 
+    public GameObject AddCanvs(GameObject prefab)
+    {
+        var g = Instantiate(prefab, transform);
+        handlingCanvas.Add(g);
+        currentActiveCanvas = g;
+
+        return g;
+    }
+
     private void Update()
+    {
+        if (currentActiveCanvas == null)
+        {
+            var index = handlingCanvas.Count;
+            handlingCanvas.RemoveAt(index - 1);
+            currentActiveCanvas = handlingCanvas[index - 2];
+        }
+
+        CheckTracking();
+    }
+
+    #region Tracking
+    void CheckTracking()
     {
         if (!headTracking)
             return;
 
         if (Mathf.Abs(Mathf.DeltaAngle(head.eulerAngles.y, transform.eulerAngles.y)) > trackingAngle)
-            trackingDelayCounter += Time.deltaTime;
+            trackingDelayCounter += Time.timeScale != 0 ? Time.deltaTime : Time.unscaledDeltaTime;
         else
             trackingDelayCounter = 0f;
 
@@ -65,8 +96,9 @@ public class HintCanvas : MonoBehaviour
             transform.eulerAngles = Vector3.up * yAngle + origin;
 
             trackingDelayCounter = 0f;
-            
+
             yield return null;
         }
     }
+    #endregion
 }

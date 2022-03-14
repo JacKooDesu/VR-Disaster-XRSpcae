@@ -137,7 +137,7 @@ public class UIQuickSetting : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log("bool change");
+        // Debug.Log("bool change");
         action.Invoke();
     }
 }

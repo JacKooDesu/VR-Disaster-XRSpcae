@@ -11,7 +11,7 @@ public class Stage : MonoBehaviour
     public StageObject[] stageObjects;
 
     [System.Serializable]
-    public struct StageObject
+    public class StageObject
     {
         public GameObject obj;
         public int layer;
@@ -40,9 +40,9 @@ public class Stage : MonoBehaviour
 
     public virtual void OnUpdate()
     {
-        if (spawnpoint != null)
-            if ((GameHandler.Singleton.player.foot.position - spawnpoint.position).magnitude < .8f)
-                GameHandler.Singleton.SetLineGuider(false);
+        // if (spawnpoint != null)
+        //     if ((GameHandler.Singleton.player.foot.position - spawnpoint.position).magnitude < .8f)
+        //         GameHandler.Singleton.SetLineGuider(false);
 
     }
 
@@ -51,10 +51,9 @@ public class Stage : MonoBehaviour
     {
         // 隱藏所有Stage 物件
         foreach (StageObject so in stageObjects)
-            so.obj.SetActive(!so.destroyOnFinish);
+            if (so.obj != null) so.obj.SetActive(!so.destroyOnFinish);
 
         GameHandler.Singleton.SetLineGuider(false);
-
     }
 
 
@@ -63,5 +62,17 @@ public class Stage : MonoBehaviour
     protected void SetTarget(bool b)
     {
         target.SetActive(b);
+    }
+
+    public T FindStageObject<T>()
+    {
+        foreach (var g in stageObjects)
+        {
+            if (g.obj.GetComponent<T>() != null)
+                return g.obj.GetComponent<T>();
+        }
+
+        Debug.LogWarning("OBJECT MISSING!");
+        return default(T);
     }
 }

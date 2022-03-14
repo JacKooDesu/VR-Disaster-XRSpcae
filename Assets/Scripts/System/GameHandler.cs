@@ -56,23 +56,26 @@ public class GameHandler : MonoBehaviour
 
     private void Start()
     {
-        // 讀存檔系統，於Cardboard版本內無效
-        if (SceneLoader.Singleton.GetCurrentSceneName() != "Tutorial")
-        {
-            if (LoadPlayerData(SceneLoader.Singleton.GetName()) != null)
-            {
-                SetPlayerName(System.DateTime.Now.ToString("MM-dd-yyyy"));
-                SetPlayerData(LoadPlayerData(SceneLoader.Singleton.GetName()));
-            }
-            else
-            {
-                playerData = new PlayerData();
-            }
-        }
-        else
-        {
-            playerData = new PlayerData();
-        }
+        // // 讀存檔系統，於Cardboard版本內無效
+        // if (SceneLoader.Singleton.GetCurrentSceneName() != "Tutorial")
+        // {
+        //     if (LoadPlayerData(SceneLoader.Singleton.GetName()) != null)
+        //     {
+        //         SetPlayerName(System.DateTime.Now.ToString("MM-dd-yyyy"));
+        //         SetPlayerData(LoadPlayerData(SceneLoader.Singleton.GetName()));
+        //     }
+        //     else
+        //     {
+        //         playerData = new PlayerData();
+        //     }
+        // }
+        // else
+        // {
+        //     playerData = new PlayerData();
+        // }
+
+        if (player == null)
+            player = FindObjectOfType<Player>();
 
         StartCoroutine(PlayStage(firstStage));
     }

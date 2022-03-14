@@ -20,28 +20,28 @@ public class ChooseRescueKit : Stage
         JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
         audio.PlaySound(audio.whistle);
 
-        StartCoroutine(
-            GameHandler.Singleton.Counter(
-                audio.whistle.length + 1,
-                audio.whistle.length + 1,
-                delegate
-                {
-                    audio.PlaySound(audio.missionComplete);
-                }
-            )
-        );
+        // StartCoroutine(
+        //     GameHandler.Singleton.Counter(
+        //         audio.whistle.length + 1,
+        //         audio.whistle.length + 1,
+        //         delegate
+        //         {
+        //             audio.PlaySound(audio.missionComplete);
+        //         }
+        //     )
+        // );
 
-        StartCoroutine(
-            GameHandler.Singleton.Counter(
-                audio.whistle.length + 1 + audio.missionComplete.length + 1,
-                audio.whistle.length + 1 + audio.missionComplete.length + 1,
-                delegate
-                {
-                    GameHandler.Singleton.StageFinish();
-                    ui.TurnOff();
-                }
-            )
-        );
+        // StartCoroutine(
+        //     GameHandler.Singleton.Counter(
+        //         audio.whistle.length + 1 + audio.missionComplete.length + 1,
+        //         audio.whistle.length + 1 + audio.missionComplete.length + 1,
+        //         delegate
+        //         {
+        //             GameHandler.Singleton.StageFinish();
+        //             ui.TurnOff();
+        //         }
+        //     )
+        // );
     }
 
     public override void OnFinish()

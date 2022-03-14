@@ -65,5 +65,25 @@ PrefabInstance:
       propertyPath: ObstacleMask.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 2786489748147739103, guid: 611fe18b65a85614980b2b950635dd0f,
+        type: 3}
+      propertyPath: ValidTerrianMask.m_Bits
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113512046118760888, guid: 611fe18b65a85614980b2b950635dd0f,
+        type: 3}
+      propertyPath: ValidTerrianMask.m_Bits
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643177854808298753, guid: 611fe18b65a85614980b2b950635dd0f,
+        type: 3}
+      propertyPath: ValidTerrianMask.m_Bits
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532000385267481861, guid: 611fe18b65a85614980b2b950635dd0f,
+        type: 3}
+      propertyPath: ValidTerrianMask.m_Bits
+      value: 1280
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 611fe18b65a85614980b2b950635dd0f, type: 3}

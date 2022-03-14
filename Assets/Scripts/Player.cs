@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
 
     public CurveLineRenderer curveLine;
 
+    [Header("控制器")]
+    public Transform leftHandler, rightHandler;
+
     public Transform foot;
 
 

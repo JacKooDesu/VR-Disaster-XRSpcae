@@ -15,15 +15,17 @@ public class BusCrack : Stage
     public override void OnBegin()
     {
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
-        AudioSource a =audio.PlayAudio(audio.bgm1, true, GameHandler.Singleton.player.transform);
+        AudioSource a = audio.PlayAudio(audio.bgm1, true, GameHandler.Singleton.player.transform);
         a.volume = .2f;
 
         GameHandler.Singleton.player.SetCanMove(false);
+        headTransform = GameHandler.Singleton.player.head;
 
-        StartCoroutine(GameHandler.Singleton.Counter(minTime, maxTime, delegate { 
-            Crash(); 
+        StartCoroutine(GameHandler.Singleton.Counter(minTime, maxTime, delegate
+        {
+            Crash();
             Destroy(a.gameObject);
-            }));
+        }));
     }
 
     public override void OnFinish()
@@ -36,8 +38,8 @@ public class BusCrack : Stage
 
         Player p = GameHandler.Singleton.player;
         p.canRotate = false;
-        jointer.parent.position = GameHandler.Singleton.cam.transform.position;
-        Transform originParent = headTransform.parent;
+        jointer.parent.position = GameHandler.Singleton.player.head.position;
+        Transform originParent = GameHandler.Singleton.player.transform;
         headTransform.SetParent(jointer);
 
         Rigidbody rb = jointer.GetComponent<Rigidbody>();

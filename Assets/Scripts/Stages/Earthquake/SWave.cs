@@ -49,9 +49,9 @@ public class SWave : Stage
         elevator.SetTrigger("Broken");
         // warningHUD is no longer exist in cardboard
         //waringHUD.GetComponent<UIQuickSetting>().TurnOff();
-        GameHandler.Singleton.cam.GetComponent<BlurOptimized>().enabled = false;
+        // GameHandler.Singleton.cam.GetComponent<BlurOptimized>().enabled = false;
 
-        tweener.MoveNextPoint();
+        // tweener.MoveNextPoint();
     }
 
     void BreakRoof()
