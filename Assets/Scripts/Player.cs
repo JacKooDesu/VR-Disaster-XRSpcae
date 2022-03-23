@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
         hintCanvas.head = head;
 
-        curveLine.gameObject.SetActive(false);
+        // curveLine.gameObject.SetActive(false);
         originHeight = transform.position.y;
 
         if (GetComponentInChildren<NavMeshAgent>() != null)

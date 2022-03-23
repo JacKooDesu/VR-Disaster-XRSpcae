@@ -20,6 +20,7 @@ public class HintCanvas : MonoBehaviour
     public float trackingAngle;
 
     public Text hintText;
+    float hintTextShowingTimer;
     public GameObject currentActiveCanvas;
     List<GameObject> handlingCanvas = new List<GameObject>();
 
@@ -28,10 +29,11 @@ public class HintCanvas : MonoBehaviour
         currentActiveCanvas = transform.GetChild(0).gameObject;
     }
 
-    public void SetHintText(string str, bool show, bool forceToForward = true)
+    public void SetHintText(string str, bool show, bool forceToForward = true, float time = 0f)
     {
         SetHintText(str);
         ShowHintText(show);
+        StartCoroutine(GameHandler.Singleton.Counter(time == 0f ? str.Length * .5f : time, () => ShowHintText(false, false)));
     }
 
     public void ShowHintText(bool show, bool forceToForward = true)
@@ -57,6 +59,7 @@ public class HintCanvas : MonoBehaviour
 
     private void Update()
     {
+        transform.localPosition =  new Vector3(head.localPosition.x, 0, head.localPosition.z);
         if (currentActiveCanvas == null)
         {
             var index = handlingCanvas.Count;

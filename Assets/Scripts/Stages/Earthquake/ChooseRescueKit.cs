@@ -10,6 +10,7 @@ public class ChooseRescueKit : Stage
     {
         base.OnBegin();
         // ui.TurnOn();
+        FindObjectOfType<HintCanvas>().SetHintText("尋找急難救助包！", true);
         JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
         audio.PlaySound(audio.selectWhistle);
     }

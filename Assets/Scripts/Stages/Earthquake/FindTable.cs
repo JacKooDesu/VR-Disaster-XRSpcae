@@ -14,6 +14,7 @@ public class FindTable : Stage
         audio.PlaySound(audio.goUnderTable);
         audio.currentPlayingSound = null;
 
+        FindObjectOfType<HintCanvas>().SetHintText("找到桌椅避難掩護！", true);
         var tp = FindStageObject<TeleportPoint>();
         tp.onTeleportAction.AddListener(() =>
         {
