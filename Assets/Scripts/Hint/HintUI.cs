@@ -31,9 +31,6 @@ public class HintUI : MonoBehaviour
         if (traceObject.hasRenderTime >= hintObejctCamera.limitTime)
         {
             state = true;
-
-            transform.localPosition = Util.UIMath.WorldToCanvasPosition(
-                            traceObject.transform, hintObejctCamera.cam, hintObejctCamera.canvas);
         }
         else
         {
@@ -49,6 +46,12 @@ public class HintUI : MonoBehaviour
 
             stateLast = state;
         }
+    }
+
+    private void LateUpdate()
+    {
+        transform.localPosition = Util.UIMath.WorldToCanvasPosition(
+                            traceObject.transform, hintObejctCamera.cam, hintObejctCamera.canvas);
     }
 
     void DoFade(float value)
