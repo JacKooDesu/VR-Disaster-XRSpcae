@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class Player : MonoBehaviour
 
     public Transform foot;
 
+    // Overlay Effect 設定
+    UnityStandardAssets.ImageEffects.ScreenOverlay[] overlays;
+    static float overlayOriginValue;
 
     private void Start()
     {
@@ -52,6 +56,15 @@ public class Player : MonoBehaviour
             NavMeshAgent agent = GetComponentInChildren<NavMeshAgent>();
             agent.baseOffset = Vector3.Distance(transform.position, hit.point);
         }
+
+        SetupOverlayEffect();
+        CameraFadeIn();
+    }
+
+    void SetupOverlayEffect()
+    {
+        overlays = head.GetComponentsInChildren<UnityStandardAssets.ImageEffects.ScreenOverlay>();
+        overlayOriginValue = overlays[0].intensity;
     }
 
     public void SetTarget(GameObject target)
@@ -71,6 +84,71 @@ public class Player : MonoBehaviour
 
     public void Teleport(Vector3 point)
     {
-        iTween.MoveTo(gameObject, Vector3.up * originHeight + point, .5f);
+        CameraFadeOutIn(
+            () => SetCanMove(false),
+            () => { transform.position = point; },
+            () => SetCanMove(true));
+    }
+
+    public void CameraFadeOutIn(System.Action beginAction = null, System.Action blackAction = null, System.Action finishedAction = null)
+    {
+        if (beginAction != null)
+            beginAction.Invoke();
+
+        foreach (var overlay in overlays)
+        {
+            overlay.enabled = true;
+            DOTween.To(() => overlay.intensity, f => overlay.intensity = f, 0f, .8f).OnComplete(
+                () =>
+                {
+                    DOTween.To(() => overlay.intensity, f => overlay.intensity = f, overlayOriginValue, .8f).OnComplete(
+                    () =>
+                    {
+                        overlay.enabled = false;
+                        if (finishedAction != null)
+                            finishedAction.Invoke();
+                    });
+                    if (blackAction != null)
+                        blackAction.Invoke();
+                }
+            );
+        }
+    }
+
+    public void CameraFadeOut(System.Action beginAction = null, System.Action finishedAction = null)
+    {
+        if (beginAction != null)
+            beginAction.Invoke();
+
+        foreach (var overlay in overlays)
+        {
+            overlay.enabled = true;
+            DOTween.To(() => overlay.intensity, f => overlay.intensity = f, 0f, .8f).OnComplete(
+                () =>
+                {
+                    if (finishedAction != null)
+                        finishedAction.Invoke();
+                }
+            );
+        }
+    }
+
+    public void CameraFadeIn(System.Action beginAction = null, System.Action finishedAction = null)
+    {
+        if (beginAction != null)
+            beginAction.Invoke();
+
+        foreach (var overlay in overlays)
+        {
+            overlay.intensity = 0;
+            overlay.enabled = true;
+            DOTween.To(() => overlay.intensity, f => overlay.intensity = f, overlayOriginValue, .8f).OnComplete(
+                () =>
+                {
+                    if (finishedAction != null)
+                        finishedAction.Invoke();
+                }
+            );
+        }
     }
 }

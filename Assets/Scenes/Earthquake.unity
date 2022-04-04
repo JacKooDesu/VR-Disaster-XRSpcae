@@ -15769,7 +15769,7 @@ PrefabInstance:
     - target: {fileID: 1859481335599897905, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1859481335599897906, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
@@ -16941,6 +16941,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 753858733}
+  score: 10
   UI: {fileID: 0}
   waringHUD: {fileID: 0}
   tableTop: {fileID: 83165824}
@@ -40563,6 +40564,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &667456511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7629212903997761042, guid: b493cdd900e6b3843a453b06d8897f27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1371328661865325204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &667456515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667456511}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f19108706fdce9469603d07980eb8ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blendMode: 2
+  intensity: 2
+  texture: {fileID: 0}
+  overlayShader: {fileID: 4800000, guid: 8c81db0e527d24acc9bcec04e87781bd, type: 3}
 --- !u!1 &670304111
 GameObject:
   m_ObjectHideFlags: 0
@@ -44448,13 +44471,14 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 1039327088}
+  score: 10
   earthquake: {fileID: 485443961}
   roof: {fileID: 7628721651447504110}
   breakChance: 60
   tableTop: {fileID: 83165824}
   waringHUD: {fileID: 0}
   elevator: {fileID: 830303551}
-  tweener: {fileID: 196277192}
+  transparentMat: {fileID: 2100000, guid: 93cee037eb335514182ed280edbaf7de, type: 2}
 --- !u!4 &753858734
 Transform:
   m_ObjectHideFlags: 0
@@ -49419,6 +49443,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 0}
+  score: 10
   ui: {fileID: 0}
 --- !u!1 &778919017
 GameObject:
@@ -49864,6 +49889,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &787769024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7630962165891796082, guid: b493cdd900e6b3843a453b06d8897f27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1371328661865325204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &787769028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787769024}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f19108706fdce9469603d07980eb8ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blendMode: 2
+  intensity: 2
+  texture: {fileID: 0}
+  overlayShader: {fileID: 4800000, guid: 8c81db0e527d24acc9bcec04e87781bd, type: 3}
 --- !u!1 &793223480
 GameObject:
   m_ObjectHideFlags: 0
@@ -50327,6 +50374,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 2023406235}
+  score: 10
   table: {fileID: 7120127786023001918}
   radius: 0.8
   changer:
@@ -52104,6 +52152,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 797761100}
+  score: 10
   height: 1.3
   UI: {fileID: 0}
   hintDisplayTime: 3
@@ -52131,12 +52180,12 @@ PrefabInstance:
     - target: {fileID: 1859481335599897905, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1859481335599897906, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
       propertyPath: pointName
-      value: "\u684C\u5B50\u524D"
+      value: "\u96FB\u68AF"
       objectReference: {fileID: 0}
     - target: {fileID: 1859481335599897906, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
@@ -53320,6 +53369,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 860457838}
+  score: 10
   tableHint:
     parent: {fileID: 8642704456129065143}
     skyboxInclude: 1
@@ -62392,14 +62442,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnpoint: {fileID: 0}
-  stageObjects: []
+  stageObjects:
+  - obj: {fileID: 1295817390}
+    layer: -1
+    destroyOnFinish: 1
+  - obj: {fileID: 1338517414}
+    layer: -1
+    destroyOnFinish: 1
+  - obj: {fileID: 865555027}
+    layer: -1
+    destroyOnFinish: 1
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 772037508}
+  score: 10
   failedUI: {fileID: 1519335665}
   exits:
   - {fileID: 3224054722948836965}
   - {fileID: 1661270246}
+  changer:
+    parent: {fileID: 8642704456129065143}
+    skyboxInclude: 1
+    avoidSettings:
+    - target: {fileID: 1789841932372481800}
+      containChild: 1
+    - target: {fileID: 1661270245}
+      containChild: 1
+    - target: {fileID: 8045090597979739055}
+      containChild: 1
+    - target: {fileID: 834792337}
+      containChild: 1
+    - target: {fileID: 1742129203170598508}
+      containChild: 1
+    targetColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
 --- !u!1 &1039386079
 GameObject:
   m_ObjectHideFlags: 0
@@ -65092,6 +65167,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 899664838}
+  score: 10
   earthquake: {fileID: 485443961}
 --- !u!1 &1141009357
 GameObject:
@@ -70091,12 +70167,12 @@ PrefabInstance:
     - target: {fileID: 1859481335599897905, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1859481335599897906, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
       propertyPath: pointName
-      value: "\u684C\u5B50\u524D"
+      value: "\u9003\u751F\u9580"
       objectReference: {fileID: 0}
     - target: {fileID: 1859481335599897906, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
@@ -71274,12 +71350,12 @@ PrefabInstance:
     - target: {fileID: 1859481335599897905, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1859481335599897906, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
       propertyPath: pointName
-      value: "\u684C\u5B50\u524D"
+      value: "\u9003\u751F\u9580"
       objectReference: {fileID: 0}
     - target: {fileID: 1859481335599897906, guid: d9a2d13f496f3a84b83bd92dcc5ace81,
         type: 3}
@@ -110382,6 +110458,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 753858733}
+  score: 10
   tableLower: {fileID: 1518619079}
   changer:
     parent: {fileID: 8642704456129065143}
@@ -123606,6 +123683,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2411710041715048192}
     m_Modifications:
+    - target: {fileID: 1329251936, guid: b493cdd900e6b3843a453b06d8897f27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1371328663120574881, guid: b493cdd900e6b3843a453b06d8897f27,
         type: 3}
       propertyPath: m_RootOrder
@@ -143208,7 +143289,7 @@ MonoBehaviour:
   playerData:
     stuID: none
     missionDatas: []
-  firstStage: {fileID: 899664838}
+  firstStage: {fileID: 6554760835611145872}
   cam: {fileID: 0}
   uiCamera: {fileID: 0}
   audioHandler: {fileID: 1478017651}
@@ -143250,6 +143331,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFinish: 0
   nextStage: {fileID: 1135113522}
+  score: 10
   minTime: 10
   maxTime: 15
   UI: {fileID: 5700417467154224938}

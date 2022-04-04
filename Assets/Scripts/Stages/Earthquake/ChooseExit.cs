@@ -12,6 +12,8 @@ public class ChooseExit : Stage
 
     public Animator[] exits;
 
+    public MaterialChanger changer;
+
     public override void OnBegin()
     {
         base.OnBegin();
@@ -36,10 +38,12 @@ public class ChooseExit : Stage
         {
             tp.onTeleportAction.AddListener(() =>
             {
-                GameHandler.Singleton.StageFinish();
+                GameHandler.Singleton.player.Teleport(originPlayerPosition);
             });
         }
-        
+
+        changer.ChangeColor();
+
     }
 
     public override void OnUpdate()
@@ -53,5 +57,7 @@ public class ChooseExit : Stage
         {
             a.enabled = true;
         }
+
+        changer.BackOriginColor();
     }
 }

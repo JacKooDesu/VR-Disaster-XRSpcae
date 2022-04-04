@@ -23,6 +23,9 @@ public class Stage : MonoBehaviour
     public bool isFinish = false;   // 是否結束
     public Stage nextStage;     // 下一個Stage
 
+    [Header("其他")]
+    public int score = 10;
+
     // Stage開始時
     public virtual void OnBegin()
     {

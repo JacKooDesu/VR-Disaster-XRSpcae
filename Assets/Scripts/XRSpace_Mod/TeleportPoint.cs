@@ -22,6 +22,8 @@ public class TeleportPoint : MonoBehaviour
     public string pointName;
     public bool showHint;
 
+    bool invokeState = false; // 避免重複觸發
+
     public void BeingSelect(XRBaseRaycaster raycaster)
     {
         if (isSelected)
@@ -47,11 +49,19 @@ public class TeleportPoint : MonoBehaviour
         FindObjectOfType<HintCanvas>().ShowHintText(false);
     }
 
-    public void BeingTeleported()
+    public async void BeingTeleported()
     {
-        print($"{gameObject.name} being teleport!");
+        if (invokeState)
+            return;
+
+        print($"{gameObject.name} being teleport! {this.GetInstanceID()}");
 
         onTeleportAction.Invoke();
+
+        // 避免重複觸發
+        invokeState = true;
+        await System.Threading.Tasks.Task.Yield();
+        invokeState = false;
     }
 
     private void Update()

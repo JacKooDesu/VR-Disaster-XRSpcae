@@ -22,18 +22,22 @@ public class AsyncLoadingScript : MonoBehaviour
     public void LoadScene(string name)
     { // 傳入場景名稱
         targetSceneName = name;
-        SceneManager.LoadScene("AsyncLoadingScene");    // 跳到異步加載場景
+        // SceneManager.LoadScene("AsyncLoadingScene");    // 跳到異步加載場景
+        GameHandler.Singleton.player.CameraFadeOut();
+        async = SceneManager.LoadSceneAsync(targetSceneName);
+        async.allowSceneActivation = false;
+        StartCoroutine(Loading());
     }
 
-    private void Start()
-    {
-        if (SceneManager.GetActiveScene().name == "AsyncLoadingScene")
-        {
-            async = SceneManager.LoadSceneAsync(targetSceneName);
-            async.allowSceneActivation = false;
-            StartCoroutine(Loading());
-        }
-    }
+    // private void Start()
+    // {
+    //     if (SceneManager.GetActiveScene().name == "AsyncLoadingScene")
+    //     {
+    //         async = SceneManager.LoadSceneAsync(targetSceneName);
+    //         async.allowSceneActivation = false;
+    //         StartCoroutine(Loading());
+    //     }
+    // }
 
     IEnumerator Loading()
     {
@@ -45,25 +49,26 @@ public class AsyncLoadingScript : MonoBehaviour
         //     text.text = Mathf.Floor(progress * 100f).ToString() + " %";
         //     yield return null;
         // }
-        loadingText.text = "載入中...";
+        // loadingText.text = "載入中...";
         while (progress < 0.99f)
         {
             progress = Mathf.Lerp(progress, async.progress / 9 * 10, Time.deltaTime);
             // slider.value = progress;
-            text.text = Mathf.Floor(progress * 100f).ToString() + " %";
+            // text.text = Mathf.Floor(progress * 100f).ToString() + " %";
             yield return null;
         }
         progress = 1f;
         // slider.value = 1f;
-        text.text = "100 %";
-        finishButton.gameObject.SetActive(true);
-        loadingText.text = "點擊繼續";
-        finishButton.onClick.AddListener(delegate { async.allowSceneActivation = true; });
+        // text.text = "100 %";
+        // finishButton.gameObject.SetActive(true);
+        // loadingText.text = "點擊繼續";
+        // finishButton.onClick.AddListener(delegate { async.allowSceneActivation = true; });
+        async.allowSceneActivation = true;
 
     }
 
-    public string GetCurrentSceneName()
-    {
-        return SceneManager.GetActiveScene().name;
-    }
+    // public string GetCurrentSceneName()
+    // {
+    //     return SceneManager.GetActiveScene().name;
+    // }
 }
