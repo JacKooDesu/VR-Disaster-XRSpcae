@@ -75,4 +75,33 @@ public class Stage : MonoBehaviour
         Debug.LogWarning("OBJECT MISSING!");
         return default(T);
     }
+
+    public List<T> FindStageObjects<T>()
+    {
+        List<T> objects = new List<T>();
+
+        foreach (var g in stageObjects)
+        {
+            if (g.obj.GetComponent<T>() != null)
+                objects.Add(g.obj.GetComponent<T>());
+        }
+
+        return objects;
+    }
+
+    public List<T> FindStageObjects<T>(string nameContain)
+    {
+        List<T> objects = new List<T>();
+
+        foreach (var g in stageObjects)
+        {
+            if (g.obj.GetComponent<T>() != null)
+            {
+                if (g.obj.name.Contains(nameContain))
+                    objects.Add(g.obj.GetComponent<T>());
+            }
+        }
+
+        return objects;
+    }
 }

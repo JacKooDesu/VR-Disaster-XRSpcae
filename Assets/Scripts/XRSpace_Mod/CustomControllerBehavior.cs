@@ -163,6 +163,8 @@ public class CustomControllerBehavior : MonoBehaviour
 
     private void Teleport()
     {
+        if (!GameHandler.Singleton.player.canMove)
+            return;
         if (_teleportState != XRRaycasterUtils.TeleportState.CanTeleport || !CTLRaycaster.UseRaycast)
             return;
 

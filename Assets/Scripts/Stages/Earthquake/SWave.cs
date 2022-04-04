@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.ImageEffects;
+using DG.Tweening;
 
 public class SWave : Stage
 {
     public Earthquake earthquake;
 
     public GameObject roof;
+    Transform tempRoof;
     public int breakChance = 60;
 
     public Transform tableTop;
@@ -16,17 +18,19 @@ public class SWave : Stage
 
     public Animator elevator;
 
-    public ObjectTweener tweener;
+    public Material transparentMat;
 
     public override void OnBegin()
     {
         base.OnBegin();
+        DOTween.To(() => RenderSettings.ambientIntensity, x => RenderSettings.ambientIntensity = x, .2f, .5f);
         GameHandler.Singleton.player.SetCanMove(false);
         earthquake.SetQuake(20f);
 
         StartCoroutine(GameHandler.Singleton.Counter(
-            20,20,
-            delegate{
+            20, 20,
+            delegate
+            {
                 isFinish = true;
             }
         ));
@@ -52,15 +56,37 @@ public class SWave : Stage
         // GameHandler.Singleton.cam.GetComponent<BlurOptimized>().enabled = false;
 
         // tweener.MoveNextPoint();
+
+        foreach (Transform t in tempRoof)
+        {
+            var originMats = t.GetComponent<Renderer>().sharedMaterials;
+            var length = originMats.Length;
+            Material[] mats = new Material[length];
+            for (int i = 0; i < length; ++i)
+            {
+                mats[i] = Object.Instantiate(transparentMat);
+                mats[i].color = originMats[i].color;
+            }
+
+            t.GetComponent<Renderer>().sharedMaterials = mats;
+        }
+
+        var matChanger = new MaterialChanger();
+        matChanger.parent = tempRoof;
+        matChanger.targetColor = new Color(.2f, .2f, .2f, .3f);
+        matChanger.ChangeColor();
     }
 
     void BreakRoof()
     {
+        tempRoof = new GameObject("TempRoof").transform;
+        tempRoof.SetParent(roof.transform.parent);
         foreach (Transform t in roof.transform)
         {
             if (Random.Range(0, 100) < breakChance)
             {
                 t.GetComponent<Rigidbody>().isKinematic = false;
+                t.SetParent(tempRoof);
                 // t.GetComponent<CustomInteractable>().fishRodInteract = true;
             }
         }

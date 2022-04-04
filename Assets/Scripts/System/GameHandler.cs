@@ -53,6 +53,7 @@ public class GameHandler : MonoBehaviour
     public AsyncLoadingScript sceneLoader;
 
     float timer = 0f;
+    int score;
 
     private void Start()
     {
@@ -120,11 +121,10 @@ public class GameHandler : MonoBehaviour
             if (SceneLoader.Singleton.GetCurrentSceneName() != "MissionSelect")
             {
                 playerData.SetStageData(
-                    SceneLoader.Singleton.GetCurrentSceneName(),
-                    timer,
-                    true);
+                    new PlayerData.MissionData(SceneLoader.Singleton.GetCurrentSceneName(), timer, score, true));
             }
             SavePlayerData();
+            score = 0;
             sceneLoader.LoadScene("MissionSelect");
         }
 
@@ -237,17 +237,13 @@ public class GameHandler : MonoBehaviour
 
     public void SavePlayerData()
     {
-        FileManager file = new FileManager();
-
-        file.Save("/" + playerData.stuID + "_Data", playerData, "/PlayerData");
+        FileManager<PlayerData>.Save($"{playerData.stuID}_Data", playerData, "PlayerData");
         print("Save");
     }
 
-    public PlayerData LoadPlayerData(string name)
+    public void LoadPlayerData(string name)
     {
-        FileManager file = new FileManager();
-
-        return file.Load("/PlayerData", "/" + name + "_Data");
+        FileManager<PlayerData>.Load("PlayerData", $"{name}_Data", playerData);
     }
 
     public void SetPlayerData(PlayerData d)

@@ -21,39 +21,25 @@ public class ChooseExit : Stage
 
         JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
         audio.PlaySound(audio.protectHead);
-        
-        FindObjectOfType<HintCanvas>().SetHintText("注意掉落物，小心頭部安全！", true);
-        foreach (StageObject s in stageObjects)
-        {
-            if (s.obj.GetComponentInChildren<EventTrigger>())
-            {
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerClick;
-                if (s.obj.name.Contains("Exit"))
-                {
-                    entry.callback.AddListener(delegate
-                    {
-                        GameHandler.Singleton.player.Teleport(s.obj.transform.position);
-                        GameHandler.Singleton.StageFinish();
-                    });
-                }
-                else
-                {
-                    entry.callback.AddListener(delegate
-                    {
-                        failedUI.TurnOn();
-                        StartCoroutine(failedUI.WaitStatusChange(delegate
-                        {
-                            GameHandler.Singleton.BlurCamera(false);
-                            GameHandler.Singleton.player.Teleport(originPlayerPosition);
-                        }
-                        ));
-                    });
-                }
 
-                s.obj.GetComponentInChildren<EventTrigger>().triggers.Add(entry);
-            }
+        FindObjectOfType<HintCanvas>().SetHintText("注意掉落物，小心頭部安全！", true);
+
+        foreach (TeleportPoint tp in FindStageObjects<TeleportPoint>("逃生門"))
+        {
+            tp.onTeleportAction.AddListener(() =>
+            {
+                GameHandler.Singleton.StageFinish();
+            });
         }
+
+        foreach (TeleportPoint tp in FindStageObjects<TeleportPoint>("電梯"))
+        {
+            tp.onTeleportAction.AddListener(() =>
+            {
+                GameHandler.Singleton.StageFinish();
+            });
+        }
+        
     }
 
     public override void OnUpdate()

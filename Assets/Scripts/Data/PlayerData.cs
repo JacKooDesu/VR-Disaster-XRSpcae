@@ -13,7 +13,16 @@ public class PlayerData    // still in progress
     {
         public string name;
         public float time;
+        public int score;
         public bool complete;
+
+        public MissionData(string name, float time, int score, bool complete)
+        {
+            this.name = name;
+            this.time = time;
+            this.score = score;
+            this.complete = complete;
+        }
     }
 
     public List<MissionData> missionDatas;
@@ -25,32 +34,29 @@ public class PlayerData    // still in progress
         missionDatas = new List<MissionData>();
     }
 
-    public void SetStageData(string missionName, float time, bool isComplete)
+    public void SetStageData(MissionData data)
     {
-        MissionData data = new MissionData();
-        data.name = missionName;
-        data.time = time;
-        data.complete = isComplete;
 
-        for (int i = 0; i < missionDatas.Count; ++i)
+        if (missionDatas.Find((md) => md.name == data.name) != null)
         {
-            if (missionDatas[i].name == missionName)
-            {
-                missionDatas[i] = data;
-                return;
-            }
+            int index = missionDatas.FindIndex((md) => md.name == data.name);
+            missionDatas[index] = data;
+            return;
         }
 
         missionDatas.Add(data);
     }
 
-    public void SetName(string name){
+    public void SetName(string name)
+    {
         stuID = name;
     }
 
-    public MissionData GetMissionData(string name){
-        for(int i = 0; i < missionDatas.Count; ++i){
-            if(missionDatas[i].name == name)
+    public MissionData GetMissionData(string name)
+    {
+        for (int i = 0; i < missionDatas.Count; ++i)
+        {
+            if (missionDatas[i].name == name)
                 return missionDatas[i];
         }
 

@@ -10,12 +10,14 @@ public class Down : Stage
     float height = 1.3f;
     public UIQuickSetting UI;
     public float hintDisplayTime = 3f;
-    public ObjectTweener tweener;
+
+    public MaterialChanger changer;
 
     public override void OnBegin()
     {
         base.OnBegin();
         GameHandler.Singleton.player.hintCanvas.SetHintText("請趴低找掩護", true, true);
+        changer.ChangeColor();
     }
 
     public override void OnUpdate()
@@ -33,5 +35,6 @@ public class Down : Stage
         base.OnFinish();
         // UI.TurnOff();
         // tweener.MoveNextPoint();
+        changer.BackOriginColor();
     }
 }

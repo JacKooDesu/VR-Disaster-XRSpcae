@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-//A class to save & load file
-public class FileManager
+// 使用泛型存檔
+public static class FileManager<T>
 {
-    public void Save(string fileName, object target, string dir)
+    public static void Save(string fileName, T target, string dir)
     {
-        var serializeData = JsonUtility.ToJson(target);
-        var filePath = Application.dataPath + dir;
+        var jsonData = JsonUtility.ToJson(target, true);    // 物件序列化json字串
+        var filePath = $"{Application.dataPath}/{dir}";     // 取得資料夾路徑
 
-        Directory.CreateDirectory(filePath);
-        File.WriteAllText(filePath + fileName + ".sav", serializeData);
+        Directory.CreateDirectory(filePath);        // 確認資料夾
+        File.WriteAllText($"{filePath}/{fileName}.sav", jsonData);  // json寫入
     }
 
-    public PlayerData Load(string path, string name)
+    public static void Load(string path, string name, T target)
     {
-        var filePath = Application.dataPath + path + name + ".sav";
-        var deserializeData = (string)(null);
+        var filePath = $"{Application.dataPath}/{path}/{name}.sav";
+        var deserializeData = (string)(null);   // json 解譯字串
 
         try
         {
@@ -26,35 +26,15 @@ public class FileManager
         }
         catch (System.IO.FileNotFoundException)
         {
-            return null;
+            Debug.Log("FileNotFoundException");
+            return;
         }
         catch (System.IO.DirectoryNotFoundException)
         {
-            Directory.CreateDirectory(Application.dataPath + path);
-            return null;
+            Debug.Log("DirectoryNotFoundException");
+            return;
         }
 
-        return JsonUtility.FromJson<PlayerData>(deserializeData);
+        JsonUtility.FromJsonOverwrite(deserializeData, target);     // 複寫target
     }
-
-    public List<string> LoadDirFiles(string dir, string type)
-    {
-        DirectoryInfo di = new DirectoryInfo(Application.dataPath + dir);
-        List<string> fileList = new List<string>();
-
-        if (di.GetFiles(type).Length == 0)
-        {
-            return fileList;
-        }
-        else
-        {
-            foreach (var f in di.GetFiles(type))
-            {
-                fileList.Add(f.Name);
-            }
-        }
-
-        return fileList;
-    }
-
 }

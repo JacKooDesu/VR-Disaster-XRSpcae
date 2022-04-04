@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class FindTable : Stage
 {
+    public MaterialChanger tableHint;
     public override void OnBegin()
     {
         base.OnBegin();
+
+        tableHint.ChangeColor();
 
         // UI.TurnOn();
 
@@ -21,5 +24,11 @@ public class FindTable : Stage
             isFinish = true;
             Destroy(tp.gameObject);
         });
+    }
+
+    public override void OnFinish()
+    {
+        base.OnFinish();
+        tableHint.BackOriginColor();
     }
 }

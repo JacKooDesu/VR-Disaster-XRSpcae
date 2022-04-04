@@ -10,6 +10,8 @@ public class TeleportPoint : MonoBehaviour
     public Color normalColor;
     [Range(0, 1)] public float colorLerpSpeed;
 
+    public GameObject selectArrowParticle;
+
     bool isSelected = false;
     XRBaseRaycaster raycaster;
 
@@ -55,6 +57,13 @@ public class TeleportPoint : MonoBehaviour
     private void Update()
     {
         LerpColor();
+
+        if (isSelected && !selectArrowParticle.activeInHierarchy)
+            selectArrowParticle.SetActive(true);
+
+        if (!isSelected && selectArrowParticle.activeInHierarchy)
+            selectArrowParticle.SetActive(false);
+
     }
 
     void LerpColor()

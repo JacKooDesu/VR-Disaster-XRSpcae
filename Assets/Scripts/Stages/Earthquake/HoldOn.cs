@@ -6,13 +6,10 @@ using XRSpace.Platform.VRcore;
 
 public class HoldOn : Stage
 {
-    public UIQuickSetting UI;
-    public UIQuickSetting waringHUD;
-    public Transform tableTop;
     public Transform tableLower;
-    public float hintDisplayTime = 3f;
 
-    public ObjectTweener tweener;
+    public MaterialChanger changer;
+
     public override void OnBegin()
     {
         base.OnBegin();
@@ -27,6 +24,7 @@ public class HoldOn : Stage
         //         UI.TurnOff();
         //         GameHandler.Singleton.BlurCamera(false);
         //     }));
+        changer.ChangeColor();
     }
 
     public override void OnUpdate()
@@ -73,5 +71,7 @@ public class HoldOn : Stage
         // GameHandler.Singleton.cam.GetComponent<UnityStandardAssets.ImageEffects.Grayscale>().enabled = false;
 
         // tweener.MoveNextPoint();
+
+        changer.BackOriginColor();
     }
 }
