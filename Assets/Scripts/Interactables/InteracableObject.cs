@@ -48,12 +48,18 @@ public class InteracableObject : MonoBehaviour
 
     public void Grabbed()
     {
+        if (isGrabbing)
+            return;
+
         onGrabEvent.Invoke();
         isGrabbing = true;
     }
 
     public void Released()
     {
+        if (!isGrabbing)
+            return;
+
         onReleaseEvent.Invoke();
         isGrabbing = false;
     }

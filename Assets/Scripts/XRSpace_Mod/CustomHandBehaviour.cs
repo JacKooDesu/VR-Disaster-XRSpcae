@@ -5,7 +5,7 @@ using XRSpace.Platform;
 using XRSpace.Platform.InputDevice;
 using XRSpace.Platform.VRcore;
 
-public class CustomHandBehavior : MonoBehaviour
+public class CustomHandBehaviour : MonoBehaviour
 {
     public XRHandlerDeviceType DeviceType;
     public XRHandRaycaster HandRaycaster;
@@ -204,6 +204,15 @@ public class CustomHandBehavior : MonoBehaviour
                     _rigidbody.useGravity = false;
                     _rigidbody.isKinematic = true;
                 }
+
+                //  設定 InteractableObject
+                InteracableObject interactable;
+                if (Go.GetComponent<InteracableObject>() != null)
+                {
+                    interactable = Go.GetComponent<InteracableObject>();
+                    interactable.Grabbed();
+                }
+
                 _startTime = Time.time;
                 _grabGo = HandRaycaster.HitResult.gameObject;
                 _isGrabGo = true;
@@ -227,6 +236,15 @@ public class CustomHandBehavior : MonoBehaviour
                     _grabGo.transform.parent = null;
                 _rigidbody.AddForce(_handVector * 300, ForceMode.Impulse);
             }
+
+            //  設定 InteractableObject
+            InteracableObject interactable;
+            if (_grabGo.GetComponent<InteracableObject>() != null)
+            {
+                interactable = _grabGo.GetComponent<InteracableObject>();
+                interactable.Released();
+            }
+
             _grabGo = null;
             _isGrabGo = false;
             _xRGestureAnimation.GrabCube = false;

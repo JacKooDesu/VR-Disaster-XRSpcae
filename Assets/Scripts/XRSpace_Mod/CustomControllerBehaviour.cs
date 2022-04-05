@@ -5,7 +5,7 @@ using XRSpace.Platform;
 using XRSpace.Platform.InputDevice;
 using XRSpace.Platform.VRcore;
 
-public class CustomControllerBehavior : MonoBehaviour
+public class CustomControllerBehaviour : MonoBehaviour
 {
     public XRCTLRaycaster CTLRaycaster;
     public XRHandlerDeviceType Device;
