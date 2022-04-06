@@ -9,21 +9,30 @@ public class InteracableObject : MonoBehaviour
     [Header("位置重置")]
     public bool positionReset = true;
     public float resetTime;
-    float timer;
-    Vector3 originPos;
-    Quaternion originRotation;
+    protected float timer;
+    protected Vector3 originPos;
+    protected Quaternion originRotation;
     public UnityEvent onGrabEvent;
     public UnityEvent onReleaseEvent;
-    bool isGrabbing;
+    protected bool isGrabbing;
+
+    public bool interactable = true;
 
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (positionReset)
             originPos = transform.position;
     }
 
-    void Update()
+    protected virtual void Update()
+    {
+        if (!interactable && isGrabbing)
+            Released();
+        CheckPosReset();
+    }
+
+    protected void CheckPosReset()
     {
         if (!positionReset)
             return;
@@ -36,7 +45,7 @@ public class InteracableObject : MonoBehaviour
             ResetPosition();
     }
 
-    void ResetPosition()
+    protected void ResetPosition()
     {
         timer = 0f;
 
@@ -57,6 +66,7 @@ public class InteracableObject : MonoBehaviour
 
     public void Released()
     {
+        print($"Has Release {transform.GetInstanceID()}");
         if (!isGrabbing)
             return;
 

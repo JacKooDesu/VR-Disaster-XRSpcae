@@ -198,19 +198,21 @@ public class CustomHandBehaviour : MonoBehaviour
             var Go = HandRaycaster.HitResult.gameObject;
             if (Go != null && !_isGrabGo && !_onTransition)
             {
-                if (Go.GetComponent<Rigidbody>() != null)
-                {
-                    var _rigidbody = Go.GetComponent<Rigidbody>();
-                    _rigidbody.useGravity = false;
-                    _rigidbody.isKinematic = true;
-                }
-
                 //  設定 InteractableObject
                 InteracableObject interactable;
                 if (Go.GetComponent<InteracableObject>() != null)
                 {
                     interactable = Go.GetComponent<InteracableObject>();
+                    if (!interactable.interactable)
+                        return;
                     interactable.Grabbed();
+                }
+
+                if (Go.GetComponent<Rigidbody>() != null)
+                {
+                    var _rigidbody = Go.GetComponent<Rigidbody>();
+                    _rigidbody.useGravity = false;
+                    _rigidbody.isKinematic = true;
                 }
 
                 _startTime = Time.time;

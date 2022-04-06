@@ -112,6 +112,7 @@ public class MaterialChanger
             {
                 var m = renderer.sharedMaterials[j];
                 var originM = mats[j];
+
                 var tween = m.DOColor(originM.color, 1f).SetId(id);
 
                 if (j == mats.Length - 1)
