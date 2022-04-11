@@ -237,7 +237,247 @@ ModelImporter:
   - first:
       74: -5911490800112995343
     second: Circle|whistle|Take 001|BaseLayer
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 04a504da28cc57142a7f5fa8684cbb65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: d321ca06e109623449c108e8f9a61fc1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: 61a180eec7bcaba44839ae6cb01fc6f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: 774449f0b9b9e8a44b42164bf8f451b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: ff5e04d66e40acb41849522169ebc29a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: 23d79c0e720e74744bd98b4ca8cf1829, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: fe8c1cc91e1779644a22a215ac5fe796, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: 331a2575a664a404e82ccb82058bc45a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.017
+    second: {fileID: 2100000, guid: 4020915ed98819e448f4accf210accd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.018
+    second: {fileID: 2100000, guid: a8f9e8d0e79b24b41960c4c3cfe026cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: efdd7f6efed51a14088d8bf143c9bb7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 7fb997cfedf6206478fa49882e3c5f96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battery
+    second: {fileID: 2100000, guid: a3aa4e5f905a4bf48aa1a1786484e1fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battery.001
+    second: {fileID: 2100000, guid: 2d0a88499ff29a2459a539b754820a05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black_fl
+    second: {fileID: 2100000, guid: 978e4c71cb6ef9b49be8e212f9571fc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brush
+    second: {fileID: 2100000, guid: c2f3b702a1e5ced4aa1154fa73259c2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brush_teeth
+    second: {fileID: 2100000, guid: 61831264929e23f498b1a6cfb0e11b48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: comb
+    second: {fileID: 2100000, guid: 6a34b6a38533a0d4ca7e8f3ac8218a51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: compass
+    second: {fileID: 2100000, guid: 3eb82e211b618ee4eba1bef5f32da65e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: compass_in
+    second: {fileID: 2100000, guid: 3eb6094e1c97f7e40ba7573082cc2533, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glove
+    second: {fileID: 2100000, guid: a9d2a94e0cb3c694885a319bcfb128d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glove_red
+    second: {fileID: 2100000, guid: 5496547ddb0292c4aa86904fa12b1d49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mask
+    second: {fileID: 2100000, guid: eae93db00a6b42548965b9f803ec170a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mask_blue
+    second: {fileID: 2100000, guid: ac3cee517d53e974c9067a480c010bfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mask_blue.001
+    second: {fileID: 2100000, guid: cd697a27ee6ad964989cbfd77d7eac21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: medical_kit.001
+    second: {fileID: 2100000, guid: e362599dcac11dc449780161869f8fa2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: medical_kit_red
+    second: {fileID: 2100000, guid: d9cc77f5b8a0e9d41a200e42482ff293, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: note
+    second: {fileID: 2100000, guid: e578e95689054284ab3297cae4ff396c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: note_paper
+    second: {fileID: 2100000, guid: db9b62da6a86cea4d818b6cf111f79ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pack
+    second: {fileID: 2100000, guid: 3099c90d3979b174eb60afe89ebb5dbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pack_rope
+    second: {fileID: 2100000, guid: b1790a962f274c341be2a247dd493f7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pen
+    second: {fileID: 2100000, guid: 01d869f142a82de418fbb57de5f074b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pen.001
+    second: {fileID: 2100000, guid: 564052216ba6f9c48880b0fab07dbcdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pen.002
+    second: {fileID: 2100000, guid: 66ff0d2c4da063540b42195fb51c4c02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pen.003
+    second: {fileID: 2100000, guid: a11e791064f037d4693b72190c72fdce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: radio
+    second: {fileID: 2100000, guid: e949f908fdc69274fb1cc16df54593b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: radio.001
+    second: {fileID: 2100000, guid: 4b9c214b492e65048ba624e9e082f8ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: radio_bbt
+    second: {fileID: 2100000, guid: d47fff38da4901545ba06e001b944546, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: razor
+    second: {fileID: 2100000, guid: 04a12ec0af8f1d4418a2303e7228ee99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red_wh
+    second: {fileID: 2100000, guid: 14b983bddc03c604c893948eb7aa086b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rope
+    second: {fileID: 2100000, guid: fcd42ffb85394a84ca22f7734ac6631c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: swiss_knife
+    second: {fileID: 2100000, guid: dcb12581ed8d19c41a5a903c95494cf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tape
+    second: {fileID: 2100000, guid: 0fdc06a3327accc4ea4b5be8eda48a88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tape_brown
+    second: {fileID: 2100000, guid: e84c029b1c859dd4baeaf872e2c62e10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: water
+    second: {fileID: 2100000, guid: b04780003539a494bba6978997e63002, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: water_white
+    second: {fileID: 2100000, guid: 5a95c3ad140057c42a0903b896a7e3a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white_fl
+    second: {fileID: 2100000, guid: 4e9f05adc49aa5d45a52caa839f0ec9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: whiterean_fl
+    second: {fileID: 2100000, guid: 9c872eda44e6dc0459834ff9361f9c04, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
