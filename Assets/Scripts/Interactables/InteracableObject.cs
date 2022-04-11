@@ -12,17 +12,39 @@ public class InteracableObject : MonoBehaviour
     protected float timer;
     protected Vector3 originPos;
     protected Quaternion originRotation;
+    protected Transform originParent;
     public UnityEvent onGrabEvent;
     public UnityEvent onReleaseEvent;
     protected bool isGrabbing;
+    public bool IsGrabbing
+    {
+        get => isGrabbing;
+    }
 
     public bool interactable = true;
 
+    // rigidbody 設定
+    protected bool originIsKinematic;
+    protected bool originUseGravity;
 
-    protected virtual void OnEnable()
+    protected virtual void Start()
     {
-        if (positionReset)
-            originPos = transform.position;
+        SetupOrigin();
+    }
+
+    // 定義原位置訊息
+    protected void SetupOrigin()
+    {
+        originPos = transform.position;
+        originRotation = transform.rotation;
+        originParent = transform.parent;
+
+        if (!GetComponent<Rigidbody>())
+            return;
+
+        var rig = GetComponent<Rigidbody>();
+        originIsKinematic = rig.isKinematic;
+        originUseGravity = rig.useGravity;
     }
 
     protected virtual void Update()
@@ -45,12 +67,19 @@ public class InteracableObject : MonoBehaviour
             ResetPosition();
     }
 
-    protected void ResetPosition()
+    protected virtual void ResetPosition()
     {
         timer = 0f;
 
+        transform.parent = originParent;
+
         if (GetComponent<Rigidbody>() != null)
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        {
+            var rig = GetComponent<Rigidbody>();
+            rig.velocity = Vector3.zero;
+            rig.isKinematic = originIsKinematic;
+            rig.useGravity = originUseGravity;
+        }
 
         transform.SetPositionAndRotation(originPos, originRotation);
     }
@@ -72,5 +101,10 @@ public class InteracableObject : MonoBehaviour
 
         onReleaseEvent.Invoke();
         isGrabbing = false;
+    }
+
+    private void OnMouseEnter()
+    {
+
     }
 }

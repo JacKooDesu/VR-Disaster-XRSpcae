@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class KitItem : InteracableObject
 {
+    public bool inPack = false;
 
-    protected override void OnEnable()
+    protected override void Start()
     {
-        base.OnEnable();
+        base.Start();
+        onReleaseEvent.AddListener(() => { new CoroutineUtility.Timer(3f, () => ResetPosition()); });
     }
 
     protected override void Update()
     {
         base.Update();
-
-        transform.Rotate(Vector3.up*20 * Time.deltaTime);
+        if (!isGrabbing)
+            transform.Rotate(Vector3.up * 20 * Time.deltaTime);
     }
-
 }

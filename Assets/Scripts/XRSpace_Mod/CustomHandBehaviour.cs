@@ -48,6 +48,8 @@ public class CustomHandBehaviour : MonoBehaviour
     // teleport point
     TeleportPoint selectingPoint;
 
+    Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,8 @@ public class CustomHandBehaviour : MonoBehaviour
 
         if (EndPoint)
             EndPoint.GetComponent<MeshRenderer>().sortingOrder = 2;
+
+        player = GetComponentInParent<Player>();
     }
 
     private void OnEnable()
@@ -309,6 +313,8 @@ public class CustomHandBehaviour : MonoBehaviour
         // teleport point event
         if (selectingPoint != null)
             selectingPoint.BeingTeleported();
+
+        player.onTeleportEvent.Invoke();
     }
     #endregion
 

@@ -36,10 +36,14 @@ public class CustomControllerBehaviour : MonoBehaviour
     // teleport point
     TeleportPoint selectingPoint;
 
+    Player player;
+
     private void Start()
     {
         if (EndPoint)
             EndPoint.GetComponent<MeshRenderer>().sortingOrder = 2;
+
+        player = GetComponentInParent<Player>();
     }
 
     private void OnEnable()
@@ -180,6 +184,8 @@ public class CustomControllerBehaviour : MonoBehaviour
         // teleport point event
         if (selectingPoint != null)
             selectingPoint.BeingTeleported();
+
+        player.onTeleportEvent.Invoke();
     }
 
 

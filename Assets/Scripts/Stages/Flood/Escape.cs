@@ -31,8 +31,6 @@ public class Escape : Stage
                 {
                     a.GetSoundAudioSource(a.broadcast2).volume = .4f;
                     a.PlaySound(a.escape);
-                    if (spawnpoint != null)
-                        GameHandler.Singleton.SetLineGuider(true, spawnpoint.position);
                 }
             )
         );
@@ -50,7 +48,6 @@ public class Escape : Stage
         if (spawnpoint != null)
             if ((GameHandler.Singleton.player.transform.position - spawnpoint.position).magnitude < 2.5f)
             {
-                GameHandler.Singleton.SetLineGuider(false);
                 GameHandler.Singleton.StageFinish();
             }
 
@@ -59,7 +56,5 @@ public class Escape : Stage
     {
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.stageClear);
-
-        GameHandler.Singleton.SetLineGuider(false);
     }
 }

@@ -12,9 +12,6 @@ public class TurnOffGas : Stage
     {
         base.OnBegin();
 
-        if (spawnpoint != null)
-            GameHandler.Singleton.SetLineGuider(true, spawnpoint.position);
-
         interactArea.gameObject.SetActive(true);
 
         EventTrigger.Entry entry = new EventTrigger.Entry();

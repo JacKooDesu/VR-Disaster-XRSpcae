@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FindTable : Stage
 {
@@ -24,11 +25,15 @@ public class FindTable : Stage
             isFinish = true;
             Destroy(tp.gameObject);
         });
+
+        FindObjectOfType<NavMeshSurface>().BuildNavMesh();
+        GameHandler.Singleton.player.PathFinding(tp.transform.position);
     }
 
     public override void OnFinish()
     {
         base.OnFinish();
         tableHint.BackOriginColor();
+        GameHandler.Singleton.player.line.gameObject.SetActive(false);
     }
 }

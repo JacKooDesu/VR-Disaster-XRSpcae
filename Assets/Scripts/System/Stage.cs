@@ -25,6 +25,7 @@ public class Stage : MonoBehaviour
 
     [Header("其他")]
     public int score = 10;
+    [HideInInspector] public int getScore;  // 實拿分數
 
     // Stage開始時
     public virtual void OnBegin()
@@ -55,8 +56,6 @@ public class Stage : MonoBehaviour
         // 隱藏所有Stage 物件
         foreach (StageObject so in stageObjects)
             if (so.obj != null) so.obj.SetActive(!so.destroyOnFinish);
-
-        GameHandler.Singleton.SetLineGuider(false);
     }
 
 

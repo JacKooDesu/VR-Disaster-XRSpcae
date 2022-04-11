@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ChooseRescueKit : Stage
 {
-    public UIQuickSetting ui;
+    public List<KitItem> requireItems = new List<KitItem>();
 
     public override void OnBegin()
     {
         base.OnBegin();
-        // ui.TurnOn();
-        FindObjectOfType<HintCanvas>().SetHintText("尋找急難救助包！", true);
+        FindObjectOfType<HintCanvas>().SetHintText("整理急難救助包！", true);
         JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
         audio.PlaySound(audio.selectWhistle);
+
+        GameHandler.Singleton.player.ShowKit();
     }
 
     public void TakeWhistle()
@@ -43,6 +44,18 @@ public class ChooseRescueKit : Stage
         //         }
         //     )
         // );
+    }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+        foreach (var item in requireItems)
+        {
+            if (!item.inPack)
+                return;
+        }
+
+        isFinish = true;
     }
 
     public override void OnFinish()

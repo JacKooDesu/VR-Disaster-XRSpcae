@@ -31,9 +31,6 @@ public class TakeExtinguisher : Stage
         ));
 
         audio.PlayAudio(audio.bgm2, true, GameHandler.Singleton.player.transform).volume = .1f;
-
-        if (spawnpoint != null)
-            GameHandler.Singleton.SetLineGuider(true, spawnpoint.position);
     }
 
     public override void OnUpdate()

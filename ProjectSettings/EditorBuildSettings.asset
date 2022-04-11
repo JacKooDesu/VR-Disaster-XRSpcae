@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Earthquake.unity
     guid: 91c591fb58bc2a34ab86e31e7b3bdf1d
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 1203f5d612cb77b4ca80a339b4f4cc27
   m_configObjects: {}

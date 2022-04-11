@@ -48,8 +48,6 @@ public class GameHandler : MonoBehaviour
 
     public Transform ObjectParent;
 
-    public LineRenderer lineGuider;
-
     public AsyncLoadingScript sceneLoader;
 
     float timer = 0f;
@@ -118,14 +116,14 @@ public class GameHandler : MonoBehaviour
                 yield return null;
             }
 
-            if (SceneLoader.Singleton.GetCurrentSceneName() != "MissionSelect")
+            if (SceneLoader.Singleton.GetCurrentSceneName() != "Tutorial")
             {
                 playerData.SetStageData(
                     new PlayerData.MissionData(SceneLoader.Singleton.GetCurrentSceneName(), timer, score, true));
             }
-            SavePlayerData();
+            // SavePlayerData();
             score = 0;
-            sceneLoader.LoadScene("MissionSelect");
+            sceneLoader.LoadScene("Tutorial");
         }
 
     }
@@ -134,11 +132,6 @@ public class GameHandler : MonoBehaviour
     public void StageFinish()
     {
         currentStage.isFinish = true;
-    }
-
-    public void UpdateLine()
-    {
-        lineGuider.SetPosition(0, player.foot.position);
     }
 
     // 綁Event在物件上
@@ -260,34 +253,6 @@ public class GameHandler : MonoBehaviour
     {
         playerData.stuID = text;
         SceneLoader.Singleton.SetName(text);
-    }
-
-    public void SetLineGuider(bool active, Vector3 destination)
-    {
-        lineGuider.enabled = active;
-        lineGuider.SetPosition(0, player.foot.position);
-        if (player.GetComponentInChildren<UnityEngine.AI.NavMeshAgent>() != null)
-        {
-            UnityEngine.AI.NavMeshAgent agent = player.GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
-            UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
-            agent.CalculatePath(destination, path);
-            lineGuider.positionCount = path.corners.Length + 1;
-            for (int i = 0, x = 1; i < path.corners.Length; ++i, ++x)
-            {
-                lineGuider.SetPosition(x, path.corners[i]);
-            }
-        }
-        else
-        {
-            lineGuider.positionCount = 2;
-            lineGuider.SetPosition(1, destination);
-        }
-
-
-    }
-    public void SetLineGuider(bool active)
-    {
-        lineGuider.enabled = active;
     }
 
     public Stage GetCurrentStage()

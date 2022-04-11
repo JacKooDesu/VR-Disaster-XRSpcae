@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     public CurveLineRenderer curveLine;
 
+    public Kit kit;
+
     [Header("控制器")]
     public Transform leftHandler, rightHandler;
 
@@ -39,6 +41,12 @@ public class Player : MonoBehaviour
     // Overlay Effect 設定
     UnityStandardAssets.ImageEffects.ScreenOverlay[] overlays;
     static float overlayOriginValue;
+
+    [Header("Navigator")]
+    public NavMeshAgent agent;
+    public LineRendererUtil line;
+
+    public UnityEngine.Events.UnityEvent onTeleportEvent;
 
     private void Start()
     {
@@ -59,6 +67,8 @@ public class Player : MonoBehaviour
 
         SetupOverlayEffect();
         CameraFadeIn();
+
+        onTeleportEvent.AddListener(() => agent.Warp(transform.position));
     }
 
     void SetupOverlayEffect()
@@ -150,5 +160,18 @@ public class Player : MonoBehaviour
                 }
             );
         }
+    }
+
+    public void PathFinding(Vector3 targetPos)
+    {
+        NavMeshPath path = new NavMeshPath();
+        agent.CalculatePath(targetPos, path);
+
+        line.SetCorners(path.corners);
+    }
+
+    public void ShowKit(bool b = true)
+    {
+        kit.gameObject.SetActive(b);
     }
 }
