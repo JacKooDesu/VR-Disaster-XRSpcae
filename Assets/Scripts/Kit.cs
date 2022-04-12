@@ -46,7 +46,7 @@ public class Kit : MonoBehaviour
             if (hit.transform.GetComponent<KitItem>())
             {
                 var kit = hit.transform.GetComponent<KitItem>();
-                if (kit.IsGrabbing)
+                if (kit.IsGrabbing || !kit.hasTaken)
                     continue;
                 hit.transform.GetComponent<KitItem>().inPack = true;
                 hit.transform.gameObject.SetActive(false);

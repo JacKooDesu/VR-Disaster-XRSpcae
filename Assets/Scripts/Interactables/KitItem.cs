@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class KitItem : InteracableObject
 {
+    public bool hasTaken = false;
     public bool inPack = false;
 
     protected override void Start()
     {
         base.Start();
+        onGrabEvent.AddListener(() => hasTaken = true);
         onReleaseEvent.AddListener(() => { new CoroutineUtility.Timer(3f, () => ResetPosition()); });
     }
 
