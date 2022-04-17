@@ -2,29 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XRSpace.Platform.InputDevice;
-using XRSpace.Platform.VRcore;
+using UnityEngine.UI;
 
 public class HoldOn : Stage
 {
+    public ObjectSwitcher uiSwitcher;
+    public Image progressImage;
     public Transform tableLower;
 
     public MaterialChanger changer;
+    CoroutineUtility.Timer uiTimer;
+
+    public GameObject dchUI;
 
     public override void OnBegin()
     {
         base.OnBegin();
         GameHandler.Singleton.player.SetCanMove(false);
         XRActionGestureManager.ActionDetectedEvent += CheckHandHoldingEvent;
-        // UI.TurnOn();
-        // GameHandler.Singleton.BlurCamera(true);
-        // StartCoroutine(GameHandler.Singleton.Counter(
-        //     hintDisplayTime,
-        //     delegate
-        //     {
-        //         UI.TurnOff();
-        //         GameHandler.Singleton.BlurCamera(false);
-        //     }));
         changer.ChangeColor();
+
+        uiSwitcher.Switch(2);
+        progressImage.color = Color.white;
+
+        uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());
     }
 
     public override void OnUpdate()
@@ -73,5 +74,9 @@ public class HoldOn : Stage
         // tweener.MoveNextPoint();
 
         changer.BackOriginColor();
+        progressImage.color = Color.gray;
+        uiTimer.Stop(true);
+
+        dchUI.SetActive(false);
     }
 }

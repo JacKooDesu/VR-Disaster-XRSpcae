@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class FindTable : Stage
 {
+    public GameObject dchUI;
     public MaterialChanger tableHint;
     public override void OnBegin()
     {
@@ -28,6 +29,8 @@ public class FindTable : Stage
 
         FindObjectOfType<NavMeshSurface>().BuildNavMesh();
         GameHandler.Singleton.player.PathFinding(tp.transform.position);
+
+        dchUI.SetActive(true);
     }
 
     public override void OnFinish()

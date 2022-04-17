@@ -15,20 +15,26 @@ public class HintUI : MonoBehaviour
     bool stateLast = false;
     [SerializeField] int tweenId;
 
-    public void Setup(HintObject ho, HintObejctCamera hCamera)
-    {
-        hintObejctCamera = hCamera;
-        this.traceObject = ho;
-        objectName.text = ho.objectName;
-        image.sprite = ho.image;
-        canvasGroup = GetComponent<CanvasGroup>();
+    // public void Setup(HintObject ho, HintObejctCamera hCamera)
+    // {
+    //     hintObejctCamera = hCamera;
+    //     this.traceObject = ho;
+    //     objectName.text = ho.objectName;
+    //     image.sprite = ho.image;
+    //     canvasGroup = GetComponent<CanvasGroup>();
 
-        tweenId = transform.GetInstanceID();
+    //     tweenId = transform.GetInstanceID();
+    // }
+
+    private void Start()
+    {
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
+        canvasGroup.alpha = 0;
     }
 
     private void Update()
     {
-        if (traceObject.hasRenderTime >= hintObejctCamera.limitTime)
+        if (traceObject.hasRenderTime >= traceObject.limitTime)
         {
             state = true;
         }
@@ -50,8 +56,10 @@ public class HintUI : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.localPosition = Util.UIMath.WorldToCanvasPosition(
-                            traceObject.transform, hintObejctCamera.cam, hintObejctCamera.canvas);
+        // transform.localPosition = Util.UIMath.WorldToCanvasPosition(
+        //                     traceObject.transform, hintObejctCamera.cam, hintObejctCamera.canvas);
+        var head = GameHandler.Singleton.player.head;
+        transform.LookAt(transform.position + head.rotation * Vector3.forward, head.rotation * Vector3.up);
     }
 
     void DoFade(float value)

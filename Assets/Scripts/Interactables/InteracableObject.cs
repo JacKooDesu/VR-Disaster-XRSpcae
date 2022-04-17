@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 
-public class InteracableObject : MonoBehaviour
+public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("位置重置")]
     public bool positionReset = true;
@@ -27,9 +26,19 @@ public class InteracableObject : MonoBehaviour
     protected bool originIsKinematic;
     protected bool originUseGravity;
 
+    // outline 設定
+    protected Outline outline;
+
     protected virtual void Start()
     {
         SetupOrigin();
+
+        if (GetComponent<Outline>())
+        {
+            outline = GetComponent<Outline>();
+            outline.enabled = false;
+        }
+
     }
 
     // 定義原位置訊息
@@ -106,5 +115,17 @@ public class InteracableObject : MonoBehaviour
     private void OnMouseEnter()
     {
 
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (outline != null)
+            outline.enabled = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (outline != null)
+            outline.enabled = false;
     }
 }

@@ -30,7 +30,6 @@ public class WalkInLibrary : Stage
                 StartCoroutine(GameHandler.Singleton.Counter(minTime, maxTime, delegate { isFinish = true; }));
             }
         ));
-
     }
 
     public override void OnFinish()

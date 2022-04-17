@@ -62,8 +62,10 @@ namespace CoroutineUtility
             complete.Invoke();
         }
 
-        public void Stop()
+        public void Stop(bool forceComplete = false)
         {
+            if (forceComplete)
+                complete.Invoke();
             CoroutineManager.Singleton.Stop($"timer-{id}");
         }
     }

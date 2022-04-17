@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HintObject : MonoBehaviour
 {
+    public float limitTime = 5f;
     public float hasRenderTime;    // 已經被偵測到的秒數
     public bool isRendering = false;
     public HintUI ui;
@@ -11,7 +12,13 @@ public class HintObject : MonoBehaviour
     [Header("UI設定")]
     public string objectName;
     public Sprite image;
-    
+
+    private void Start()
+    {
+        ui.objectName.text = objectName;
+        ui.image.sprite = image;
+    }
+
     private void OnWillRenderObject()
     {
         if (!isRendering)

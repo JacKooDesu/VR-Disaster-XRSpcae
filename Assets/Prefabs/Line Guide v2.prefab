@@ -50,7 +50,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5acb5f4d82c17f548881d1dcae3c0252, type: 2}
+  - {fileID: 2100000, guid: 2f6776e553b3c6b428e23bf820673660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,10 +71,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: -5.283745, y: -0.4585353, z: -22.596893}
-  - {x: 3.2229376, y: -4.89912, z: -25.527971}
-  - {x: -3.2030535, y: -1.4157907, z: -26.08704}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

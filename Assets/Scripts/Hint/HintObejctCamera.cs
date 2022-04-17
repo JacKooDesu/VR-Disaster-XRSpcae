@@ -15,19 +15,19 @@ public class HintObejctCamera : MonoBehaviour
     public List<HintObject> hintObjects = new List<HintObject>();
     public List<HintUI> hintUIs = new List<HintUI>();
 
-    private void Start()
-    {
-        hintObjects.AddRange(FindObjectsOfType<HintObject>());
+    // private void Start()
+    // {
+    //     hintObjects.AddRange(FindObjectsOfType<HintObject>());
 
-        foreach (var ho in hintObjects)
-            InitUi(ho);
-    }
+    //     foreach (var ho in hintObjects)
+    //         InitUi(ho);
+    // }
 
-    void InitUi(HintObject ho)
-    {
-        var ui = Instantiate(hintUiPrefab, canvas.transform).GetComponent<HintUI>();
+    // void InitUi(HintObject ho)
+    // {
+    //     var ui = Instantiate(hintUiPrefab, canvas.transform).GetComponent<HintUI>();
 
-        ui.Setup(ho, this);
-        ho.ui = ui;
-    }
+    //     ui.Setup(ho, this);
+    //     ho.ui = ui;
+    // }
 }
