@@ -27912,7 +27912,7 @@ GameObject:
   - component: {fileID: 2105150543}
   - component: {fileID: 2105150542}
   - component: {fileID: 2105150541}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
