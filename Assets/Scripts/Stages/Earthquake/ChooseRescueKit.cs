@@ -13,7 +13,9 @@ public class ChooseRescueKit : Stage
         JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
         audio.PlaySound(audio.selectWhistle);
 
-        GameHandler.Singleton.player.ShowKit();
+        var player = GameHandler.Singleton.player;
+        player.ShowKit();
+        player.SetCanMove(false);
     }
 
     public void TakeWhistle()
@@ -61,5 +63,7 @@ public class ChooseRescueKit : Stage
     public override void OnFinish()
     {
         base.OnFinish();
+        var player = GameHandler.Singleton.player;
+        player.SetCanMove(true);
     }
 }

@@ -21,11 +21,14 @@ public class BusCrack : Stage
         GameHandler.Singleton.player.SetCanMove(false);
         headTransform = GameHandler.Singleton.player.head;
 
-        StartCoroutine(GameHandler.Singleton.Counter(minTime, maxTime, delegate
-        {
-            Crash();
-            Destroy(a.gameObject);
-        }));
+        new CoroutineUtility.Timer(
+            Random.Range(minTime, maxTime),
+            () =>
+            {
+                Crash();
+                Destroy(a.gameObject);
+            }
+        );
     }
 
     public override void OnFinish()
@@ -34,29 +37,24 @@ public class BusCrack : Stage
 
     public void Crash()
     {
-        // print("crash");
-
         Player p = GameHandler.Singleton.player;
         p.canRotate = false;
         jointer.parent.position = GameHandler.Singleton.player.head.position;
-        Transform originParent = GameHandler.Singleton.player.transform;
+        Transform originParent = GameHandler.Singleton.player.head.parent;
         headTransform.SetParent(jointer);
 
         Rigidbody rb = jointer.GetComponent<Rigidbody>();
         rb.AddForce(jointer.forward * 5, ForceMode.Impulse);
 
-        StartCoroutine(
-            GameHandler.Singleton.Counter(
-                crashTime,
-                crashTime,
-                delegate
-                {
-                    headTransform.SetParent(originParent);
-                    jointer.gameObject.SetActive(false);
-                    //p.SetCanMove(true);
+        new CoroutineUtility.Timer(
+            crashTime, () =>
+            {
+                headTransform.SetParent(originParent);
+                jointer.gameObject.SetActive(false);
+                //p.SetCanMove(true);
 
-                    GameHandler.Singleton.StageFinish();
-                    GameHandler.Singleton.player.canRotate = true;
-                }));
+                GameHandler.Singleton.StageFinish();
+                GameHandler.Singleton.player.canRotate = true;
+            });
     }
 }
