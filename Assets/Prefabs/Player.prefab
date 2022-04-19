@@ -9218,8 +9218,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2324535438388810260, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
+      propertyPath: BlockMask.m_Bits
+      value: 8704
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324535438388810260, guid: fecbc43e09920f14bb029b7a9ad292c5,
+        type: 3}
+      propertyPath: ObstacleMask.m_Bits
+      value: 8704
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324535438388810260, guid: fecbc43e09920f14bb029b7a9ad292c5,
+        type: 3}
       propertyPath: ValidTerrianMask.m_Bits
       value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324535438388810260, guid: fecbc43e09920f14bb029b7a9ad292c5,
+        type: 3}
+      propertyPath: InvalidTerrianMask.m_Bits
+      value: 8704
       objectReference: {fileID: 0}
     - target: {fileID: 2653229980622204204, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
@@ -9253,13 +9268,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5895583142972169897, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
+      propertyPath: BlockMask.m_Bits
+      value: 8704
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895583142972169897, guid: fecbc43e09920f14bb029b7a9ad292c5,
+        type: 3}
+      propertyPath: ObstacleMask.m_Bits
+      value: 8704
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895583142972169897, guid: fecbc43e09920f14bb029b7a9ad292c5,
+        type: 3}
       propertyPath: ValidTerrianMask.m_Bits
       value: 1280
       objectReference: {fileID: 0}
     - target: {fileID: 5895583142972169897, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
       propertyPath: InvalidTerrianMask.m_Bits
-      value: 512
+      value: 8704
       objectReference: {fileID: 0}
     - target: {fileID: 6651714110586156750, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
@@ -9284,12 +9309,12 @@ PrefabInstance:
     - target: {fileID: 8839546834228535803, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 5687
+      value: 13879
       objectReference: {fileID: 0}
     - target: {fileID: 8840200502541472003, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 5687
+      value: 13879
       objectReference: {fileID: 0}
     - target: {fileID: 8854509834307031173, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}

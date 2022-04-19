@@ -68,11 +68,11 @@ public class TeleportPoint : MonoBehaviour
     {
         LerpColor();
 
-        if (isSelected && !selectArrowParticle.activeInHierarchy)
-            selectArrowParticle.SetActive(true);
+        // if (isSelected && !selectArrowParticle.activeInHierarchy)
+        //     selectArrowParticle.SetActive(true);
 
-        if (!isSelected && selectArrowParticle.activeInHierarchy)
-            selectArrowParticle.SetActive(false);
+        // if (!isSelected && selectArrowParticle.activeInHierarchy)
+        //     selectArrowParticle.SetActive(false);
 
     }
 

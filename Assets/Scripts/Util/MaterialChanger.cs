@@ -15,6 +15,7 @@ public class MaterialChanger
     {
         public Transform target;
         public bool containChild = false;
+        public bool outline;
     }
     [Header("例外")]
     public List<AvoidRendererSetting> avoidSettings = new List<AvoidRendererSetting>();
@@ -30,6 +31,14 @@ public class MaterialChanger
     {
         foreach (var avoidSetting in avoidSettings)
         {
+            if (avoidSetting.outline)
+            {
+                var outline = avoidSetting.target.gameObject.AddComponent<Outline>();
+                outline.OutlineColor = Color.red;
+                outline.OutlineWidth = 10f;
+            }
+
+
             if (avoidSetting.target.GetComponent<Renderer>() != null)
                 avoidRenderers.Add(avoidSetting.target.GetComponent<Renderer>());
 
@@ -121,6 +130,11 @@ public class MaterialChanger
                         renderer.sharedMaterials = mats;
                     });
             }
+        }
+
+        foreach(var avoidSetting in avoidSettings){
+            if(avoidSetting.outline)
+                Component.Destroy(avoidSetting.target.GetComponent<Outline>()); 
         }
 
         if (skyboxInclude)
