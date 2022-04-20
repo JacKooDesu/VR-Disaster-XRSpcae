@@ -6,6 +6,8 @@ public class ChooseRescueKit : Stage
 {
     public List<KitItem> requireItems = new List<KitItem>();
 
+    public MaterialChanger changer;
+
     public override void OnBegin()
     {
         base.OnBegin();
@@ -16,6 +18,8 @@ public class ChooseRescueKit : Stage
         var player = GameHandler.Singleton.player;
         player.ShowKit();
         player.SetCanMove(false);
+
+        changer.ChangeColor();
     }
 
     public void TakeWhistle()
