@@ -116,14 +116,14 @@ public class GameHandler : MonoBehaviour
                 yield return null;
             }
 
-            if (SceneLoader.Singleton.GetCurrentSceneName() != "Tutorial")
+            if (SceneLoader.Singleton.GetCurrentSceneName() != "MissionSelect")
             {
                 playerData.SetStageData(
                     new PlayerData.MissionData(SceneLoader.Singleton.GetCurrentSceneName(), timer, score, true));
             }
             // SavePlayerData();
             score = 0;
-            sceneLoader.LoadScene("Tutorial");
+            sceneLoader.LoadScene("MissionSelect");
         }
 
     }

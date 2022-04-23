@@ -95,6 +95,7 @@ public class HintCanvas : MonoBehaviour
         float yAngle = 0;
         while (Mathf.Abs(yAngle - targetAngleAmount) >= .001f)
         {
+            yield return new WaitForEndOfFrame();
             yAngle = Mathf.Lerp(yAngle, targetAngleAmount, .1f);
             transform.eulerAngles = Vector3.up * yAngle + origin;
 

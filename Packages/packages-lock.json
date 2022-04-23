@@ -7,6 +7,19 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.coffee.ui-particle": {
+      "version": "https://github.com/mob-sakai/ParticleEffectForUGUI.git#3.3.10",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5a8f1263ef85f7aa035b51e0dd8b1c52f1b22ced"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,

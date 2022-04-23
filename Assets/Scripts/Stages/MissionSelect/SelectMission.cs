@@ -11,6 +11,7 @@ public class SelectMission : Stage
     public GameObject fireTruck;
     public GameObject flood;
     public GameObject leave;
+    public ObjectSwitcher switcher;
 
     public override void OnBegin()
     {
@@ -21,6 +22,7 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 audio.PlaySound(audio.earthquakeIntro);
+                switcher.Switch(0);
             }
         );
 
@@ -31,6 +33,7 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 Destroy(audio.GetSoundAudioSource(audio.earthquakeIntro).gameObject);
+                switcher.HideAll();
             }
         );
 
@@ -42,6 +45,7 @@ public class SelectMission : Stage
                    JacDev.Audio.AudioHandler.Singleton.PlaySound(JacDev.Audio.AudioHandler.Singleton.soundList.hover);
                    GameHandler.Singleton.sceneLoader.LoadScene("Earthquake");
                    //GameHandler.Singleton.BlurCamera(false);
+                   earthquake.GetComponent<EventTrigger>().enabled = false;
                });
 
         GameHandler.Singleton.BindEvent(
@@ -51,6 +55,7 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 audio.PlaySound(audio.fireTruckIntro);
+                switcher.Switch(1);
             }
         );
 
@@ -61,6 +66,7 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 Destroy(audio.GetSoundAudioSource(audio.fireTruckIntro).gameObject);
+                switcher.HideAll();
             }
         );
 
@@ -71,6 +77,7 @@ public class SelectMission : Stage
                 {
                     JacDev.Audio.AudioHandler.Singleton.PlaySound(JacDev.Audio.AudioHandler.Singleton.soundList.hover);
                     GameHandler.Singleton.sceneLoader.LoadScene("FireTruck");
+                    fireTruck.GetComponent<EventTrigger>().enabled = false;
                     //GameHandler.Singleton.BlurCamera(false);
                 });
 
@@ -82,6 +89,7 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 audio.PlaySound(audio.floodIntro);
+                switcher.Switch(2);
             }
         );
 
@@ -92,6 +100,7 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 Destroy(audio.GetSoundAudioSource(audio.floodIntro).gameObject);
+                switcher.HideAll();
             }
         );
 
@@ -103,6 +112,7 @@ public class SelectMission : Stage
                     JacDev.Audio.AudioHandler.Singleton.PlaySound(JacDev.Audio.AudioHandler.Singleton.soundList.hover);
                     GameHandler.Singleton.sceneLoader.LoadScene("Flood");
                     //GameHandler.Singleton.BlurCamera(false);
+                    leave.GetComponent<EventTrigger>().enabled = false;
                 });
 
         GameHandler.Singleton.BindEvent(
@@ -112,6 +122,7 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 audio.PlaySound(audio.soundList.select);
+
             }
         );
 

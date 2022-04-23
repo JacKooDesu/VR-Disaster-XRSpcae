@@ -23,10 +23,10 @@ public class AsyncLoadingScript : MonoBehaviour
     { // 傳入場景名稱
         targetSceneName = name;
         // SceneManager.LoadScene("AsyncLoadingScene");    // 跳到異步加載場景
-        GameHandler.Singleton.player.CameraFadeOut();
-        async = SceneManager.LoadSceneAsync(targetSceneName);
-        async.allowSceneActivation = false;
-        StartCoroutine(Loading());
+        GameHandler.Singleton.player.fadeUtil.FadeOut(.5f, null, () => SceneManager.LoadSceneAsync(targetSceneName));
+        // async = SceneManager.LoadSceneAsync(targetSceneName);
+        // async.allowSceneActivation = true;
+        // StartCoroutine(Loading());
     }
 
     // private void Start()
@@ -52,6 +52,7 @@ public class AsyncLoadingScript : MonoBehaviour
         // loadingText.text = "載入中...";
         while (progress < 0.99f)
         {
+            print(progress);
             progress = Mathf.Lerp(progress, async.progress / 9 * 10, Time.deltaTime);
             // slider.value = progress;
             // text.text = Mathf.Floor(progress * 100f).ToString() + " %";

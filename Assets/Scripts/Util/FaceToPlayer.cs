@@ -18,10 +18,12 @@ public class FaceToPlayer : MonoBehaviour
         var headPos = GameHandler.Singleton.player.head.position;
         var vec = headPos - transform.position;
         vec = reverse ? -vec : vec;
-        
+
         vec.x = constraint == Axis.x ? 0 : vec.x;
         vec.y = constraint == Axis.y ? 0 : vec.y;
         vec.z = constraint == Axis.z ? 0 : vec.z;
+        if (vec == Vector3.zero)
+            return;
         transform.rotation = Quaternion.LookRotation(vec);
     }
 }
