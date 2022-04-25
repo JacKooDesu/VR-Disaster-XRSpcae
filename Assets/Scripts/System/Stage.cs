@@ -24,8 +24,7 @@ public class Stage : MonoBehaviour
     public Stage nextStage;     // 下一個Stage
 
     [Header("其他")]
-    public int score = 10;
-    [HideInInspector] public int getScore;  // 實拿分數
+    public int score;
 
     // Stage開始時
     public virtual void OnBegin()
@@ -105,5 +104,11 @@ public class Stage : MonoBehaviour
         }
 
         return objects;
+    }
+
+    public void SubScore(int value)
+    {
+        if (score >= 0)
+            score -= value;
     }
 }

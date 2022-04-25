@@ -23,7 +23,8 @@ public class AsyncLoadingScript : MonoBehaviour
     { // 傳入場景名稱
         targetSceneName = name;
         // SceneManager.LoadScene("AsyncLoadingScene");    // 跳到異步加載場景
-        GameHandler.Singleton.player.fadeUtil.FadeOut(.5f, null, () => SceneManager.LoadSceneAsync(targetSceneName));
+        var fadeUtil = FindObjectOfType<CameraFadeUtil>();
+        fadeUtil.FadeOut(.5f, null, () => SceneManager.LoadSceneAsync(targetSceneName));
         // async = SceneManager.LoadSceneAsync(targetSceneName);
         // async.allowSceneActivation = true;
         // StartCoroutine(Loading());

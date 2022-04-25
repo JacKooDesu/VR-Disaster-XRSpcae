@@ -31,8 +31,6 @@ public class GameHandler : MonoBehaviour
     [Header("Player")]
     public Player player;   // 玩家
 
-    public PlayerData playerData;   // 玩家資料序列化
-
     [Header("Stage")]
     public Stage firstStage;    // 首 Stage
     // public Stage finalStage;    // 末 Stage
@@ -51,38 +49,47 @@ public class GameHandler : MonoBehaviour
     public AsyncLoadingScript sceneLoader;
 
     float timer = 0f;
-    int score;
+
+    int currentMissionIndex;
+    public MissionSetting missionSetting;
+    public static PlayerData playerData;   // 玩家資料序列化
+    public List<Stage> allStg = new List<Stage>();
 
     private void Start()
     {
-        // // 讀存檔系統，於Cardboard版本內無效
-        // if (SceneLoader.Singleton.GetCurrentSceneName() != "Tutorial")
-        // {
-        //     if (LoadPlayerData(SceneLoader.Singleton.GetName()) != null)
-        //     {
-        //         SetPlayerName(System.DateTime.Now.ToString("MM-dd-yyyy"));
-        //         SetPlayerData(LoadPlayerData(SceneLoader.Singleton.GetName()));
-        //     }
-        //     else
-        //     {
-        //         playerData = new PlayerData();
-        //     }
-        // }
-        // else
-        // {
-        //     playerData = new PlayerData();
-        // }
+        if (playerData == null)
+            playerData = new PlayerData();
 
         if (player == null)
             player = FindObjectOfType<Player>();
 
-        StartCoroutine(PlayStage(firstStage));
+        var currentScene = SceneLoader.Singleton.GetCurrentSceneName();
+        if (currentScene != "MissionSelect" && currentScene != "Result Scene")
+        {
+            playerData.SetMissionData(currentScene);
+            currentMissionIndex = 0;
+
+            StartCoroutine(PlayStage(firstStage));
+        }
+        else
+        {
+            firstStage.OnBegin();
+        }
     }
 
     public IEnumerator PlayStage(Stage stg)
     {
         print(stg.name);
+
+        currentMissionIndex = allStg.IndexOf(stg);
+
+        timer = 0;
+        var stgSetting = missionSetting.settings[currentMissionIndex];
+        var stgData = new PlayerData.MissionData.StgData();
+
         currentStage = stg;
+        currentStage.score = stgSetting.score;
+        stgData.stgName = stgSetting.name;
 
         if (stg.target != null)
             player.SetTarget(stg.target);
@@ -91,11 +98,8 @@ public class GameHandler : MonoBehaviour
 
         while (!stg.isFinish)
         {
-
             timer += Time.deltaTime;
-
             stg.OnUpdate();
-            // UpdateLine();
             yield return null;
         }
 
@@ -103,29 +107,25 @@ public class GameHandler : MonoBehaviour
 
         StopCoroutine("Counter");
 
+        stgData.score = currentStage.score;
+        playerData.SetStageData(stgData);
+        stgData.time = timer;
+
         if (stg.nextStage != null)
         {
             audioHandler.StopCurrent();
             stg.StopAllCoroutines();
+
             yield return StartCoroutine(PlayStage(stg.nextStage));
         }
         else
         {
             while (audioHandler.currentPlayingSound != null)
-            {
                 yield return null;
-            }
 
-            if (SceneLoader.Singleton.GetCurrentSceneName() != "MissionSelect")
-            {
-                playerData.SetStageData(
-                    new PlayerData.MissionData(SceneLoader.Singleton.GetCurrentSceneName(), timer, score, true));
-            }
             // SavePlayerData();
-            score = 0;
-            sceneLoader.LoadScene("MissionSelect");
+            sceneLoader.LoadScene("Result Scene");
         }
-
     }
 
     // 當前 Stage完成
@@ -150,23 +150,6 @@ public class GameHandler : MonoBehaviour
         tempTrigger.triggers.Add(entry);
     }
 
-    // 開關相機 Tracking
-    public void SetVRCameraTracking(bool b)
-    {
-        UnityEngine.XR.XRDevice.DisableAutoXRCameraTracking(GameHandler.Singleton.cam, b);
-    }
-
-
-    public void BlurCamera(bool status)
-    {
-        BlurOptimized blur;
-        if (cam.GetComponent<BlurOptimized>())
-            blur = cam.GetComponent<BlurOptimized>();
-        else
-            blur = cam.gameObject.AddComponent<BlurOptimized>();
-
-        blur.enabled = status;
-    }
     /*
         public void GrayCamera(bool status)
         {

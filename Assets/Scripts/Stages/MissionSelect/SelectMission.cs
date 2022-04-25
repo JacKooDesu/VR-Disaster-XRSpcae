@@ -166,9 +166,9 @@ public class SelectMission : Stage
 
     public void CheckMission(string name, GameObject objPanel)
     {
-        if (GameHandler.Singleton.playerData.GetMissionData(name) != null)
+        if (GameHandler.playerData.GetMissionData(name) != null)
         {
-            float t = GameHandler.Singleton.playerData.GetMissionData(name).time;
+            float t = GameHandler.playerData.GetMissionData(name).time;
             int m = Mathf.RoundToInt(t / 60);
             int s = Mathf.RoundToInt(t % 60);
 

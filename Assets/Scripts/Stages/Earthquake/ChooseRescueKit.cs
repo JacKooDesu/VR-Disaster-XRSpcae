@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChooseRescueKit : Stage
 {
     public List<KitItem> requireItems = new List<KitItem>();
+    public List<KitItem> uselessItems = new List<KitItem>();
 
     public MaterialChanger changer;
 
@@ -22,35 +23,35 @@ public class ChooseRescueKit : Stage
         changer.ChangeColor();
     }
 
-    public void TakeWhistle()
-    {
-        print("whistle");
-        JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
-        audio.PlaySound(audio.whistle);
+    // public void TakeWhistle()
+    // {
+    //     print("whistle");
+    //     JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
+    //     audio.PlaySound(audio.whistle);
 
-        // StartCoroutine(
-        //     GameHandler.Singleton.Counter(
-        //         audio.whistle.length + 1,
-        //         audio.whistle.length + 1,
-        //         delegate
-        //         {
-        //             audio.PlaySound(audio.missionComplete);
-        //         }
-        //     )
-        // );
+    //     // StartCoroutine(
+    //     //     GameHandler.Singleton.Counter(
+    //     //         audio.whistle.length + 1,
+    //     //         audio.whistle.length + 1,
+    //     //         delegate
+    //     //         {
+    //     //             audio.PlaySound(audio.missionComplete);
+    //     //         }
+    //     //     )
+    //     // );
 
-        // StartCoroutine(
-        //     GameHandler.Singleton.Counter(
-        //         audio.whistle.length + 1 + audio.missionComplete.length + 1,
-        //         audio.whistle.length + 1 + audio.missionComplete.length + 1,
-        //         delegate
-        //         {
-        //             GameHandler.Singleton.StageFinish();
-        //             ui.TurnOff();
-        //         }
-        //     )
-        // );
-    }
+    //     // StartCoroutine(
+    //     //     GameHandler.Singleton.Counter(
+    //     //         audio.whistle.length + 1 + audio.missionComplete.length + 1,
+    //     //         audio.whistle.length + 1 + audio.missionComplete.length + 1,
+    //     //         delegate
+    //     //         {
+    //     //             GameHandler.Singleton.StageFinish();
+    //     //             ui.TurnOff();
+    //     //         }
+    //     //     )
+    //     // );
+    // }
 
     public override void OnUpdate()
     {
@@ -69,5 +70,10 @@ public class ChooseRescueKit : Stage
         base.OnFinish();
         var player = GameHandler.Singleton.player;
         player.SetCanMove(true);
+
+        foreach (var item in uselessItems)
+        {
+            if (item.inPack) SubScore(5);
+        }
     }
 }

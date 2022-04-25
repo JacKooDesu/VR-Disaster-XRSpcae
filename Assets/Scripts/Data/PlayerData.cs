@@ -13,19 +13,34 @@ public class PlayerData    // still in progress
     {
         public string name;
         public float time;
-        public int score;
+
+        public int score
+        {
+            get
+            {
+                int result = 0;
+                foreach (var stg in stgDatas)
+                    result += stg.score;
+
+                return result;
+            }
+        }
         public bool complete;
 
-        public MissionData(string name, float time, int score, bool complete)
+        public List<StgData> stgDatas = new List<StgData>();
+
+        [System.Serializable]
+        public class StgData
         {
-            this.name = name;
-            this.time = time;
-            this.score = score;
-            this.complete = complete;
+            public int score;
+            public float time;
+            public string stgName;
         }
     }
 
     public List<MissionData> missionDatas;
+
+    public static MissionData current;
 
     //Constructor
     public PlayerData()
@@ -34,22 +49,29 @@ public class PlayerData    // still in progress
         missionDatas = new List<MissionData>();
     }
 
-    public void SetStageData(MissionData data)
+    public void SetStageData(MissionData.StgData stgData)
     {
-
-        if (missionDatas.Find((md) => md.name == data.name) != null)
-        {
-            int index = missionDatas.FindIndex((md) => md.name == data.name);
-            missionDatas[index] = data;
-            return;
-        }
-
-        missionDatas.Add(data);
+        current.stgDatas.Add(stgData);
     }
 
-    public void SetName(string name)
+    public MissionData SetMissionData(string name)
     {
-        stuID = name;
+        var mData = new MissionData();
+        if (missionDatas.FindIndex((m) => m.name == name) != -1)
+        {
+            mData = missionDatas.Find(m => m.name == name);
+        }
+        else
+        {
+            mData.name = name;
+
+            missionDatas.Add(mData);
+            current = mData;
+        }
+
+        mData.stgDatas = new List<MissionData.StgData>();
+
+        return mData;
     }
 
     public MissionData GetMissionData(string name)
@@ -61,5 +83,16 @@ public class PlayerData    // still in progress
         }
 
         return null;
+    }
+
+    public int GetAllScore(string name)
+    {
+        int score = 0;
+        var mData = missionDatas.Find((m) => m.name == name);
+
+        foreach (var s in mData.stgDatas)
+            score += s.score;
+
+        return score;
     }
 }

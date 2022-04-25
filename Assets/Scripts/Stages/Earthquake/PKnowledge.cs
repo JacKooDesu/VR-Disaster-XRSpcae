@@ -31,14 +31,11 @@ public class PKnowledge : Stage
             {
                 waringHUD.gameObject.SetActive(true);
             }
-            waringHUD.TurnOn();
-            GameHandler.Singleton.BlurCamera(true);
+            waringHUD.TurnOn();            
         }
         else
         {
-
             waringHUD.TurnOff();
-            GameHandler.Singleton.BlurCamera(false);
         }
     }
 

@@ -38,6 +38,7 @@ public class ChooseExit : Stage
         {
             tp.onTeleportAction.AddListener(() =>
             {
+                SubScore(10);
                 GameHandler.Singleton.player.Teleport(originPlayerPosition);
             });
         }
