@@ -5,14 +5,20 @@ using UnityEngine;
 public class PullTorus : Stage
 {
     public GameObject torus;
-    public UIQuickSetting ui;
     public Transform handPosition;
     public GameObject Extinguisher;
+
+    [Header("UI設定")]
+    public ObjectSwitcher uiSwitcher;
+    public GameObject progressImage;
+    CoroutineUtility.Timer uiTimer;
+
     public override void OnBegin()
     {
         base.OnBegin();
-        ui.TurnOn();
-        StartCoroutine(GameHandler.Singleton.Counter(3f, 3f, delegate { ui.TurnOff(); }));
+        uiSwitcher.Switch(0);
+        progressImage.SetActive(true);
+        uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());
     }
 
     public override void OnUpdate()
@@ -41,6 +47,7 @@ public class PullTorus : Stage
     public override void OnFinish()
     {
         base.OnFinish();
-        ui.TurnOff();
+        progressImage.SetActive(false);
+        uiTimer.Stop(true);
     }
 }

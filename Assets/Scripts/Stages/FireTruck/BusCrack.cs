@@ -12,14 +12,27 @@ public class BusCrack : Stage
     public Transform jointer;
     public Transform headTransform;
 
+    bool hasTriggered = false;
+
     public override void OnBegin()
     {
+        GameHandler.Singleton.player.SetCanMove(false);
+        headTransform = GameHandler.Singleton.player.head;
+    }
+
+    public override void OnFinish()
+    {
+    }
+
+    public void WaitCrash()
+    {
+        if (hasTriggered)
+            return;
+
+        hasTriggered = true;
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
         AudioSource a = audio.PlayAudio(audio.bgm1, true, GameHandler.Singleton.player.transform);
         a.volume = .2f;
-
-        GameHandler.Singleton.player.SetCanMove(false);
-        headTransform = GameHandler.Singleton.player.head;
 
         new CoroutineUtility.Timer(
             Random.Range(minTime, maxTime),
@@ -29,10 +42,6 @@ public class BusCrack : Stage
                 Destroy(a.gameObject);
             }
         );
-    }
-
-    public override void OnFinish()
-    {
     }
 
     public void Crash()

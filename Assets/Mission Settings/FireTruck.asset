@@ -14,5 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: "\u706B\u707D\u55AE\u5143"
   defaultHint: 
-  settings: []
+  settings:
+  - name: Bus Crack
+    score: 0
+    desc: 
+    hint: 
+  - name: "\u62FF\u53D6\u6EC5\u706B\u5668"
+    score: 10
+    desc: "\u62FF\u53D6\u6EC5\u706B\u5668"
+    hint: 
+  - name: "\u62C9\u63D2\u92B7"
+    score: 20
+    desc: "\u62C9\u63D2\u92B7"
+    hint: 
+  - name: "\u6EC5\u706B"
+    score: 20
+    desc: "\u7784\u6E96\u706B\u6E90\u5674\u7051"
+    hint: 
+  - name: "\u7834\u7A97"
+    score: 10
+    desc: 
+    hint: 
   icon: {fileID: 21300000, guid: 0fba46106dd37254781bf2f0aef8e7c2, type: 3}
