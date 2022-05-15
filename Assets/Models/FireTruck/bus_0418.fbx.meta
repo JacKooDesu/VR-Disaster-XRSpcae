@@ -3,7 +3,67 @@ guid: feeb8aeb896ec4842ae0541df7740709
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #217
+    second: {fileID: 2100000, guid: 0b7c00d45f98d0245ba23c2e147ce450, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #230
+    second: {fileID: 2100000, guid: 7af3df47ad1621c4497d51c7301b44c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #27.001
+    second: {fileID: 2100000, guid: 96c9ef7adab094a48bfc1ab3dec8f664, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #79.001
+    second: {fileID: 2100000, guid: 82d0f08420eb12c49a61eaa6a46578c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #89.001
+    second: {fileID: 2100000, guid: d8fde0c3eb049bb4298e9e02d601c3f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body.005
+    second: {fileID: 2100000, guid: 0367a76562d3d6b4ba01d1932b74b7f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body.006
+    second: {fileID: 2100000, guid: 4ceea981c7949cd47a9a8bc976254be8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: busbody.002
+    second: {fileID: 2100000, guid: 32760f9814de13343908d5b2433d0e1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: busbody.003
+    second: {fileID: 2100000, guid: 1f47df6cd8b778e458a77d365b11a62c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: busbody.004
+    second: {fileID: 2100000, guid: a5c5546e1689b4c4fa626f7464e4748b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red.001
+    second: {fileID: 2100000, guid: 72dd147fd95460640bc86c819c941e20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: weel.005
+    second: {fileID: 2100000, guid: 6b03d83369ee33c4a9a6782a1c6794ea, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -81,7 +141,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.004
+    globalScale: 0.4
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
