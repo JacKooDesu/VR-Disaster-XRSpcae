@@ -13,9 +13,11 @@ public class PullTorus : Stage
     public GameObject progressImage;
     CoroutineUtility.Timer uiTimer;
 
-    public override void OnBegin()
+    public override async void OnBegin()
     {
         base.OnBegin();
+        uiSwitcher.gameObject.SetActive(true);
+        await System.Threading.Tasks.Task.Yield();
         uiSwitcher.Switch(0);
         progressImage.SetActive(true);
         uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());

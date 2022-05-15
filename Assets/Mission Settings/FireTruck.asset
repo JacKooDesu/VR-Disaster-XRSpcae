@@ -27,9 +27,17 @@ MonoBehaviour:
     score: 20
     desc: "\u62C9\u63D2\u92B7"
     hint: 
-  - name: "\u6EC5\u706B"
+  - name: "\u7784\u6E96\u706B\u6E90"
     score: 20
-    desc: "\u7784\u6E96\u706B\u6E90\u5674\u7051"
+    desc: "\u7784\u6E96\u706B\u6E90"
+    hint: 
+  - name: "\u58D3"
+    score: 20
+    desc: "\u58D3"
+    hint: 
+  - name: "\u6383"
+    score: 20
+    desc: "\u6383"
     hint: 
   - name: "\u7834\u7A97"
     score: 10

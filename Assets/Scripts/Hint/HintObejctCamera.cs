@@ -15,6 +15,11 @@ public class HintObejctCamera : MonoBehaviour
     public List<HintObject> hintObjects = new List<HintObject>();
     public List<HintUI> hintUIs = new List<HintUI>();
 
+    private void OnEnable()
+    {
+        if (Application.isEditor)
+            cam.enabled = false;
+    }
     // private void Start()
     // {
     //     hintObjects.AddRange(FindObjectsOfType<HintObject>());

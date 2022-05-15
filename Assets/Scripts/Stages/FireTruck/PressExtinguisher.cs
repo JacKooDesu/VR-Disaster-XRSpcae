@@ -6,12 +6,12 @@ using XRSpace.Platform.InputDevice;
 public class PressExtinguisher : Stage
 {
     public CustomControllerBehaviour controller;
-    public ParticleSystem powder;
 
     [Header("UI設定")]
     public ObjectSwitcher uiSwitcher;
     public GameObject progressImage;
     CoroutineUtility.Timer uiTimer;
+
 
     public override void OnBegin()
     {
@@ -27,9 +27,7 @@ public class PressExtinguisher : Stage
         base.OnUpdate();
         bool isPressing = XRInputManager.Instance.Button((XRDeviceType)controller.Device, XRControllerButton.Trigger);
         if (isPressing)
-        {
-            powder.gameObject.SetActive(true;)
-        }
+            isFinish = true;
     }
 
     public override void OnFinish()

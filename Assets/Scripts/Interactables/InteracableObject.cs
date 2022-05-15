@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-
+using UnityEngine.UI;
 
 public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -14,7 +14,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     protected Transform originParent;
     public UnityEvent onGrabEvent;
     public UnityEvent onReleaseEvent;
-    protected bool isGrabbing;
+    [SerializeField] protected bool isGrabbing;
     public bool IsGrabbing
     {
         get => isGrabbing;
@@ -29,6 +29,20 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     // outline 設定
     protected Outline outline;
 
+    [Header("其他")]
+    public bool trackVelocity = false;
+    protected float currentVelocity;
+    public float CurrentVelocity
+    {
+        get => currentVelocity * velocityMutiply;
+    }
+    public float velocityMutiply = 100000f;
+
+    protected Vector3 currentPos, lastPos;
+
+    public bool debugVelocity;
+    protected Text debugText = null;
+
     protected virtual void Start()
     {
         SetupOrigin();
@@ -39,6 +53,8 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
             outline.enabled = false;
         }
 
+        if (debugVelocity)
+            debugText = GetComponentInChildren<Text>();
     }
 
     // 定義原位置訊息
@@ -54,6 +70,9 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         var rig = GetComponent<Rigidbody>();
         originIsKinematic = rig.isKinematic;
         originUseGravity = rig.useGravity;
+
+        currentPos = transform.position;
+        lastPos = currentPos;
     }
 
     protected virtual void Update()
@@ -61,6 +80,16 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (!interactable && isGrabbing)
             Released();
         CheckPosReset();
+
+        currentPos = transform.position;
+        if (isGrabbing && trackVelocity)
+            currentVelocity = (currentPos - lastPos).magnitude;
+        else
+            currentVelocity = 0f;
+
+        if (debugVelocity && debugText != null)
+            debugText.text = $"Velocity = {CurrentVelocity.ToString("F2")}";
+        lastPos = currentPos;
     }
 
     protected void CheckPosReset()

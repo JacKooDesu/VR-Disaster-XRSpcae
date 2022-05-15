@@ -5,6 +5,7 @@ using UnityEngine;
 public class AimFire : Stage
 {
     public Transform firespot;
+    public CustomControllerBehaviour controller;
     [Header("UI設定")]
     public ObjectSwitcher uiSwitcher;
     public GameObject progressImage;
@@ -25,7 +26,7 @@ public class AimFire : Stage
     {
         base.OnUpdate();
 
-        Transform origin = GameHandler.Singleton.cam.transform;
+        Transform origin = controller.transform;
 
         RaycastHit hit;
         if (origin != null)

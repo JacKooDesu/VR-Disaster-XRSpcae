@@ -5,7 +5,6 @@ using DG.Tweening;
 public class HintUI : MonoBehaviour
 {
     HintObejctCamera hintObejctCamera;
-    public HintObject traceObject;
     CanvasGroup canvasGroup;
 
     public Text objectName;
@@ -13,18 +12,7 @@ public class HintUI : MonoBehaviour
 
     bool state = false;
     bool stateLast = false;
-    [SerializeField] int tweenId;
-
-    // public void Setup(HintObject ho, HintObejctCamera hCamera)
-    // {
-    //     hintObejctCamera = hCamera;
-    //     this.traceObject = ho;
-    //     objectName.text = ho.objectName;
-    //     image.sprite = ho.image;
-    //     canvasGroup = GetComponent<CanvasGroup>();
-
-    //     tweenId = transform.GetInstanceID();
-    // }
+    int tweenId;
 
     private void Start()
     {
@@ -34,15 +22,6 @@ public class HintUI : MonoBehaviour
 
     private void Update()
     {
-        if (traceObject.hasRenderTime >= traceObject.limitTime)
-        {
-            state = true;
-        }
-        else
-        {
-            state = false;
-        }
-
         if (state != stateLast)
         {
             if (state == true)
@@ -54,12 +33,15 @@ public class HintUI : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    public void Show(HintObject obj)
     {
-        // transform.localPosition = Util.UIMath.WorldToCanvasPosition(
-        //                     traceObject.transform, hintObejctCamera.cam, hintObejctCamera.canvas);
-        var head = GameHandler.Singleton.player.head;
-        transform.LookAt(transform.position + head.rotation * Vector3.forward, head.rotation * Vector3.up);
+        objectName.text = obj.objectName;
+        state = true;
+    }
+
+    public void Hide()
+    {
+        state = false;
     }
 
     void DoFade(float value)

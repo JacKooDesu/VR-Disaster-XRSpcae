@@ -4,12 +4,15 @@ using UnityEngine.EventSystems;
 using XRSpace.Platform;
 using XRSpace.Platform.InputDevice;
 using XRSpace.Platform.VRcore;
+using UnityEngine.Serialization;
 
 public class CustomControllerBehaviour : MonoBehaviour
 {
     public XRCTLRaycaster CTLRaycaster;
     public XRHandlerDeviceType Device;
+    public XRControllerButton TeleportButton;
     public XRControllerButton TriggerButton;
+    public XRControllerButton GrabButton = XRControllerButton.Grab;
 
     public Transform BeamRender;
     // Line
@@ -36,6 +39,11 @@ public class CustomControllerBehaviour : MonoBehaviour
     // teleport point
     TeleportPoint selectingPoint;
 
+    // object interacting
+    bool isGrabbing;
+    InteracableObject grabbingObj;
+    float grabTime;
+
     Player player;
 
     private void Start()
@@ -50,12 +58,14 @@ public class CustomControllerBehaviour : MonoBehaviour
     {
         CTLRaycaster.TeleportEvent += UpdateTeleportStatus;
         CTLRaycaster.AfterRaycasterEvent += DrawBeam;
+        CTLRaycaster.AfterRaycasterEvent += UpdateGrabState;
     }
 
     private void OnDisable()
     {
         CTLRaycaster.TeleportEvent -= UpdateTeleportStatus;
         CTLRaycaster.AfterRaycasterEvent -= DrawBeam;
+        CTLRaycaster.AfterRaycasterEvent -= UpdateGrabState;
         HideAllLine();
     }
 
@@ -92,12 +102,16 @@ public class CustomControllerBehaviour : MonoBehaviour
                     _startTouch = false;
             }
         }
-        if (XRInputManager.Instance.ButtonUp((XRDeviceType)Device, TriggerButton)
+
+        if (XRInputManager.Instance.ButtonUp((XRDeviceType)Device, TeleportButton)
             && _teleportState == XRRaycasterUtils.TeleportState.CanTeleport)
         {
             Teleport();
         }
         ProcessTouchpadDot();
+
+        if (isGrabbing)
+            MoveObject();
 
         //for editor mouse control
         if (Application.isEditor && XRInputManager.Instance.EditorMode != XREditorMode.Simulator)
@@ -188,6 +202,90 @@ public class CustomControllerBehaviour : MonoBehaviour
         player.onTeleportEvent.Invoke();
     }
 
+    #region Grab
+    // 讓控制器也能做出抓取的動作
+    void UpdateGrabState(Vector3 origin, Vector3 direction, XRCTLRaycaster.RaycasterType type, RaycastResult result)
+    {
+        var input = XRInputManager.Instance;
+        if (isGrabbing)
+        {
+            if (input.ButtonUp((XRDeviceType)Device, GrabButton))
+                Release();
+
+            return;
+        }
+
+        if (type != XRCTLRaycaster.RaycasterType.ObjectRaycaster)
+            return;
+
+        if (!CTLRaycaster)
+            return;
+
+        if (!result.gameObject.GetComponent<InteracableObject>())
+            return;
+
+        var obj = result.gameObject.GetComponent<InteracableObject>();
+        if (!obj.interactable)
+            return;
+
+        if (input.Button((XRDeviceType)Device, GrabButton))
+        {
+            Grab(obj);
+        }
+    }
+
+    void Grab(InteracableObject obj)
+    {
+        isGrabbing = true;
+        grabbingObj = obj;
+        grabTime = Time.time;
+
+        obj.Grabbed();
+
+        if (obj.GetComponent<Rigidbody>() != null)
+        {
+            var _rigidbody = obj.GetComponent<Rigidbody>();
+            _rigidbody.useGravity = false;
+            _rigidbody.isKinematic = true;
+        }
+    }
+
+    void Release()
+    {
+        if (grabbingObj != null)
+        {
+            if (grabbingObj.GetComponent<Rigidbody>() != null)
+            {
+                var _rigidbody = grabbingObj.GetComponent<Rigidbody>();
+                _rigidbody.useGravity = true;
+                _rigidbody.isKinematic = false;
+                if (grabbingObj.transform.parent == transform)
+                    grabbingObj.transform.parent = null;
+                // _rigidbody.AddForce(_handVector * 300, ForceMode.Impulse);
+            }
+
+            grabbingObj.Released();
+            isGrabbing = false;
+
+            grabbingObj = null;
+        }
+    }
+
+    //not every user grab untill gameobject on hand
+    private void MoveObject()
+    {
+        var handPos = transform.position;
+        float journeyLength = Vector3.Distance(grabbingObj.transform.position, handPos);
+        // Distance moved equals elapsed time times speed..
+        float distCovered = (Time.time - grabTime) * 2;//2 speed
+        // Fraction of journey completed equals current distance divided by total distance.
+        float fractionOfJourney = distCovered / journeyLength;
+        grabbingObj.transform.position = Vector3.Lerp(grabbingObj.transform.position, handPos, fractionOfJourney);
+        if (Vector3.Distance(grabbingObj.transform.position, handPos) == 0)
+            grabbingObj.transform.parent = transform;
+    }
+
+    #endregion
 
     private void LateUpdate()
     {
