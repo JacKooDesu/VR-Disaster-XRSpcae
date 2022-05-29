@@ -1,8 +1,56 @@
 fileFormatVersion: 2
-guid: feeb8aeb896ec4842ae0541df7740709
+guid: edaca8019c5524e4c9037ac0af9eb7c4
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  - first:
+      74: 1991969442808577973
+    second: Fire_extinguisher_up|Bone.001_end|Take 001|BaseLayer
+  - first:
+      74: -6445564418940661153
+    second: Fire_extinguisher_up|Fire_extinguisher_body|Take 001|BaseLayer
+  - first:
+      74: -7206863541943453851
+    second: Fire_extinguisher_up|Fire_extinguisher_down|Take 001|BaseLayer
+  - first:
+      74: -5471277101363695641
+    second: Fire_extinguisher_up|Fire_extinguisher_up|Take 001|BaseLayer
+  - first:
+      74: 4772301528747717195
+    second: Fire_extinguisher_up|Object002|Take 001|BaseLayer
+  - first:
+      74: -4048778392540238660
+    second: Fire_extinguisher_body|Bone.001_end|Take 001|BaseLayer
+  - first:
+      74: -7266823206183471863
+    second: Fire_extinguisher_body|Fire_extinguisher_body|Take 001|BaseLayer
+  - first:
+      74: -9046013067214786733
+    second: Fire_extinguisher_body|Fire_extinguisher_down|Take 001|BaseLayer
+  - first:
+      74: -1177443688952339431
+    second: Fire_extinguisher_body|Fire_extinguisher_up|Take 001|BaseLayer
+  - first:
+      74: 5692075771932061640
+    second: Fire_extinguisher_body|Object002|Take 001|BaseLayer
+  - first:
+      74: -6688676089111618163
+    second: Fire_extinguisher_down|Bone.001_end|Take 001|BaseLayer
+  - first:
+      74: -838276684786385694
+    second: Fire_extinguisher_down|Fire_extinguisher_body|Take 001|BaseLayer
+  - first:
+      74: -1821842177811641388
+    second: Fire_extinguisher_down|Fire_extinguisher_down|Take 001|BaseLayer
+  - first:
+      74: 4774519985551248139
+    second: Fire_extinguisher_down|Fire_extinguisher_up|Take 001|BaseLayer
+  - first:
+      74: 7939718999115785766
+    second: Fire_extinguisher_down|Object002|Take 001|BaseLayer
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -34,7 +82,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -81,7 +129,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.2
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
