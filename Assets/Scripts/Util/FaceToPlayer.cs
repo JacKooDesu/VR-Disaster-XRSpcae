@@ -6,7 +6,7 @@ public class FaceToPlayer : MonoBehaviour
 {
     public enum Axis
     {
-        x, y, z
+        x, y, z, none
     }
     public Axis constraint = Axis.y;
     public bool reverse = true; // 2d object will back face to player

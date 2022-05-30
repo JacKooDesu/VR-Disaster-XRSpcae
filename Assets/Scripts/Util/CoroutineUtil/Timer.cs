@@ -8,11 +8,17 @@ namespace CoroutineUtility
     {
         static int globalId = 0;
         int id;
+        float time;
+        float current = 0;
         public string ID
         {
             get => $"timer-{id}";
         }
         bool hasRun = false;
+        public bool HasRun
+        {
+            get => hasRun;
+        }
 
         System.Action begin = () => { };
         System.Action<float> update = (f) => { };
@@ -20,6 +26,7 @@ namespace CoroutineUtility
 
         public Timer(float time, System.Action complete, bool autoRun = true)
         {
+            this.time = time;
             id = globalId;
             globalId++;
 
@@ -31,6 +38,7 @@ namespace CoroutineUtility
 
         public Timer(float time, System.Action begin, System.Action<float> update, System.Action complete, bool autoRun = true)
         {
+            this.time = time;
             id = globalId;
             globalId++;
 
@@ -56,10 +64,16 @@ namespace CoroutineUtility
             {
                 update.Invoke(t);
                 t += Time.deltaTime;
+                current = t;
                 yield return null;
             }
 
             complete.Invoke();
+        }
+
+        public void Start()
+        {
+            CoroutineManager.Singleton.Add(Run(time), $"timer-{id}");
         }
 
         public void Stop(bool forceComplete = false)
@@ -67,6 +81,12 @@ namespace CoroutineUtility
             if (forceComplete)
                 complete.Invoke();
             CoroutineManager.Singleton.Stop($"timer-{id}");
+        }
+
+        // WIP
+        public void Pause()
+        {
+
         }
     }
 }

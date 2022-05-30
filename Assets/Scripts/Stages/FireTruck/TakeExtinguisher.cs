@@ -8,9 +8,14 @@ public class TakeExtinguisher : Stage
 
     public FireExtinguisher fireExtinguisher;
 
+    public MaterialChanger changer;
+
     public override void OnBegin()
     {
         base.OnBegin();
+        changer.ChangeColor();
+        GameHandler.Singleton.player.PathFinding(fireExtinguisher.transform.position);
+
         topExitAni.enabled = true;
         GameHandler.Singleton.player.SetCanMove(true);
 
@@ -41,5 +46,7 @@ public class TakeExtinguisher : Stage
     public override void OnFinish()
     {
         base.OnFinish();
+        changer.BackOriginColor();
+        GameHandler.Singleton.player.line.gameObject.SetActive(false);
     }
 }

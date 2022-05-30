@@ -10,6 +10,7 @@ public class AimFire : Stage
     public ObjectSwitcher uiSwitcher;
     public GameObject progressImage;
     CoroutineUtility.Timer uiTimer;
+    public MaterialChanger changer;
 
     public override void OnBegin()
     {
@@ -20,6 +21,8 @@ public class AimFire : Stage
         uiSwitcher.Switch(1);
         progressImage.SetActive(true);
         uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());
+
+        changer.ChangeColor();
     }
 
     public override void OnUpdate()
@@ -34,7 +37,7 @@ public class AimFire : Stage
             Ray ray = new Ray(origin.position, origin.forward);
             if (Physics.Raycast(ray, out hit, 10f))
             {
-                print(hit.transform.name);
+                // print(hit.transform.name);
                 if (hit.transform == firespot)
                 {
                     isFinish = true;
@@ -49,5 +52,7 @@ public class AimFire : Stage
 
         progressImage.SetActive(false);
         uiTimer.Stop(true);
+
+        changer.BackOriginColor();
     }
 }

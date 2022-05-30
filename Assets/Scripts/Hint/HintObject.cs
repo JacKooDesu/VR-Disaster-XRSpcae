@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class HintObject : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class HintObject : MonoBehaviour
     {
         ui = FindObjectOfType<HintUI>();
         cam = FindObjectOfType<HintObejctCamera>();
+
+        if (Application.isEditor)
+            SceneVisibilityManager.instance.Hide(gameObject, true);
     }
 
     private void OnWillRenderObject()

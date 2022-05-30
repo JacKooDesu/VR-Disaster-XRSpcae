@@ -14,10 +14,13 @@ public class BusCrack : Stage
 
     bool hasTriggered = false;
 
+    public MaterialChanger changer;
+
     public override void OnBegin()
     {
         GameHandler.Singleton.player.SetCanMove(false);
         headTransform = GameHandler.Singleton.player.head;
+        changer.ChangeColor();
     }
 
     public override void OnFinish()
@@ -30,6 +33,8 @@ public class BusCrack : Stage
             return;
 
         hasTriggered = true;
+        changer.BackOriginColor();
+
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
         AudioSource a = audio.PlayAudio(audio.bgm1, true, GameHandler.Singleton.player.transform);
         a.volume = .2f;

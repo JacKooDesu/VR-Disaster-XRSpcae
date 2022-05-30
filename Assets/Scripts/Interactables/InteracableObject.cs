@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using CoroutineUtility;
 
 public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -12,8 +13,19 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     protected Vector3 originPos;
     protected Quaternion originRotation;
     protected Transform originParent;
+    [Header("抓取")]
+    public bool canGrab = true;
     public UnityEvent onGrabEvent;
+    [Header("放開")]
     public UnityEvent onReleaseEvent;
+    [Header("懸停")]
+    protected const int HOVER_LAYER = 22;
+    [SerializeField] protected bool canHover = false;
+    public float hoverTime = 3f;    // 須滿足Hover Time，才執行onHoverEvent
+    public UnityEvent onHoverEvent;
+    protected Timer hoverTimer;
+    protected HoverHandler hoveringHand;
+
     [SerializeField] protected bool isGrabbing;
     public bool IsGrabbing
     {
@@ -55,6 +67,9 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         if (debugVelocity)
             debugText = GetComponentInChildren<Text>();
+
+        if (canHover)
+            hoverTimer = new Timer(hoverTime, () => { }, HoverUpdate, Hovered, false);
     }
 
     // 定義原位置訊息
@@ -141,9 +156,9 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         isGrabbing = false;
     }
 
-    private void OnMouseEnter()
+    public void Hovered()
     {
-
+        onHoverEvent.Invoke();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -156,5 +171,47 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (outline != null)
             outline.enabled = false;
+    }
+
+    protected void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != HOVER_LAYER)
+            return;
+
+        if (outline != null)
+            outline.enabled = true;
+
+        if (hoverTimer.HasRun)
+            return;
+
+        if ((hoveringHand = other.GetComponent<HoverHandler>()) == null)
+            return;
+
+        hoverTimer.Start();
+    }
+
+    void HoverUpdate(float t)
+    {
+        if (hoveringHand == null)
+            return;
+
+        hoveringHand.UpdateImage(t / hoverTime);
+    }
+
+    protected void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer != HOVER_LAYER)
+            return;
+
+        if (outline != null)
+            outline.enabled = true;
+
+        hoverTimer.Stop();
+
+        if (hoveringHand == null)
+            return;
+
+        hoveringHand.ResetImage();
+        hoveringHand = null;
     }
 }

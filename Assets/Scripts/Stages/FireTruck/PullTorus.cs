@@ -12,15 +12,19 @@ public class PullTorus : Stage
     public ObjectSwitcher uiSwitcher;
     public GameObject progressImage;
     CoroutineUtility.Timer uiTimer;
+    public MaterialChanger changer;
 
     public override async void OnBegin()
     {
         base.OnBegin();
         uiSwitcher.gameObject.SetActive(true);
         await System.Threading.Tasks.Task.Yield();
+        changer.ChangeColor();
         uiSwitcher.Switch(0);
         progressImage.SetActive(true);
         uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());
+
+        torus.GetComponent<Outline>().enabled = true;
     }
 
     public override void OnUpdate()
@@ -28,28 +32,11 @@ public class PullTorus : Stage
         base.OnUpdate();
     }
 
-    public void ClickTorus()
-    {
-        StartCoroutine(WaitTorusAnimation());
-    }
-
-    IEnumerator WaitTorusAnimation()
-    {
-        torus.GetComponent<Animator>().enabled = true;
-        while (torus.GetComponentInChildren<MeshRenderer>().enabled)
-        {
-            yield return null;
-        }
-        Extinguisher.transform.SetParent(handPosition);
-        iTween.MoveTo(Extinguisher, handPosition.position, .5f);
-        //iTween.RotateTo(Extinguisher, Vector3.zero, .5f);
-        isFinish = true;
-    }
-
     public override void OnFinish()
     {
         base.OnFinish();
         progressImage.SetActive(false);
         uiTimer.Stop(true);
+        changer.BackOriginColor();
     }
 }

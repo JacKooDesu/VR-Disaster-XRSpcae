@@ -236,6 +236,9 @@ public class CustomControllerBehaviour : MonoBehaviour
 
     void Grab(InteracableObject obj)
     {
+        if (!obj.canGrab)
+            return;
+
         isGrabbing = true;
         grabbingObj = obj;
         grabTime = Time.time;

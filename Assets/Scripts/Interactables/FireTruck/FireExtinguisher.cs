@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class FireExtinguisher : EventTrigger
+public class FireExtinguisher : InteracableObject
 {
 
     public Transform sprayParticle;
@@ -16,8 +16,8 @@ public class FireExtinguisher : EventTrigger
     //         hasTakeOnce = true;
     //         GameHandler.Singleton.StageFinish();
     //     }
-            
-            
+
+
     //     holdHand = hand;
     //     anotherHand = hand.otherHand;
 
@@ -47,7 +47,7 @@ public class FireExtinguisher : EventTrigger
     //             if(!sprayParticle.GetComponent<ParticleSystem>().isPlaying){
     //                 sprayParticle.GetComponent<ParticleSystem>().Play();
     //             }
-                
+
     //             audio.PlayAudio(audio.extinguisher, false, transform);
     //         }
     //         //sprayParticle.gameObject.SetActive(true);

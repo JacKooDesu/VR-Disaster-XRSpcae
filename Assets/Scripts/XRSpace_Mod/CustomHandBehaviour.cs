@@ -203,13 +203,15 @@ public class CustomHandBehaviour : MonoBehaviour
             if (Go != null && !_isGrabGo && !_onTransition)
             {
                 //  設定 InteractableObject
-                InteracableObject interactable;
+                InteracableObject interactObj;
                 if (Go.GetComponent<InteracableObject>() != null)
                 {
-                    interactable = Go.GetComponent<InteracableObject>();
-                    if (!interactable.interactable)
+                    interactObj = Go.GetComponent<InteracableObject>();
+                    if (!interactObj.interactable)
                         return;
-                    interactable.Grabbed();
+                    if (!interactObj.canGrab)
+                        return;
+                    interactObj.Grabbed();
                 }
 
                 if (Go.GetComponent<Rigidbody>() != null)
