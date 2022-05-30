@@ -18,8 +18,8 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public UnityEvent onGrabEvent;
     [Header("放開")]
     public UnityEvent onReleaseEvent;
-    [Header("懸停")]
     protected const int HOVER_LAYER = 22;
+    [Header("懸停")]
     [SerializeField] protected bool canHover = false;
     public float hoverTime = 3f;    // 須滿足Hover Time，才執行onHoverEvent
     public UnityEvent onHoverEvent;
@@ -159,6 +159,12 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void Hovered()
     {
         onHoverEvent.Invoke();
+
+        if (hoveringHand == null)
+            return;
+
+        hoveringHand.ResetImage();
+        hoveringHand = null;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

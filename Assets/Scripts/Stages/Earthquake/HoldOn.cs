@@ -19,7 +19,7 @@ public class HoldOn : Stage
     {
         base.OnBegin();
         GameHandler.Singleton.player.SetCanMove(false);
-        XRActionGestureManager.ActionDetectedEvent += CheckHandHoldingEvent;
+        // XRActionGestureManager.ActionDetectedEvent += CheckHandHoldingEvent;
         changer.ChangeColor();
 
         uiSwitcher.Switch(2);
@@ -63,7 +63,7 @@ public class HoldOn : Stage
     public override void OnFinish()
     {
         base.OnFinish();
-        XRActionGestureManager.ActionDetectedEvent -= CheckHandHoldingEvent;
+        // XRActionGestureManager.ActionDetectedEvent -= CheckHandHoldingEvent;
 
         // UI.TurnOff();
 
