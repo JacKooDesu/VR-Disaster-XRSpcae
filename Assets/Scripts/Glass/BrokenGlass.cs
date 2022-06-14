@@ -11,15 +11,7 @@ public class BrokenGlass : MonoBehaviour
 
     public GlassController glassController;
 
-    private void OnEnable()
-    {
-        BindGlassController();
-        EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener(delegate { Hit(); });
-        trigger.triggers.Add(entry);
-    }
+    bool hasHit;
 
     private void Hit()
     {
@@ -28,12 +20,18 @@ public class BrokenGlass : MonoBehaviour
 
         GetComponent<Rigidbody>().isKinematic = false;
 
-        glassController.AddBreakGlass();
-        StartCoroutine(GameHandler.Singleton.Counter(3f, 3f, delegate { Destroy(gameObject); }));
+        glassController.BreakCount++;
+
+        var timer = new CoroutineUtility.Timer(3f, () => Destroy(gameObject));
     }
 
-    public void BindGlassController()
+    private void OnTriggerEnter(Collider other)
     {
-        glassController = FindObjectOfType<GlassController>() as GlassController;
+        if (hasHit)
+            return;
+        if (other.gameObject.layer != glassController.breakerLayer)
+            return;
+
+        Hit();
     }
 }

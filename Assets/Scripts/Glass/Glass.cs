@@ -6,38 +6,51 @@ using UnityEngine.EventSystems;
 
 public class Glass : MonoBehaviour
 {
-    Transform origin;
-    Transform broken;
-    GlassController glassController;
+    [HideInInspector] public GlassController glassController;
 
-    public void SetGlass(Transform origin, Transform broken, GlassController g)
+    public Transform origin;
+    public Transform brokenParent;
+
+    // public List<BrokenGlass> brokenGlasses = new List<BrokenGlass>();
+    public InteracableObject[] breakPoints;
+
+    public void Setup()
     {
-        this.origin = origin;
-        this.broken = broken;
-        this.glassController = g;
+        EnableBreaker(false);
+        BindBreakPoints();
+        BindBrokenGlass();
     }
 
-    private void OnEnable()
+    public void EnableBreaker(bool enable)
     {
-        EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener(delegate { GlassBroken(); });
-        trigger.triggers.Add(entry);
+        foreach (var bPoint in breakPoints)
+            bPoint.interactable = enable;
+    }
+
+    void BindBreakPoints()
+    {
+        foreach (var bPoint in breakPoints)
+        {
+            bPoint.onHoverEvent.AddListener(GlassBroken);
+        }
+    }
+
+    void BindBrokenGlass()
+    {
+        foreach (Transform brokenG in brokenParent)
+        {
+            var b = brokenG.gameObject.AddComponent<BrokenGlass>();
+            b.glassController = glassController;
+        }
     }
 
     void GlassBroken()
     {
-        if (glassController.HasBreaker)
-        {
-            JacDev.Audio.AudioHandler audio = GameHandler.Singleton.audioHandler;
-            audio.PlayAudio(audio.soundList.glassBreak, false, transform);
-            broken.gameObject.SetActive(true);
+        JacDev.Audio.AudioHandler audio = GameHandler.Singleton.audioHandler;
+        audio.PlayAudio(audio.soundList.glassBreak, false, transform);
 
-            origin.gameObject.SetActive(false);
+        origin.gameObject.SetActive(false);
 
-            glassController.brokenAction.Invoke();
-        }
-
+        brokenParent.gameObject.SetActive(true);
     }
 }

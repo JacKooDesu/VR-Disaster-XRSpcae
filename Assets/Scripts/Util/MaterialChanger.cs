@@ -24,6 +24,7 @@ public class MaterialChanger
 
     [Header("目標顏色")]
     public Color targetColor = new Color(.2f, .2f, .2f, 1f);
+    public bool effectAlpha = false;
 
     bool hasSetup = false;
 
@@ -101,7 +102,11 @@ public class MaterialChanger
                 if (!m.HasProperty("_Color"))
                     continue;
 
-                m.DOColor(targetColor, "_Color", 1f).SetId(id);
+                var tempColor = targetColor;
+                if(!effectAlpha)
+                    tempColor.a = m.GetColor("_Color").a;
+
+                m.DOColor(tempColor, "_Color", 1f).SetId(id);
             }
         }
 
@@ -132,7 +137,7 @@ public class MaterialChanger
 
                 if (!m.HasProperty("_Color"))
                     continue;
-                
+
                 var tween = m.DOColor(originM.color, 1f).SetId(id);
 
                 if (j == mats.Length - 1)
