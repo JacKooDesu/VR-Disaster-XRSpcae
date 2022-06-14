@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using CoroutineUtility;
 
 public class HintCanvas : MonoBehaviour
 {
@@ -24,21 +24,34 @@ public class HintCanvas : MonoBehaviour
     public GameObject currentActiveCanvas;
     List<GameObject> handlingCanvas = new List<GameObject>();
 
+    Timer timer;
+
     private void Start()
     {
         currentActiveCanvas = transform.GetChild(0).gameObject;
+
+        timer = new Timer(0, () => { }, false);
     }
 
     public void SetHintText(string str, bool show, bool forceToForward = true, float time = 0f)
     {
         SetHintText(str);
         ShowHintText(show);
-        StartCoroutine(GameHandler.Singleton.Counter(time == 0f ? str.Length * .5f : time, () => ShowHintText(false, false)));
+
+        timer.Stop();
+        timer = new Timer(
+            time == 0f ? str.Length * .5f : time,
+            () => ShowHintText(false, false)
+        );
     }
 
     public void ShowHintText(bool show, bool forceToForward = true)
     {
         hintText.gameObject.SetActive(show);
+
+        if (!show)
+            StopCoroutine(LerpToHeadAngle());
+
         if (forceToForward)
             StartCoroutine(LerpToHeadAngle());
     }
@@ -59,7 +72,7 @@ public class HintCanvas : MonoBehaviour
 
     private void Update()
     {
-        transform.localPosition =  new Vector3(head.localPosition.x, 0, head.localPosition.z);
+        transform.localPosition = new Vector3(head.localPosition.x, 0, head.localPosition.z);
         if (currentActiveCanvas == null)
         {
             var index = handlingCanvas.Count;

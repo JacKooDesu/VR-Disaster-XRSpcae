@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PullTorus : Stage
 {
@@ -42,7 +43,8 @@ public class PullTorus : Stage
         uiTimer.Stop(true);
         changer.BackOriginColor();
 
-        torus.SetActive(false);
+        float torusZ = torus.transform.localPosition.z;
+        torus.transform.DOLocalMoveZ(torusZ+.2f,1f).OnComplete(()=>torus.SetActive(false));
         // torus.GetComponent<Outline>().enabled = false;
         // var torusInteract = torus.GetComponent<InteracableObject>();
         // torusInteract.onHoverEvent.RemoveAllListeners();

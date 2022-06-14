@@ -12,6 +12,8 @@ public class AimFire : Stage
     CoroutineUtility.Timer uiTimer;
     public MaterialChanger changer;
 
+    bool isNearFire = false;
+
     public override void OnBegin()
     {
         base.OnBegin();
@@ -23,20 +25,23 @@ public class AimFire : Stage
         uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());
 
         changer.ChangeColor();
+
+        FindObjectOfType<HintCanvas>().SetHintText("靠近一點火源", true);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
 
-        if (Vector3.Distance(firespot.position, GameHandler.Singleton.player.transform.position) > 3)
+        if (!isNearFire)
         {
-            GameHandler.Singleton.player.SetCanMove(true);
+            if (Vector3.Distance(firespot.position, GameHandler.Singleton.player.transform.position) <= 3)
+            {
+                isNearFire = true;
+                GameHandler.Singleton.player.SetCanMove(false);
+                FindObjectOfType<HintCanvas>().SetHintText("瞄準火源", true);
+            }
             return;
-        }
-        else
-        {
-            GameHandler.Singleton.player.SetCanMove(false);
         }
 
         Transform origin = controller.transform;

@@ -39,6 +39,8 @@ public class TakeExtinguisher : Stage
 
         fireExtinguisherBody.onHoverEvent.AddListener(() => print("拿取滅火器"));
         fireExtinguisherBody.onHoverEvent.AddListener(() => isFinish = true);
+
+        FindObjectOfType<HintCanvas>().SetHintText("照著箭頭引導指示拿取滅火器", true);
     }
 
     public override void OnUpdate()

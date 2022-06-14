@@ -129,6 +129,7 @@ public class GameHandler : MonoBehaviour
     }
 
     // 當前 Stage完成
+    [ContextMenu("強制完成關卡")]
     public void StageFinish()
     {
         currentStage.isFinish = true;

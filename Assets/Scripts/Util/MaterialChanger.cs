@@ -57,12 +57,17 @@ public class MaterialChanger
             renderers.Add(r);
         }
 
-        if (skyboxInclude)
+        if (skyboxInclude && RenderSettings.skybox.HasProperty("_Tint"))
         {
             skyboxOrigin = RenderSettings.skybox.GetColor("_Tint");
             Material tempSkybox = new Material(RenderSettings.skybox);
             RenderSettings.skybox = tempSkybox;
         }
+        else
+        {
+            skyboxInclude = false;
+        }
+
 
         hasSetup = true;
     }
@@ -93,6 +98,9 @@ public class MaterialChanger
             DOTween.Kill(id);
             foreach (var m in r.sharedMaterials)
             {
+                if (!m.HasProperty("_Color"))
+                    continue;
+
                 m.DOColor(targetColor, "_Color", 1f).SetId(id);
             }
         }
@@ -122,6 +130,9 @@ public class MaterialChanger
                 var m = renderer.sharedMaterials[j];
                 var originM = mats[j];
 
+                if (!m.HasProperty("_Color"))
+                    continue;
+                
                 var tween = m.DOColor(originM.color, 1f).SetId(id);
 
                 if (j == mats.Length - 1)
@@ -132,9 +143,10 @@ public class MaterialChanger
             }
         }
 
-        foreach(var avoidSetting in avoidSettings){
-            if(avoidSetting.outline)
-                Component.Destroy(avoidSetting.target.GetComponent<Outline>()); 
+        foreach (var avoidSetting in avoidSettings)
+        {
+            if (avoidSetting.outline)
+                Component.Destroy(avoidSetting.target.GetComponent<Outline>());
         }
 
         if (skyboxInclude)

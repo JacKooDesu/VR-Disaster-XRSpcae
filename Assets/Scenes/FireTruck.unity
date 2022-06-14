@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 59016482}
   - component: {fileID: 59016485}
   - component: {fileID: 59016484}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28555,7 +28555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1964025526}
-  firstStage: {fileID: 1261190016}
+  firstStage: {fileID: 119023482}
   cam: {fileID: 0}
   uiCamera: {fileID: 0}
   audioHandler: {fileID: 5313913697285634682}
