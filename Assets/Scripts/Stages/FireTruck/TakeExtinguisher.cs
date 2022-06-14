@@ -6,7 +6,7 @@ public class TakeExtinguisher : Stage
 {
     public Animator topExitAni;
 
-    public FireExtinguisher fireExtinguisher;
+    public InteracableObject fireExtinguisherBody;
 
     public MaterialChanger changer;
 
@@ -14,7 +14,7 @@ public class TakeExtinguisher : Stage
     {
         base.OnBegin();
         changer.ChangeColor();
-        GameHandler.Singleton.player.PathFinding(fireExtinguisher.transform.position);
+        GameHandler.Singleton.player.PathFinding(fireExtinguisherBody.transform.position);
 
         topExitAni.enabled = true;
         GameHandler.Singleton.player.SetCanMove(true);
@@ -36,6 +36,9 @@ public class TakeExtinguisher : Stage
         ));
 
         audio.PlayAudio(audio.bgm2, true, GameHandler.Singleton.player.transform).volume = .1f;
+
+        fireExtinguisherBody.onHoverEvent.AddListener(() => print("拿取滅火器"));
+        fireExtinguisherBody.onHoverEvent.AddListener(() => isFinish = true);
     }
 
     public override void OnUpdate()
@@ -48,5 +51,7 @@ public class TakeExtinguisher : Stage
         base.OnFinish();
         changer.BackOriginColor();
         GameHandler.Singleton.player.line.gameObject.SetActive(false);
+
+        fireExtinguisherBody.onHoverEvent.RemoveAllListeners();
     }
 }

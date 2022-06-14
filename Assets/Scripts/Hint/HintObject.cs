@@ -22,8 +22,10 @@ public class HintObject : MonoBehaviour
         ui = FindObjectOfType<HintUI>();
         cam = FindObjectOfType<HintObejctCamera>();
 
+#if UNITY_EDITOR
         if (Application.isEditor)
             SceneVisibilityManager.instance.Hide(gameObject, true);
+#endif
     }
 
     private void OnWillRenderObject()

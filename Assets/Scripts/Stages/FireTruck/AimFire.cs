@@ -16,7 +16,7 @@ public class AimFire : Stage
     {
         base.OnBegin();
 
-        GameHandler.Singleton.player.SetCanMove(false);
+        // GameHandler.Singleton.player.SetCanMove(false);
 
         uiSwitcher.Switch(1);
         progressImage.SetActive(true);
@@ -28,6 +28,16 @@ public class AimFire : Stage
     public override void OnUpdate()
     {
         base.OnUpdate();
+
+        if (Vector3.Distance(firespot.position, GameHandler.Singleton.player.transform.position) > 3)
+        {
+            GameHandler.Singleton.player.SetCanMove(true);
+            return;
+        }
+        else
+        {
+            GameHandler.Singleton.player.SetCanMove(false);
+        }
 
         Transform origin = controller.transform;
 

@@ -25,6 +25,9 @@ public class PullTorus : Stage
         uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());
 
         torus.GetComponent<Outline>().enabled = true;
+        var torusInteract = torus.GetComponent<InteracableObject>();
+        torusInteract.enabled = true;
+        torusInteract.onHoverEvent.AddListener(() => isFinish = true);
     }
 
     public override void OnUpdate()
@@ -38,5 +41,11 @@ public class PullTorus : Stage
         progressImage.SetActive(false);
         uiTimer.Stop(true);
         changer.BackOriginColor();
+
+        torus.SetActive(false);
+        // torus.GetComponent<Outline>().enabled = false;
+        // var torusInteract = torus.GetComponent<InteracableObject>();
+        // torusInteract.onHoverEvent.RemoveAllListeners();
+        // torusInteract.enabled = false;
     }
 }

@@ -193,6 +193,9 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if ((hoveringHand = other.GetComponent<HoverHandler>()) == null)
             return;
 
+        if (onHoverEvent == null)
+            return;
+
         hoverTimer.Start();
     }
 

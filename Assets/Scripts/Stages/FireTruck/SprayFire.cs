@@ -29,11 +29,12 @@ public class SprayFire : Stage
     {
         base.OnUpdate();
         bool isPressing = XRInputManager.Instance.Button((XRDeviceType)controller.Device, XRControllerButton.Trigger);
-        if (isPressing && !powder.isPlaying)
+        if (isPressing)
         {
-            powder.GetComponent<ParticleSystem>().Play();
+            if (!powder.isPlaying)
+                powder.Play();
 
-            audioHandler.PlayAudio(audioHandler.extinguisher, false, transform);
+            audioHandler.PlayAudio(audioHandler.extinguisher, true, transform);
         }
         else
         {

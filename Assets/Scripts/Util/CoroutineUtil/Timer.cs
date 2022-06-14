@@ -81,6 +81,7 @@ namespace CoroutineUtility
             if (forceComplete)
                 complete.Invoke();
             CoroutineManager.Singleton.Stop($"timer-{id}");
+            hasRun = false;
         }
 
         // WIP
