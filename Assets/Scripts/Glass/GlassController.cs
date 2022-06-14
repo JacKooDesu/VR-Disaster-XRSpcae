@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlassController : MonoBehaviour
 {
-    public Glass[] glasses;
+    [SerializeField] Glass[] glasses;
 
     int breakCount = 0;
     public int BreakCount
@@ -30,5 +30,17 @@ public class GlassController : MonoBehaviour
             g.glassController = this;
             g.Setup();
         }
+
+        ShowHint(false);
+    }
+
+    public void ShowHint(bool b){
+        foreach(var g in glasses)
+            g.hint.SetActive(b);
+    }
+
+    public void EnableBreakers(bool b){
+        foreach(var g in glasses)
+            g.EnableBreaker(b);
     }
 }

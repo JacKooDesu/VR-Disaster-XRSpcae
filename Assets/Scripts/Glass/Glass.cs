@@ -14,6 +14,8 @@ public class Glass : MonoBehaviour
     // public List<BrokenGlass> brokenGlasses = new List<BrokenGlass>();
     public InteracableObject[] breakPoints;
 
+    public GameObject hint;
+
     public void Setup()
     {
         EnableBreaker(false);
@@ -52,5 +54,9 @@ public class Glass : MonoBehaviour
         origin.gameObject.SetActive(false);
 
         brokenParent.gameObject.SetActive(true);
+
+        // 關閉提示及碰撞檢測
+        glassController.ShowHint(false);
+        glassController.EnableBreakers(false);
     }
 }

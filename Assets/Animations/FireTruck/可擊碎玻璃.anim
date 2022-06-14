@@ -51,7 +51,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE"
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -88,7 +88,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE (1)"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE (1)"
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -125,7 +125,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE (2)"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE (2)"
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -162,7 +162,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE (3)"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE (3)"
     classID: 212
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -174,28 +174,28 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 285969471
+      path: 3405792565
       attribute: 304273561
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4209249166
+      path: 2396365860
       attribute: 304273561
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3519633485
+      path: 2784557031
       attribute: 304273561
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3369232652
+      path: 3169044134
       attribute: 304273561
       script: {fileID: 0}
       typeID: 212
@@ -257,7 +257,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE"
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -294,7 +294,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE (1)"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE (1)"
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -331,7 +331,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE (2)"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE (2)"
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -368,7 +368,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "origin/\u8ECA\u7A97\u64CA\u7834\u9EDE (3)"
+    path: "Hint/\u8ECA\u7A97\u64CA\u7834\u9EDE (3)"
     classID: 212
     script: {fileID: 0}
   m_EulerEditorCurves: []

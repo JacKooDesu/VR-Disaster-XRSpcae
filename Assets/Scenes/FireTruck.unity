@@ -29486,7 +29486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1964025526}
-  firstStage: {fileID: 1886265131}
+  firstStage: {fileID: 348917526}
   cam: {fileID: 0}
   uiCamera: {fileID: 0}
   audioHandler: {fileID: 5313913697285634682}
@@ -35949,7 +35949,7 @@ MonoBehaviour:
   isFinish: 0
   nextStage: {fileID: 0}
   score: 10
-  glassController: {fileID: 546869891}
+  glassController: {fileID: 1656959222}
   needBreak: 5
 --- !u!1 &1889148273
 GameObject:

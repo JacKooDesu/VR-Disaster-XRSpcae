@@ -12,6 +12,9 @@ public class BrokenWindow : Stage
     {
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
         audio.PlaySound(audio.glassBreaker);
+
+        glassController.ShowHint(true);
+        glassController.EnableBreakers(true);
     }
 
     // public override void OnUpdate()
