@@ -39,8 +39,12 @@ MonoBehaviour:
     score: 20
     desc: "\u6383"
     hint: 
+  - name: "\u62FF\u64CA\u7834\u5668"
+    score: 5
+    desc: 
+    hint: 
   - name: "\u7834\u7A97"
-    score: 10
+    score: 5
     desc: 
     hint: 
   icon: {fileID: 21300000, guid: 0fba46106dd37254781bf2f0aef8e7c2, type: 3}

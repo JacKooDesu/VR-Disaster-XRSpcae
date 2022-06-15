@@ -9,7 +9,9 @@ namespace JacDev.Audio
         [Header("Audios")]
         public AudioClip squatDown;
         public AudioClip extinguisherTutorial;
+        public AudioClip takeBreaker;
         public AudioClip glassBreaker;
+        public AudioClip finish;
         public AudioClip bgm1;
         public AudioClip bgm2;
 

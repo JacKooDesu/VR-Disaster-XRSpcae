@@ -50,10 +50,13 @@ MonoBehaviour:
   speakerPrefab: {fileID: 7441481755767106181, guid: 692b3ceb640878f4789c56dafc4eabf8,
     type: 3}
   soundList: {fileID: 5363457411677947770}
+  currentPlayingSound: {fileID: 0}
   squatDown: {fileID: 8300000, guid: c26e046587dd56742bb2369c62f30e11, type: 3}
   extinguisherTutorial: {fileID: 8300000, guid: 4207d9b2e5fb36840891bec53533ffad,
     type: 3}
+  takeBreaker: {fileID: 8300000, guid: 69fcf14bc0edc3949be6fc4bac04bd3e, type: 3}
   glassBreaker: {fileID: 8300000, guid: fb8e6868dc4c0314aba12e19646de35b, type: 3}
+  finish: {fileID: 8300000, guid: 2104bc49dfe9b8b45a3534ec3b7bfcaa, type: 3}
   bgm1: {fileID: 8300000, guid: 181de2ca9be06114e8d2e4adfe81ed6c, type: 3}
   bgm2: {fileID: 8300000, guid: 63b6d72f726c95b4eb3f75d4fca7564d, type: 3}
   extinguisher: {fileID: 8300000, guid: f39e388f15c9ac24f8a51e9b263c6d9f, type: 3}
