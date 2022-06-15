@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 2146e7edf35524743ae6bb3b452b4ba4
+guid: 4e385d75230df7b4cbcfb4842f28f555
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #217
-    second: {fileID: 2100000, guid: 93ffd1cf1fa98654b9f25ba7480c816e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: busbody.002
-    second: {fileID: 2100000, guid: 32760f9814de13343908d5b2433d0e1d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: chiar.001
-    second: {fileID: 2100000, guid: f8cd714601467fb40b07bc6f801ab8e1, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -96,7 +81,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.4
+    globalScale: 0.004
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

@@ -57,6 +57,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: chiar.002
+    second: {fileID: 2100000, guid: 7a4aaa7da3257e64784a97d9e42904b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: red.001
     second: {fileID: 2100000, guid: 72dd147fd95460640bc86c819c941e20, type: 2}
   - first:
