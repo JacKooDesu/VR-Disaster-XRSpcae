@@ -14,5 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: "\u98A8\u707D\u55AE\u5143"
   defaultHint: 
-  settings: []
+  settings:
+  - name: "\u89C0\u67E5\u91CF\u96E8\u5668"
+    score: 10
+    desc: 
+    hint: 
+  - name: "\u79FB\u52D5\u82B1\u76C6"
+    score: 10
+    desc: 
+    hint: 
+  - name: "\u5B89\u88DD\u9632\u6C34\u9598\u9580"
+    score: 10
+    desc: 
+    hint: 
+  - name: "\u5B89\u88DD\u9632\u6C34\u9598\u9580"
+    score: 0
+    desc: 
+    hint: 
+  - name: "\u62FF\u53D6\u624B\u96FB\u7B52"
+    score: 10
+    desc: 
+    hint: 
+  - name: "\u95DC\u96FB\u7BB1"
+    score: 10
+    desc: 
+    hint: 
+  - name: "\u95DC\u74E6\u65AF"
+    score: 10
+    desc: 
+    hint: 
+  - name: "\u9003\u51FA"
+    score: 10
+    desc: 
+    hint: 
   icon: {fileID: 21300000, guid: 12a3d9598a2b6f24ebfb63a39a96e558, type: 3}

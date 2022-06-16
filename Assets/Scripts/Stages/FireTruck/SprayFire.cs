@@ -23,6 +23,10 @@ public class SprayFire : Stage
         uiSwitcher.Switch(3);
         progressImage.SetActive(true);
         uiTimer = new CoroutineUtility.Timer(3f, () => uiSwitcher.HideAll());
+
+        JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
+        audio.StopCurrent();
+        audio.PlaySound(audio.sprayTutorial);
     }
 
     public override void OnUpdate()

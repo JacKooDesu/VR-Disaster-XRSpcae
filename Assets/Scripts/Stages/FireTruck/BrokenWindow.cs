@@ -8,6 +8,8 @@ public class BrokenWindow : Stage
     public int needBreak = 5;
     public GameObject[] handBreakers; // 拿在玩家手上的擊破器
 
+    public MaterialChanger changer;
+
     public override void OnBegin()
     {
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
@@ -18,6 +20,8 @@ public class BrokenWindow : Stage
 
         foreach (var b in handBreakers)
             b.SetActive(true);
+
+        changer.ChangeColor();
     }
 
     // public override void OnUpdate()
@@ -30,5 +34,7 @@ public class BrokenWindow : Stage
 
         foreach (var b in handBreakers)
             b.SetActive(false);
+
+        changer.BackOriginColor();
     }
 }

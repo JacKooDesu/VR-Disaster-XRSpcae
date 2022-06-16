@@ -27,6 +27,10 @@ public class AimFire : Stage
         changer.ChangeColor();
 
         FindObjectOfType<HintCanvas>().SetHintText("靠近一點火源", true);
+
+        JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
+        audio.StopCurrent();
+        audio.PlaySound(audio.aimTutorial);
     }
 
     public override void OnUpdate()

@@ -7,7 +7,7 @@ public class PullTorus : Stage
 {
     public GameObject torus;
     public Transform handPosition;
-    public GameObject Extinguisher;
+    public GameObject extinguisher;
 
     [Header("UI設定")]
     public ObjectSwitcher uiSwitcher;
@@ -29,6 +29,10 @@ public class PullTorus : Stage
         var torusInteract = torus.GetComponent<InteracableObject>();
         torusInteract.enabled = true;
         torusInteract.onHoverEvent.AddListener(() => isFinish = true);
+
+        JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
+        audio.StopCurrent();
+        audio.PlaySound(audio.pullTutorial);
     }
 
     public override void OnUpdate()
@@ -44,7 +48,13 @@ public class PullTorus : Stage
         changer.BackOriginColor();
 
         float torusZ = torus.transform.localPosition.z;
-        torus.transform.DOLocalMoveZ(torusZ+.2f,1f).OnComplete(()=>torus.SetActive(false));
+        torus.transform.DOLocalMoveZ(torusZ + .2f, 1f).OnComplete(() =>
+        {
+            torus.SetActive(false);
+            extinguisher.transform.DOScale(Vector3.zero, .5f).OnComplete(
+                () => extinguisher.SetActive(false)
+            ).SetEase(Ease.InBack);
+        });
         // torus.GetComponent<Outline>().enabled = false;
         // var torusInteract = torus.GetComponent<InteracableObject>();
         // torusInteract.onHoverEvent.RemoveAllListeners();

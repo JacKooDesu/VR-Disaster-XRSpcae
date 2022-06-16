@@ -11,6 +11,7 @@ public class TakeBreaker : Stage
     public override void OnBegin()
     {
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
+        audio.StopCurrent();
         audio.PlaySound(audio.takeBreaker);
 
         foreach (var b in breakers)
