@@ -40,6 +40,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     // outline 設定
     protected Outline outline;
+    public bool interactableOutline = true;    // 是否開啟outline開關
 
     [Header("其他")]
     public bool trackVelocity = false;
@@ -169,12 +170,24 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!interactable)
+            return;
+
+        if (!interactableOutline)
+            return;
+
         if (outline != null)
             outline.enabled = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!interactable)
+            return;
+
+        if (!interactableOutline)
+            return;
+
         if (outline != null)
             outline.enabled = false;
     }
@@ -214,7 +227,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (!interactable)
             return;
-            
+
         if (other.gameObject.layer != HOVER_LAYER)
             return;
 

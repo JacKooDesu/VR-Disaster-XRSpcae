@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GetOutBus : Stage
+using CoroutineUtility;
+public class OpenDoor : Stage
 {
     public InteracableObject door;
     public GameObject hintPoint;
+    public GameObject informUi;
+
+    Timer uiTimer;
 
     public override void OnBegin()
     {
@@ -15,6 +18,12 @@ public class GetOutBus : Stage
         door.onHoverEvent.AddListener(() => isFinish = true);
 
         hintPoint.SetActive(true);
+
+        uiTimer = new Timer(
+            5f,
+            () => informUi.SetActive(true),
+            (f) => { },
+            () => informUi.SetActive(false));
     }
 
     public override void OnFinish()
@@ -24,5 +33,7 @@ public class GetOutBus : Stage
         door.interactable = false;
 
         hintPoint.SetActive(false);
+
+        uiTimer.Stop(true);
     }
 }

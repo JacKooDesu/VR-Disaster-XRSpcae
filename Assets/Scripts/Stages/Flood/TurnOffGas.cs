@@ -5,23 +5,17 @@ using UnityEngine.EventSystems;
 
 public class TurnOffGas : Stage
 {
-    public GameObject interactArea;
+    public InteracableObject gasSwitch;
     public GameObject fire;
 
     public override void OnBegin()
     {
         base.OnBegin();
 
-        interactArea.gameObject.SetActive(true);
+        GameHandler.Singleton.player.PathFinding(transform.position);
 
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener(delegate
-        {
-            GameHandler.Singleton.StageFinish();
-            interactArea.gameObject.SetActive(false);
-        });
-        interactArea.GetComponent<EventTrigger>().triggers.Add(entry);
+        gasSwitch.interactable = true;
+        gasSwitch.onHoverEvent.AddListener(() => isFinish = true);
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         AudioSource boil = a.PlaySound(a.boilWater);
@@ -30,7 +24,6 @@ public class TurnOffGas : Stage
            boil.volume = .4f;
            a.PlaySound(a.turnOffGas);
        }));
-
     }
 
     public override void OnUpdate()
@@ -40,6 +33,7 @@ public class TurnOffGas : Stage
 
     public override void OnFinish()
     {
+        gasSwitch.interactable = false;
         fire.SetActive(false);
     }
 }

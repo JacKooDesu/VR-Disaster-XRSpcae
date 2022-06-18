@@ -22,5 +22,6 @@ namespace JacDev.Audio
         public AudioClip broadcast1;
         public AudioClip broadcast2;
         public AudioClip boilWater;
+        public AudioClip switchSound;
     }
 }

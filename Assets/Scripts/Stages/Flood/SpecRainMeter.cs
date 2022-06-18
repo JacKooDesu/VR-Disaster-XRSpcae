@@ -6,22 +6,20 @@ using UnityEngine.Events;
 
 public class SpecRainMeter : Stage
 {
-    public GameObject interactArea;
+    public InteracableObject interactArea;
     public GameObject ui;
 
     public override void OnBegin()
     {
-        interactArea.SetActive(true);
-        EventTrigger trigger = interactArea.GetComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener(delegate { StartCoroutine(ShowUI()); });
-        trigger.triggers.Add(entry);
+        interactArea.interactable = true;
+        interactArea.interactableOutline = false;
+        interactArea.GetComponent<Outline>().enabled = true;
+        interactArea.onHoverEvent.AddListener(() => StartCoroutine(ShowUI()));
     }
 
     IEnumerator ShowUI()
     {
-        interactArea.SetActive(false);
+        interactArea.interactable = false;
         ui.SetActive(true);
         ui.GetComponentInChildren<UIQuickSetting>().TurnOn();
 

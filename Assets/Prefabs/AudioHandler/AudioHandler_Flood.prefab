@@ -64,6 +64,7 @@ MonoBehaviour:
   broadcast1: {fileID: 8300000, guid: b7f584621cdf7534e86068fcc92ce46f, type: 3}
   broadcast2: {fileID: 8300000, guid: d4fb79fdbf6efc14c809241f46066ec5, type: 3}
   boilWater: {fileID: 8300000, guid: 63465711f17000449ad31e894212c093, type: 3}
+  switchSound: {fileID: 8300000, guid: c489066a83b0d5e49a03ddf641df7429, type: 3}
 --- !u!1001 &3622089121449473199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,6 +72,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4140847333847251480}
     m_Modifications:
+    - target: {fileID: 7278014804576355817, guid: 78a34abe269868144b3c326910dd0e01,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7278014804576355817, guid: 78a34abe269868144b3c326910dd0e01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7278014804576355817, guid: 78a34abe269868144b3c326910dd0e01,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278014804576355817, guid: 78a34abe269868144b3c326910dd0e01,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -100,16 +111,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7278014804576355817, guid: 78a34abe269868144b3c326910dd0e01,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7278014804576355817, guid: 78a34abe269868144b3c326910dd0e01,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7278014804576355817, guid: 78a34abe269868144b3c326910dd0e01,
         type: 3}

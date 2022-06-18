@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
 
     float originHeight;
 
-    public CurveLineRenderer curveLine;
-
     public Kit kit;
 
     [Header("控制器")]
