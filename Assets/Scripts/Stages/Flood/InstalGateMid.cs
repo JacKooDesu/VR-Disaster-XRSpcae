@@ -4,35 +4,44 @@ using UnityEngine;
 
 public class InstalGateMid : Stage
 {
-    public Transform midTarget;
-    public Transform midObject;
+    public GameObject spotlight;
+    public Transform objParent;
+    [SerializeField] List<Transform> targets = new List<Transform>();
 
     public override void OnBegin()
     {
-        midTarget.gameObject.SetActive(true);
-
-        midTarget.GetChild(0).gameObject.SetActive(true);
-
-        List<Transform> temps = new List<Transform>();
-        for (int i = 0; i < midTarget.childCount; ++i)
-            temps.Add(midTarget.GetChild(i));
+        foreach (Transform t in objParent)
+        {
+            var interact = t.GetComponent<GateMid>();
+            interact.interactable = true;
+            interact.targets = targets;
+        }
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.instalGateMid);
+
+        targets[0].gameObject.SetActive(true);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
+
+        foreach (Transform t in objParent)
+        {
+            if (!t.GetComponent<GateMid>().hasInstalled)
+                return;
+        }
+        isFinish = true;
     }
 
     public override void OnFinish()
     {
-        midTarget.gameObject.SetActive(false);
-
-        foreach (Transform t in midObject)
+        foreach (Transform t in objParent)
         {
-            t.GetComponent<Collider>().enabled = false;
+            t.GetComponent<GateMid>().interactable = false;
         }
+
+        spotlight.SetActive(false);
     }
 }

@@ -5,14 +5,12 @@ using UnityEngine;
 public class GateMid : InteracableObject
 {
     public bool hasInstalled;
-    public Transform targetParent;
-    List<Transform> targets = new List<Transform>();
+    [HideInInspector] public List<Transform> targets = new List<Transform>();
+    public static int currentTarget = 0;
 
     protected override void Start()
     {
         base.Start();
-        foreach (Transform t in targetParent)
-            targets.Add(t);
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -25,8 +23,16 @@ public class GateMid : InteracableObject
         if (targets.Contains(t = other.transform))
         {
             transform.SetPositionAndRotation(t.position, t.rotation);
+            positionReset = false;
             interactable = false;
             hasInstalled = true;
+
+            targets[currentTarget].gameObject.SetActive(false);
+            if (currentTarget < targets.Count - 1)
+            {
+                currentTarget++;
+                targets[currentTarget].gameObject.SetActive(true);
+            }
         }
     }
 }
