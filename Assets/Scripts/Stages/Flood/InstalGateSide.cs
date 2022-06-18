@@ -5,17 +5,18 @@ using UnityEngine;
 public class InstalGateSide : Stage
 {
     public GameObject spotlight;
-    public Transform sideTarget;
-    public Transform sideObject;
+    public Transform targetParent;
+    public Transform objParent;
 
     public override void OnBegin()
     {
         spotlight.SetActive(true);
-        sideTarget.gameObject.SetActive(true);
+        targetParent.gameObject.SetActive(true);
 
-        foreach (Transform t in sideObject)
+        foreach (Transform t in objParent)
         {
-            t.GetComponent<Collider>().enabled = true;
+            var interact = t.GetComponent<GateSide>();
+            interact.interactable = true;
         }
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
@@ -26,22 +27,21 @@ public class InstalGateSide : Stage
     {
         base.OnUpdate();
 
-        foreach (Transform t in sideObject)
+        foreach (Transform t in objParent)
         {
-            if (!t.GetComponent<GateSide>().isSafe)
+            if (!t.GetComponent<GateSide>().hasInstalled)
                 return;
         }
-
-        GameHandler.Singleton.StageFinish();
+        isFinish=true;
     }
 
     public override void OnFinish()
     {
-        sideTarget.gameObject.SetActive(false);
+        targetParent.gameObject.SetActive(false);
 
-        foreach (Transform t in sideObject)
+        foreach (Transform t in objParent)
         {
-            t.GetComponent<Collider>().enabled = false;
+            t.GetComponent<GateSide>().interactable = false;
         }
     }
 }

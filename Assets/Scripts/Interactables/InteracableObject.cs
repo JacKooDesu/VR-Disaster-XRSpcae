@@ -168,7 +168,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         hoveringHand = null;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (!interactable)
             return;
@@ -180,7 +180,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
             outline.enabled = true;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         if (!interactable)
             return;
@@ -192,7 +192,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
             outline.enabled = false;
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (!interactable)
             return;
@@ -223,7 +223,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         hoveringHand.UpdateImage(t / hoverTime);
     }
 
-    protected void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (!interactable)
             return;

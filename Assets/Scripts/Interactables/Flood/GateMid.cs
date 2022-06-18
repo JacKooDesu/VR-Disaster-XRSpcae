@@ -1,37 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class GateMid : EventTrigger
+public class GateMid : InteracableObject
 {
-    public List<Transform> targets = new List<Transform>();
-    static int currentTarget = 0;
-    public bool isSafe = false;
+    public bool hasInstalled;
+    public Transform targetParent;
+    List<Transform> targets = new List<Transform>();
 
-    private void OnEnable()
+    protected override void Start()
     {
-        EventTrigger trigger = GetComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener(delegate { MoveToSafe(); });
-        trigger.triggers.Add(entry);
+        base.Start();
+        foreach (Transform t in targetParent)
+            targets.Add(t);
     }
 
-    public void BindTarget(List<Transform> t){
-        targets = t;
-    }
-
-    public void MoveToSafe()
+    protected override void OnTriggerEnter(Collider other)
     {
-        iTween.MoveTo(gameObject, targets[currentTarget].position, 1.2f);
-        iTween.RotateTo(gameObject, targets[currentTarget].eulerAngles, 1.2f);
+        base.OnTriggerEnter(other);
 
-        isSafe = true;
-        targets[currentTarget].gameObject.SetActive(false);
+        if (other.gameObject == null) return;
 
-        GetComponent<Collider>().enabled = false;
-
-        currentTarget++;
+        Transform t;
+        if (targets.Contains(t = other.transform))
+        {
+            transform.SetPositionAndRotation(t.position, t.rotation);
+            interactable = false;
+            hasInstalled = true;
+        }
     }
 }

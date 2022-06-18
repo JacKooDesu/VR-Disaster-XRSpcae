@@ -1,30 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class GateSide : MonoBehaviour
+public class GateSide : InteracableObject
 {
-    public Transform target;
-    public bool isSafe = false;
+    public bool hasInstalled;
+    public Transform targetParent;
+    List<Transform> targets = new List<Transform>();
 
-    private void OnEnable()
+    protected override void Start()
     {
-        EventTrigger trigger = GetComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener(delegate { MoveToSafe(); });
-        trigger.triggers.Add(entry);
+        base.Start();
+        foreach (Transform t in targetParent)
+            targets.Add(t);
     }
 
-    public void MoveToSafe()
+    protected override void OnTriggerEnter(Collider other)
     {
-        iTween.MoveTo(gameObject, target.position, 1.2f);
-        iTween.RotateTo(gameObject, target.eulerAngles, 1.2f);
-        target.gameObject.SetActive(false);
+        base.OnTriggerEnter(other);
 
-        isSafe = true;
+        if (other.gameObject == null) return;
 
-        GetComponent<Collider>().enabled = false;
+        Transform t;
+        if (targets.Contains(t = other.transform))
+        {
+            transform.SetPositionAndRotation(t.position, t.rotation);
+            positionReset = false;
+            interactable = false;
+            hasInstalled = true;
+
+            t.gameObject.SetActive(false);
+        }
     }
 }

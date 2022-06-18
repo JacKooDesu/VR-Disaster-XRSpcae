@@ -17,12 +17,6 @@ public class InstalGateMid : Stage
         for (int i = 0; i < midTarget.childCount; ++i)
             temps.Add(midTarget.GetChild(i));
 
-        foreach (Transform t in midObject)
-        {
-            t.GetComponent<Collider>().enabled = true;
-            t.GetComponent<GateMid>().BindTarget(temps);
-        }
-
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.instalGateMid);
     }
@@ -30,14 +24,6 @@ public class InstalGateMid : Stage
     public override void OnUpdate()
     {
         base.OnUpdate();
-
-        foreach (Transform t in midObject)
-        {
-            if (!t.GetComponent<GateMid>().isSafe)
-                return;
-        }
-
-        GameHandler.Singleton.StageFinish();
     }
 
     public override void OnFinish()
