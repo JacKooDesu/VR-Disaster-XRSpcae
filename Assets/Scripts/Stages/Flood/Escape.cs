@@ -45,13 +45,9 @@ public class Escape : Stage
 
     public override void OnUpdate()
     {
-        if (spawnpoint != null)
-            if ((GameHandler.Singleton.player.transform.position - spawnpoint.position).magnitude < 2.5f)
-            {
-                GameHandler.Singleton.StageFinish();
-            }
 
     }
+    
     public override void OnFinish()
     {
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;

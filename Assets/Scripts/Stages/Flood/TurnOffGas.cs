@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class TurnOffGas : Stage
 {
     public InteracableObject gasSwitch;
+    public Transform switchModel;
     public GameObject fire;
 
     public override void OnBegin()
@@ -33,7 +35,10 @@ public class TurnOffGas : Stage
 
     public override void OnFinish()
     {
+        base.OnFinish();
         gasSwitch.interactable = false;
         fire.SetActive(false);
+        switchModel.DORotate(Vector3.up * 90, .5f, RotateMode.LocalAxisAdd);
+        GameHandler.Singleton.player.line.gameObject.SetActive(false);
     }
 }
