@@ -24,6 +24,8 @@ public class OpenDoor : Stage
             () => informUi.SetActive(true),
             (f) => { },
             () => informUi.SetActive(false));
+
+        GameHandler.Singleton.player.PathFinding(hintPoint.transform.position);
     }
 
     public override void OnFinish()
@@ -35,5 +37,6 @@ public class OpenDoor : Stage
         hintPoint.SetActive(false);
 
         uiTimer.Stop(true);
+        GameHandler.Singleton.player.line.gameObject.SetActive(false);
     }
 }

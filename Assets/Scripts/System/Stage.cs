@@ -111,4 +111,9 @@ public class Stage : MonoBehaviour
         if (score >= 0)
             score -= value;
     }
+
+    public void SetFinish(bool b)
+    {
+        isFinish = b;
+    }
 }

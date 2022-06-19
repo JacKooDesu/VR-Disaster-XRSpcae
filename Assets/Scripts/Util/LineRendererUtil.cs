@@ -11,6 +11,8 @@ public class LineRendererUtil : MonoBehaviour
     Collider[] surfaceCols;
     public float yOffset;   // 離表面高度
 
+    public bool complexSurface = false;
+
     private void OnEnable()
     {
         if (line == null)
@@ -57,7 +59,10 @@ public class LineRendererUtil : MonoBehaviour
             }
         }
 
-        result.y = yOffset + targetSurface.position.y;
+        if (!complexSurface)
+            result.y = yOffset + targetSurface.position.y;
+        else
+            result.y += yOffset;
         return result;
     }
 
