@@ -12,7 +12,7 @@ public class MoveFlowerpot : Stage
         base.OnBegin();
         foreach (Plant p in plants)
         {
-            p.GetComponent<Collider>().enabled = true;
+            p.GetComponent<Outline>().enabled = true;
         }
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
@@ -34,7 +34,7 @@ public class MoveFlowerpot : Stage
 
         foreach (Plant p in plants)
         {
-            if (!p.isSafe)
+            if (!p.hasMoved)
                 return;
         }
 
@@ -43,9 +43,9 @@ public class MoveFlowerpot : Stage
 
     public override void OnFinish()
     {
-        foreach (Plant p in plants)
-        {
-            p.GetComponent<Collider>().enabled = false;
-        }
+        base.OnFinish();
+
+        foreach (var p in plants)
+            if (p.isBroken) SubScore(5);
     }
 }

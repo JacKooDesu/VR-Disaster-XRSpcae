@@ -4,23 +4,43 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class Plant : MonoBehaviour
+public class Plant : InteracableObject
 {
-    public Transform safePlace;
-    public bool isSafe = false;
+    public bool hasMoved = false;
+    public bool isBroken = false;
+    public ObjectSwitcher switcher;
 
-    private void OnEnable()
+    Vector3 lastVelocity;
+
+    private void OnCollisionEnter(Collision other)
     {
-        EventTrigger trigger = GetComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener(delegate { MoveToSafe(); });
-        trigger.triggers.Add(entry);
+        if (isGrabbing)
+            return;
+
+        if (other.gameObject.layer != 0)
+            return;
+
+        if (lastVelocity.magnitude >= 3)
+        {
+            switcher.Switch(1);
+            isBroken = true;
+        }
+        else
+        {
+            isBroken = false;
+        }
+
+        hasMoved = true;
+
+        rig.isKinematic = true;
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Outline>().enabled = false;
+
+        this.enabled = false;
     }
 
-    public void MoveToSafe()
+    private void LateUpdate()
     {
-        iTween.MoveTo(gameObject, safePlace.position, 1.2f);
-        isSafe = true;
+        lastVelocity = rig.velocity;
     }
 }

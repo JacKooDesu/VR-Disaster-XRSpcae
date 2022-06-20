@@ -48,6 +48,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [SerializeField] bool interactable;
 
     // rigidbody 設定
+    protected Rigidbody rig;
     protected bool originIsKinematic;
     protected bool originUseGravity;
 
@@ -97,6 +98,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
             return;
 
         var rig = GetComponent<Rigidbody>();
+        this.rig = rig;
         originIsKinematic = rig.isKinematic;
         originUseGravity = rig.useGravity;
 
@@ -140,9 +142,8 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         transform.parent = originParent;
 
-        if (GetComponent<Rigidbody>() != null)
+        if (rig != null)
         {
-            var rig = GetComponent<Rigidbody>();
             rig.velocity = Vector3.zero;
             rig.isKinematic = originIsKinematic;
             rig.useGravity = originUseGravity;
