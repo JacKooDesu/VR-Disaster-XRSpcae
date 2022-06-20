@@ -6,6 +6,7 @@ using UnityEngine;
 public class LineRendererUtil : MonoBehaviour
 {
     LineRenderer line;
+    public LineRenderer Line { get => line; }
 
     public Transform targetSurface; // 所有點吸附在此表面上(僅Plane)
     Collider[] surfaceCols;

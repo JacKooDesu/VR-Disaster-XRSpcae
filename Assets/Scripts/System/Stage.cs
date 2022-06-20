@@ -38,15 +38,20 @@ public class Stage : MonoBehaviour
             so.obj.SetActive(true);
         }
 
+        if (target != null)
+            GameHandler.Singleton.player.PathFinding(target.transform.position);
         //iTween.MoveTo(GameHandler.Singleton.player.gameObject, spawnpoint, .5f);
     }
 
     public virtual void OnUpdate()
     {
-        // if (spawnpoint != null)
-        //     if ((GameHandler.Singleton.player.foot.position - spawnpoint.position).magnitude < .8f)
-        //         GameHandler.Singleton.SetLineGuider(false);
+        if (target == null) return;
 
+        if (Vector3.Distance(target.transform.position, GameHandler.Singleton.player.transform.position) <= 1f)
+        {
+            GameHandler.Singleton.player.line.gameObject.SetActive(false);
+            target = null;
+        }
     }
 
     // Stage結束時
@@ -55,14 +60,8 @@ public class Stage : MonoBehaviour
         // 隱藏所有Stage 物件
         foreach (StageObject so in stageObjects)
             if (so.obj != null) so.obj.SetActive(!so.destroyOnFinish);
-    }
 
-
-
-    // 顯示目標物
-    protected void SetTarget(bool b)
-    {
-        target.SetActive(b);
+        GameHandler.Singleton.player.line.gameObject.SetActive(false);
     }
 
     public T FindStageObject<T>()

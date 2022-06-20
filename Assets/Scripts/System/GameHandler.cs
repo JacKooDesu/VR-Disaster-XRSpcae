@@ -91,9 +91,6 @@ public class GameHandler : MonoBehaviour
         currentStage.score = stgSetting.score;
         stgData.stgName = stgSetting.name;
 
-        if (stg.target != null)
-            player.SetTarget(stg.target);
-
         stg.OnBegin();
 
         while (!stg.isFinish)

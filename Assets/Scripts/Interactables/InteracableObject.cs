@@ -37,7 +37,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         set
         {
             interactable = value;
-            if (outline != null && outline.enabled)
+            if (outline != null && !value)
                 outline.enabled = false;
         }
         get
@@ -77,7 +77,8 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (GetComponent<Outline>())
         {
             outline = GetComponent<Outline>();
-            outline.enabled = false;
+            if (interactableOutline)
+                outline.enabled = false;
         }
 
         if (debugVelocity)

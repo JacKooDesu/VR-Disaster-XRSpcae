@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     public HintCanvas hintCanvas;
     public CameraFadeUtil fadeUtil;
 
-    GameObject target;
     public bool hasTarget;  //是否有目標物
 
     public bool canMove = true;
@@ -76,12 +75,6 @@ public class Player : MonoBehaviour
         overlayOriginValue = overlays[0].intensity;
     }
 
-    public void SetTarget(GameObject target)
-    {
-        hasTarget = true;
-        this.target = target;
-    }
-
     public void SetCanMove(bool b)
     {
         // if (rb == null)
@@ -106,6 +99,9 @@ public class Player : MonoBehaviour
         agent.CalculatePath(targetPos, path);
 
         line.SetCorners(path.corners);
+        if (line.Line.positionCount == 0) return;
+
+        line.gameObject.SetActive(true);
     }
 
     public void ShowKit(bool b = true)

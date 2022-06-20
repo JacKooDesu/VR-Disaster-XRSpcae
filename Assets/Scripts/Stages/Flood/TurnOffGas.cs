@@ -14,8 +14,6 @@ public class TurnOffGas : Stage
     {
         base.OnBegin();
 
-        GameHandler.Singleton.player.PathFinding(transform.position);
-
         gasSwitch.Interactable = true;
         gasSwitch.onHoverEvent.AddListener(() => isFinish = true);
 

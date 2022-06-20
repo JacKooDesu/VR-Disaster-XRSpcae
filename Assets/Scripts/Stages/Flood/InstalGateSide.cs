@@ -10,6 +10,7 @@ public class InstalGateSide : Stage
 
     public override void OnBegin()
     {
+        base.OnBegin();
         spotlight.SetActive(true);
         targetParent.gameObject.SetActive(true);
 

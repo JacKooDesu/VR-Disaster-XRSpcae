@@ -15,6 +15,7 @@ public class SelectMission : Stage
 
     public override void OnBegin()
     {
+        #region  Earthquake
         GameHandler.Singleton.BindEvent(
             earthquake,
             EventTriggerType.PointerEnter,
@@ -47,7 +48,9 @@ public class SelectMission : Stage
                    //GameHandler.Singleton.BlurCamera(false);
                    earthquake.GetComponent<EventTrigger>().enabled = false;
                });
+        #endregion
 
+        #region FireTruck
         GameHandler.Singleton.BindEvent(
             fireTruck,
             EventTriggerType.PointerEnter,
@@ -80,8 +83,9 @@ public class SelectMission : Stage
                     fireTruck.GetComponent<EventTrigger>().enabled = false;
                     //GameHandler.Singleton.BlurCamera(false);
                 });
+        #endregion
 
-        // Wait for flood introAudio
+        #region Flood
         GameHandler.Singleton.BindEvent(
             flood,
             EventTriggerType.PointerEnter,
@@ -112,9 +116,11 @@ public class SelectMission : Stage
                     JacDev.Audio.AudioHandler.Singleton.PlaySound(JacDev.Audio.AudioHandler.Singleton.soundList.hover);
                     GameHandler.Singleton.sceneLoader.LoadScene("Flood");
                     //GameHandler.Singleton.BlurCamera(false);
-                    leave.GetComponent<EventTrigger>().enabled = false;
+                    flood.GetComponent<EventTrigger>().enabled = false;
                 });
+        #endregion
 
+        #region  Leave
         GameHandler.Singleton.BindEvent(
             leave,
             EventTriggerType.PointerEnter,
@@ -122,7 +128,6 @@ public class SelectMission : Stage
             {
                 JacDev.Audio.TitleScene audio = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
                 audio.PlaySound(audio.soundList.select);
-
             }
         );
 
@@ -144,7 +149,7 @@ public class SelectMission : Stage
                    Application.Quit();
                    //GameHandler.Singleton.BlurCamera(false);
                });
-
+        #endregion
 
         // CheckMission("Earthquake", earthquake);
         // CheckMission("FireTruck", fireTruck);

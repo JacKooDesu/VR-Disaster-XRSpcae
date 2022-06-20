@@ -6,7 +6,6 @@ public class MoveFlowerpot : Stage
 {
     public Plant[] plants;
 
-
     public override void OnBegin()
     {
         base.OnBegin();
