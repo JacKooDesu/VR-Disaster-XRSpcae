@@ -107,6 +107,13 @@ public class CustomHandBehaviour : MonoBehaviour
             MoveObject();
             _handVector = HandPos - _currentGrabbedLocation;
             _currentGrabbedLocation = HandPos;
+
+            if (_grabGo.GetComponent<InteracableObject>())
+            {
+                var interactObj = _grabGo.GetComponent<InteracableObject>();
+                if (!interactObj.Interactable)
+                    Release();
+            }
         }
         BeamRender.position = transform.position;
         BeamRender.rotation = XRManager.Instance.head.rotation;

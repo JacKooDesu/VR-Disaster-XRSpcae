@@ -101,9 +101,12 @@ public class CustomTeleportEffectController : MonoBehaviour
     // For controller raycaster
     private void DrawTeleportCTL(Vector3 strPoint, Vector3 endPoint, XRRaycasterUtils.TeleportState state)
     {
-        if (!XRInputManager.Instance.Button((XRDeviceType)Device, controller.TeleportButton) && !Application.isEditor)
-            return;
-        
+        if (!Application.isEditor)
+        {
+            if (!XRInputManager.Instance.Button((XRDeviceType)Device, controller.TeleportButton))
+                return;
+        }
+
         Color circleColor;
         Color curveColor;
         float alpha;

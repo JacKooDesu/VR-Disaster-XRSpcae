@@ -52,6 +52,8 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     protected bool originIsKinematic;
     protected bool originUseGravity;
 
+    protected Collider col;
+
     // outline 設定
     protected Outline outline;
     public bool interactableOutline = true;    // 是否開啟outline開關
@@ -105,12 +107,14 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         currentPos = transform.position;
         lastPos = currentPos;
+
+        this.col = GetComponent<Collider>();
     }
 
     protected virtual void Update()
     {
-        if (!Interactable && isGrabbing)
-            Released();
+        // if (!Interactable && isGrabbing)
+        //     Released();
         CheckPosReset();
 
         currentPos = transform.position;
@@ -256,6 +260,13 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         hoveringHand.ResetImage();
         hoveringHand = null;
+    }
+
+    protected virtual async void ResetCollider()
+    {
+        col.enabled = false;
+        await System.Threading.Tasks.Task.Yield();
+        col.enabled = true;
     }
 
     #region Editor Test

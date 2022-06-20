@@ -111,7 +111,12 @@ public class CustomControllerBehaviour : MonoBehaviour
         ProcessTouchpadDot();
 
         if (isGrabbing)
+        {
             MoveObject();
+            if (!grabbingObj.Interactable)
+                Release();
+        }
+
 
         //for editor mouse control
         if (Application.isEditor && XRInputManager.Instance.EditorMode != XREditorMode.Simulator)

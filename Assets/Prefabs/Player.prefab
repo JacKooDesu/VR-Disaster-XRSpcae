@@ -2265,7 +2265,7 @@ MonoBehaviour:
   savedUp: {x: 0.002202476, y: 0.992005, z: 0.12617977}
   savedRectSize: {x: 98.07532, y: 19.908203}
   savedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  savedTextUV0: {x: 0.08129883, y: 0}
+  savedTextUV0: {x: 0.3251953, y: 0}
   savedFill: 0
 --- !u!114 &2106497579633198361
 MonoBehaviour:
@@ -10717,6 +10717,11 @@ PrefabInstance:
     - target: {fileID: 2653229980622204204, guid: fecbc43e09920f14bb029b7a9ad292c5,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947296261324256023, guid: fecbc43e09920f14bb029b7a9ad292c5,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709797081882730147, guid: fecbc43e09920f14bb029b7a9ad292c5,

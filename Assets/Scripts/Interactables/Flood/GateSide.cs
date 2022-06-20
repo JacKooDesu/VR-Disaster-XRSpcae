@@ -13,11 +13,15 @@ public class GateSide : InteracableObject
         base.Start();
         foreach (Transform t in targetParent)
             targets.Add(t);
+
+        onReleaseEvent.AddListener(ResetCollider);
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+
+        if (isGrabbing) return;
 
         if (other.gameObject == null) return;
 
