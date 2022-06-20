@@ -26,7 +26,7 @@ public class Glass : MonoBehaviour
     public void EnableBreaker(bool enable)
     {
         foreach (var bPoint in breakPoints)
-            bPoint.interactable = enable;
+            bPoint.Interactable = enable;
     }
 
     void BindBreakPoints()

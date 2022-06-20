@@ -20,10 +20,10 @@ public class SpecRainMeter : Stage
 
     public override void OnBegin()
     {
-        interactArea.interactable = true;
+        interactArea.Interactable = true;
         interactArea.interactableOutline = false;
         interactArea.GetComponent<Outline>().enabled = true;
-        interactArea.onHoverEvent.AddListener(() => StartCoroutine(ShowUI()));
+        interactArea.onHoverEvent.AddListener(() => ShowUI());
 
         GameHandler.Singleton.player.PathFinding(interactArea.transform.position);
 
@@ -58,24 +58,22 @@ public class SpecRainMeter : Stage
         ConfirmBtn.onClick.AddListener(() => isFinish = true);
     }
 
-    IEnumerator ShowUI()
+    void ShowUI()
     {
-        interactArea.interactable = false;
+        interactArea.Interactable = false;
         ui.SetActive(true);
         ui.GetComponentInChildren<UIQuickSetting>().TurnOn();
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.specWaterMeter);
-
-        yield return new WaitForSeconds(a.specWaterMeter.length);
-
-        ui.GetComponentInChildren<UIQuickSetting>().TurnOff();
-        GameHandler.Singleton.StageFinish();
     }
 
     public override void OnFinish()
     {
         base.OnFinish();
         GameHandler.Singleton.player.line.gameObject.SetActive(false);
+
+        if (currentSelectIndex != 1)
+            score = 0;
     }
 }

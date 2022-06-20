@@ -14,7 +14,7 @@ public class OpenDoor : Stage
     {
         base.OnBegin();
 
-        door.interactable = true;
+        door.Interactable = true;
         door.onHoverEvent.AddListener(() => isFinish = true);
 
         hintPoint.SetActive(true);
@@ -32,7 +32,7 @@ public class OpenDoor : Stage
     {
         base.OnFinish();
 
-        door.interactable = false;
+        door.Interactable = false;
 
         hintPoint.SetActive(false);
 

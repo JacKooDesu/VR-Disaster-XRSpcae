@@ -225,7 +225,7 @@ public class CustomControllerBehaviour : MonoBehaviour
             return;
 
         var obj = result.gameObject.GetComponent<InteracableObject>();
-        if (!obj.interactable)
+        if (!obj.Interactable)
             return;
 
         if (input.Button((XRDeviceType)Device, GrabButton))

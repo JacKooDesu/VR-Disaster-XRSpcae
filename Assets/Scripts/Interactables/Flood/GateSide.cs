@@ -26,7 +26,7 @@ public class GateSide : InteracableObject
         {
             transform.SetPositionAndRotation(t.position, t.rotation);
             positionReset = false;
-            interactable = false;
+            Interactable = false;
             hasInstalled = true;
 
             t.gameObject.SetActive(false);

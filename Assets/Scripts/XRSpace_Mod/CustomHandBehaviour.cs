@@ -207,7 +207,7 @@ public class CustomHandBehaviour : MonoBehaviour
                 if (Go.GetComponent<InteracableObject>() != null)
                 {
                     interactObj = Go.GetComponent<InteracableObject>();
-                    if (!interactObj.interactable)
+                    if (!interactObj.Interactable)
                         return;
                     if (!interactObj.canGrab)
                         return;

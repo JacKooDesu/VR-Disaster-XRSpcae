@@ -16,7 +16,7 @@ public class TurnOffGas : Stage
 
         GameHandler.Singleton.player.PathFinding(transform.position);
 
-        gasSwitch.interactable = true;
+        gasSwitch.Interactable = true;
         gasSwitch.onHoverEvent.AddListener(() => isFinish = true);
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
@@ -36,7 +36,7 @@ public class TurnOffGas : Stage
     public override void OnFinish()
     {
         base.OnFinish();
-        gasSwitch.interactable = false;
+        gasSwitch.Interactable = false;
         fire.SetActive(false);
         switchModel.DORotate(Vector3.up * 90, .5f, RotateMode.LocalAxisAdd);
         GameHandler.Singleton.player.line.gameObject.SetActive(false);

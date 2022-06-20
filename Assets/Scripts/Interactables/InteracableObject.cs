@@ -32,7 +32,20 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         get => isGrabbing;
     }
 
-    public bool interactable = true;
+    public bool Interactable
+    {
+        set
+        {
+            interactable = value;
+            if (outline != null && outline.enabled)
+                outline.enabled = false;
+        }
+        get
+        {
+            return interactable;
+        }
+    }
+    [SerializeField] bool interactable;
 
     // rigidbody 設定
     protected bool originIsKinematic;
@@ -93,7 +106,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     protected virtual void Update()
     {
-        if (!interactable && isGrabbing)
+        if (!Interactable && isGrabbing)
             Released();
         CheckPosReset();
 
@@ -170,7 +183,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        if (!interactable)
+        if (!Interactable)
             return;
 
         if (!interactableOutline)
@@ -182,7 +195,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        if (!interactable)
+        if (!Interactable)
             return;
 
         if (!interactableOutline)
@@ -194,7 +207,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (!interactable)
+        if (!Interactable)
             return;
 
         if (other.gameObject.layer != HOVER_LAYER)
@@ -225,7 +238,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        if (!interactable)
+        if (!Interactable)
             return;
 
         if (other.gameObject.layer != HOVER_LAYER)
@@ -242,4 +255,24 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         hoveringHand.ResetImage();
         hoveringHand = null;
     }
+
+    #region Editor Test
+    [ContextMenu("Hover 測試")]
+    void HoverTest()
+    {
+        Hovered();
+    }
+
+    [ContextMenu("Grab 測試")]
+    void GrabTest()
+    {
+        Grabbed();
+    }
+
+    [ContextMenu("Release 測試")]
+    void ReleaseTest()
+    {
+        Released();
+    }
+    #endregion
 }

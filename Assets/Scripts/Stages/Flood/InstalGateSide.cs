@@ -16,7 +16,7 @@ public class InstalGateSide : Stage
         foreach (Transform t in objParent)
         {
             var interact = t.GetComponent<GateSide>();
-            interact.interactable = true;
+            interact.Interactable = true;
         }
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
@@ -41,7 +41,7 @@ public class InstalGateSide : Stage
 
         foreach (Transform t in objParent)
         {
-            t.GetComponent<GateSide>().interactable = false;
+            t.GetComponent<GateSide>().Interactable = false;
         }
     }
 }

@@ -13,7 +13,7 @@ public class InstalGateMid : Stage
         foreach (Transform t in objParent)
         {
             var interact = t.GetComponent<GateMid>();
-            interact.interactable = true;
+            interact.Interactable = true;
             interact.targets = targets;
         }
 
@@ -39,7 +39,7 @@ public class InstalGateMid : Stage
     {
         foreach (Transform t in objParent)
         {
-            t.GetComponent<GateMid>().interactable = false;
+            t.GetComponent<GateMid>().Interactable = false;
         }
 
         spotlight.SetActive(false);

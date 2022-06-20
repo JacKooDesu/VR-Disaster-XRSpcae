@@ -14,22 +14,22 @@ public class TurnOffPower : Stage
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.turnOffSwitch);
 
-        doorInteract.interactable = true;
+        doorInteract.Interactable = true;
         doorInteract.onHoverEvent.AddListener(
             () =>
             {
-                switchInteract.interactable = true;
-                doorInteract.interactable = false;
+                switchInteract.Interactable = true;
+                doorInteract.Interactable = false;
                 electronicBoxDoor.DORotate(Vector3.down * 180, 1f,RotateMode.WorldAxisAdd);
             }
         );
 
-        switchInteract.interactable = false;
+        switchInteract.Interactable = false;
         switchInteract.onHoverEvent.AddListener(
             () =>
             {
                 a.PlayAudio(a.switchSound, false, switchInteract.transform);
-                switchInteract.interactable = false;
+                switchInteract.Interactable = false;
                 isFinish = true;
             }
         );

@@ -21,7 +21,7 @@ public class TakeBreaker : Stage
         foreach (var b in breakers)
         {
             b.onHoverEvent.AddListener(() => isFinish = true);
-            b.interactable = true;
+            b.Interactable = true;
         }
 
         changer.ChangeColor();
@@ -38,7 +38,7 @@ public class TakeBreaker : Stage
         base.OnFinish();
         foreach (var b in breakers)
         {
-            b.interactable = false;
+            b.Interactable = false;
         }
 
         changer.BackOriginColor();
