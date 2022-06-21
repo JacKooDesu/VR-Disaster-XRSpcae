@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
     public UnityEngine.Events.UnityEvent onTeleportEvent;
 
-    private void Start()
+    private async void Start()
     {
         rb = GetComponent<Rigidbody>();
 
@@ -63,10 +63,13 @@ public class Player : MonoBehaviour
             agent.baseOffset = Vector3.Distance(transform.position, hit.point);
         }
 
-        SetupOverlayEffect();
-        fadeUtil.FadeIn(.5f);
+        // SetupOverlayEffect();
 
         onTeleportEvent.AddListener(() => agent.Warp(transform.position));
+
+        // 避免過快載入(下下策)
+        await System.Threading.Tasks.Task.Delay(800);
+        fadeUtil.FadeIn(.5f);
     }
 
     void SetupOverlayEffect()

@@ -6,6 +6,8 @@ using CoroutineUtility;
 public class GameIntro : MonoBehaviour
 {
     public float time = 3f;  // 時間
+    public AudioSource introSE;
+
     private void Start()
     {
         var sceneLoader = FindObjectOfType<AsyncLoadingScript>();
@@ -13,5 +15,7 @@ public class GameIntro : MonoBehaviour
             time,
             () => sceneLoader.LoadScene("MissionSelect")
         );
+
+        introSE.PlayDelayed(time / 2);
     }
 }
