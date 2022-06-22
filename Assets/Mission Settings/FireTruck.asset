@@ -24,15 +24,15 @@ MonoBehaviour:
     desc: "\u767C\u751F\u706B\u707D\uFF0C\u8FC5\u901F\u62FF\u53D6\u6EC5\u706B\u5668"
     hint: 
   - name: "\u62C9\u63D2\u92B7"
-    score: 20
+    score: 15
     desc: "\u57F7\u884C <color=#FFF67F>\u6EC5\u706B\u5668-\u62C9</color> \u52D5\u4F5C"
     hint: 
   - name: "\u7784\u6E96\u706B\u6E90"
-    score: 20
+    score: 10
     desc: "\u57F7\u884C <color=#FFF67F>\u6EC5\u706B\u5668-\u7784</color> \u52D5\u4F5C"
     hint: 
   - name: "\u58D3"
-    score: 20
+    score: 10
     desc: "\u57F7\u884C <color=#FFF67F>\u6EC5\u706B\u5668-\u58D3</color> \u52D5\u4F5C"
     hint: 
   - name: "\u6383"
@@ -40,19 +40,19 @@ MonoBehaviour:
     desc: "\u57F7\u884C <color=#FFF67F>\u6EC5\u706B\u5668-\u6383</color> \u52D5\u4F5C"
     hint: 
   - name: "\u62FF\u64CA\u7834\u5668"
-    score: 0
+    score: 10
     desc: 
     hint: 
   - name: "\u7834\u7A97"
-    score: 10
+    score: 15
     desc: "\u62FF\u53D6 <color=#FFF67F>\u8ECA\u7A97\u64CA\u7834\u5668</color>\uFF0C\u64CA\u7834\u8ECA\u7A97"
     hint: 
   - name: "\u524D\u5F80\u9003\u751F\u9580"
-    score: 5
+    score: 10
     desc: "\u524D\u5F80 <color=#FFF67F>\u9003\u751F\u9580</color>\uFF0C\u6253\u958B\u9580\u6813"
     hint: 
   - name: "\u9003\u96E2\u516C\u8ECA"
-    score: 5
+    score: 0
     desc: "\u9003\u5F80\u516C\u8ECA\u5916"
     hint: 
   icon: {fileID: 21300000, guid: 0fba46106dd37254781bf2f0aef8e7c2, type: 3}
