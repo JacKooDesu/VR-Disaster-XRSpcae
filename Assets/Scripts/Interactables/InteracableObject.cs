@@ -216,6 +216,9 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (!Interactable)
             return;
 
+        if (!canHover)
+            return;
+
         if (other.gameObject.layer != HOVER_LAYER)
             return;
 
@@ -245,6 +248,9 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     protected virtual void OnTriggerExit(Collider other)
     {
         if (!Interactable)
+            return;
+
+        if (!canHover)
             return;
 
         if (other.gameObject.layer != HOVER_LAYER)

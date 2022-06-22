@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ChooseRescueKit : Stage
 {
-    public List<KitItem> requireItems = new List<KitItem>();
-    public List<KitItem> uselessItems = new List<KitItem>();
+    public KitItem[] vipItem;   // 必須有的物件
 
     public MaterialChanger changer;
 
@@ -17,7 +16,15 @@ public class ChooseRescueKit : Stage
         audio.PlaySound(audio.selectWhistle);
 
         var player = GameHandler.Singleton.player;
-        player.ShowKit();
+        player.kit.KitMissionSetup(
+            4,
+            i =>
+            {
+                SubScore(i * 5);
+                isFinish = true;
+            },
+            4, 2, vipItem);
+        
         player.SetCanMove(false);
 
         changer.ChangeColor();
@@ -53,27 +60,22 @@ public class ChooseRescueKit : Stage
     //     // );
     // }
 
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
-        foreach (var item in requireItems)
-        {
-            if (!item.inPack)
-                return;
-        }
+    // public override void OnUpdate()
+    // {
+    //     base.OnUpdate();
+    //     foreach (var item in requireItems)
+    //     {
+    //         if (!item.inPack)
+    //             return;
+    //     }
 
-        isFinish = true;
-    }
+    //     isFinish = true;
+    // }
 
     public override void OnFinish()
     {
         base.OnFinish();
         var player = GameHandler.Singleton.player;
         player.SetCanMove(true);
-
-        foreach (var item in uselessItems)
-        {
-            if (item.inPack) SubScore(5);
-        }
     }
 }

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3914018102431457650}
   m_LocalRotation: {x: -0.13280545, y: 0.15855032, z: 0.49341267, w: 0.84484816}
-  m_LocalPosition: {x: -0.45729923, y: 0.116999984, z: 0.041610718}
+  m_LocalPosition: {x: -0.422, y: 0.065, z: 0.059}
   m_LocalScale: {x: 1.4999999, y: 1.5, z: 1.5000001}
   m_Children: []
   m_Father: {fileID: 3914018103784846057}
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3914018102691077631}
   m_LocalRotation: {x: -0, y: -0.0664872, z: -0, w: 0.9977873}
-  m_LocalPosition: {x: 0.34496462, y: 0.08708131, z: -0.223732}
+  m_LocalPosition: {x: 0.38026392, y: 0.035081327, z: -0.2063446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3914018103784846057}
@@ -171,6 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3914018103784846057}
+  - component: {fileID: 3981373924109950559}
   m_Layer: 0
   m_Name: Medical
   m_TagString: Untagged
@@ -187,10 +188,45 @@ Transform:
   m_GameObject: {fileID: 3914018103784846062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.594, y: 0.63, z: 43.048}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3914018102691077630}
   - {fileID: 3914018102431457661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3981373924109950559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914018103784846062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448bc89c6cb2d4546934113a8af81579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionReset: 1
+  resetTime: 0
+  canGrab: 1
+  onGrabEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleaseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  canHover: 0
+  hoverTime: 3
+  onHoverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isGrabbing: 0
+  interactable: 0
+  interactableOutline: 1
+  trackVelocity: 0
+  velocityMutiply: 100000
+  debugVelocity: 0
+  isCorrect: 1
+  hasTaken: 0
+  inPack: 0

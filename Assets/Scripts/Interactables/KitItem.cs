@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KitItem : InteracableObject
 {
+    public bool isCorrect = true;
     public bool hasTaken = false;
     public bool inPack = false;
 

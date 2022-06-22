@@ -106,9 +106,4 @@ public class Player : MonoBehaviour
 
         line.gameObject.SetActive(true);
     }
-
-    public void ShowKit(bool b = true)
-    {
-        kit.gameObject.SetActive(b);
-    }
 }

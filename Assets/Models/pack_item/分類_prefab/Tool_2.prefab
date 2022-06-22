@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1685339414278009052}
+  - component: {fileID: 7098868637619354304}
   m_Layer: 0
   m_Name: Tool_2
   m_TagString: Untagged
@@ -25,13 +26,48 @@ Transform:
   m_GameObject: {fileID: 140940876105711931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.91, y: 0.6, z: 42.52}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4278009376402873083}
   - {fileID: 1011682692906442756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7098868637619354304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140940876105711931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448bc89c6cb2d4546934113a8af81579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionReset: 1
+  resetTime: 0
+  canGrab: 1
+  onGrabEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleaseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  canHover: 0
+  hoverTime: 3
+  onHoverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isGrabbing: 0
+  interactable: 0
+  interactableOutline: 1
+  trackVelocity: 0
+  velocityMutiply: 100000
+  debugVelocity: 0
+  isCorrect: 1
+  hasTaken: 0
+  inPack: 0
 --- !u!1 &3435928934046074885
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4473824915581854254}
   m_LocalRotation: {x: 0.06940932, y: -0.3531695, z: 0.17991953, w: 0.9154685}
-  m_LocalPosition: {x: -0.17210484, y: -0.07031733, z: -0.7599983}
+  m_LocalPosition: {x: -0.385, y: -0.04, z: -0.114}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 1685339414278009052}
@@ -376,7 +412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8816510016570544206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5720756, y: -0.008527398, z: -0.4960022}
+  m_LocalPosition: {x: 0.35918045, y: 0.021789908, z: 0.14999771}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4854737086327662009}
