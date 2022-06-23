@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class KitItem : InteracableObject
 {
+    [Header("icon")]
+    public Sprite icon;
+    [Header("內部設定")]
     public bool isCorrect = true;
     public bool hasTaken = false;
     public bool inPack = false;

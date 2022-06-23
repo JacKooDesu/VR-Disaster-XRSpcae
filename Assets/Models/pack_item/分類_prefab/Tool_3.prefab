@@ -144,6 +144,7 @@ MonoBehaviour:
   trackVelocity: 0
   velocityMutiply: 100000
   debugVelocity: 0
+  icon: {fileID: 21300000, guid: cd43a0d51e2f5714f9a68c6f12e4d545, type: 3}
   isCorrect: 1
   hasTaken: 0
   inPack: 0

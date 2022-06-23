@@ -18,6 +18,7 @@ public class Kit : MonoBehaviour
     [Header("UI設定")]
     public Transform checkedUiParent;
     public GameObject checkedUiObject;
+    public Color unknowUiColor, correctUiColor, wrongUiColor;
 
     public OrbitQuickSetting defaultOrbitSetting;
 
@@ -117,11 +118,21 @@ public class Kit : MonoBehaviour
 
     IEnumerator KitMission(int capacity, System.Action<int> onComplete) // Action<int> 表示正確的數量
     {
+        // Init Ui
+        List<GameObject> checkedUis = new List<GameObject>();
+        for (int i = 0; i < capacity; ++i)
+        {
+            var go = Instantiate(checkedUiObject, checkedUiParent);
+            go.SetActive(true);
+            go.GetComponent<Image>().color = unknowUiColor;
+            checkedUis.Add(go);
+        }
+
         int inPackCount = 0;
         int correctCount = 0;
         while (capacity > inPackCount)
         {
-            foreach (var hit in Physics.BoxCastAll(pack.position, Vector3.one * castBoxRadius, pack.forward))
+            foreach (var hit in Physics.BoxCastAll(pack.position, Vector3.one * castBoxRadius * .5f, Vector3.forward))
             {
                 if (hit.transform.GetComponent<KitItem>())
                 {
@@ -130,24 +141,33 @@ public class Kit : MonoBehaviour
                         continue;
                     kit.inPack = true;
                     hit.transform.gameObject.SetActive(false);
-                    inPackCount++;
 
+                    var targetCheckedUi = checkedUis[inPackCount];
                     if (kit.isCorrect)
                     {
                         correctCount++;
                         JacDev.Audio.AudioHandler.Singleton.PlaySound(JacDev.Audio.AudioHandler.Singleton.soundList.wrong_v1);
+                        targetCheckedUi.GetComponent<Image>().color = correctUiColor;
                     }
                     else
                     {
                         JacDev.Audio.AudioHandler.Singleton.PlaySound(JacDev.Audio.AudioHandler.Singleton.soundList.wrong_v2);
+                        targetCheckedUi.GetComponent<Image>().color = wrongUiColor;
                     }
 
-                    print(inPackCount);
+                    targetCheckedUi.transform.GetChild(0).GetComponent<Image>().sprite = kit.icon;
+
+                    inPackCount++;
+                    print($"以收進 {inPackCount} 個物品");
                 }
             }
 
             yield return null;
         }
+
+        foreach (var item in items)
+            item.gameObject.SetActive(false);
+        pack.gameObject.SetActive(false);
 
         onComplete.Invoke(correctCount);
     }

@@ -1969,6 +1969,7 @@ MonoBehaviour:
   trackVelocity: 0
   velocityMutiply: 100000
   debugVelocity: 0
+  icon: {fileID: 21300000, guid: 19b972884c0855e4098147ff1bb133e0, type: 3}
   isCorrect: 1
   hasTaken: 0
   inPack: 0
