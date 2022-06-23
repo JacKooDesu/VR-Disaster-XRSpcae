@@ -19,6 +19,7 @@ public class Stage : MonoBehaviour
     }
 
     public GameObject target;  // 目的地
+    public System.Action onGetToTarget; // 如果有目的地，到達時觸發
 
     public bool isFinish = false;   // 是否結束
     public Stage nextStage;     // 下一個Stage
@@ -50,6 +51,8 @@ public class Stage : MonoBehaviour
         if (Vector3.Distance(target.transform.position, GameHandler.Singleton.player.transform.position) <= 1f)
         {
             GameHandler.Singleton.player.line.gameObject.SetActive(false);
+            if (onGetToTarget != null)
+                onGetToTarget.Invoke();
             target = null;
         }
     }

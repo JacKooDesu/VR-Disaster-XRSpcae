@@ -20,7 +20,7 @@ public class WalkInLibrary : Stage
         UI.TurnOn();
 
         StartCoroutine(UI.WaitStatusChange(
-            delegate
+            () =>
             {
                 elevator.SetTrigger("Open");
 
@@ -28,7 +28,7 @@ public class WalkInLibrary : Stage
                 audio.PlayAudio(audio.libraryBgm, true);
 
                 StartCoroutine(GameHandler.Singleton.Counter(minTime, maxTime, delegate { isFinish = true; }));
-            }
+            }, false
         ));
     }
 

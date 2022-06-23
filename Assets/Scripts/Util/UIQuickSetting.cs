@@ -11,12 +11,22 @@ public class UIQuickSetting : MonoBehaviour
     public bool fadeIn;
     public bool fadeOut;
 
-    public float fadeInTime;
-    public float fadeOutTime;
-
     CanvasGroup canvasGroup;
 
     public bool bindSound = true;
+
+    public bool hideAtStart = true;
+
+    bool status;
+    public bool Status
+    {
+        private set
+        {
+            canvasGroup.blocksRaycasts = value;
+            status = value;
+        }
+        get => status;
+    }
 
     private void Start()
     {
@@ -30,6 +40,11 @@ public class UIQuickSetting : MonoBehaviour
         if (bindSound)
             BindButton();
 
+        if (hideAtStart)
+        {
+            canvasGroup.alpha = 0;
+            Status = false;
+        }
     }
 
     private void OnDisable()
@@ -108,6 +123,7 @@ public class UIQuickSetting : MonoBehaviour
 
     IEnumerator FadingIn()
     {
+        Status = true;
         while (Mathf.Abs(canvasGroup.alpha - 1) > 0.01f && gameObject.activeInHierarchy)
         {
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1, .1f);
@@ -117,23 +133,17 @@ public class UIQuickSetting : MonoBehaviour
 
     IEnumerator FadingOut()
     {
+        Status = false;
         while (Mathf.Abs(canvasGroup.alpha - 0) > 0.01f && gameObject.activeInHierarchy)
         {
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 0, .1f);
             yield return null;
         }
-        gameObject.SetActive(false);
     }
 
-    public bool Status()
+    public IEnumerator WaitStatusChange(UnityAction action, bool status)
     {
-        return gameObject.activeInHierarchy;
-    }
-
-    public IEnumerator WaitStatusChange(UnityAction action)
-    {
-        bool bOrigin = Status();
-        while (Status() == bOrigin)
+        while (Status != status)
         {
             yield return null;
         }

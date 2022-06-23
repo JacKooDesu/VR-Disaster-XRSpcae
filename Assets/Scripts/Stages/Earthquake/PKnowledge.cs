@@ -20,7 +20,7 @@ public class PKnowledge : Stage
             UI.WaitStatusChange(delegate
             {
                 isFinish = true;
-            }));
+            }, false));
     }
 
     public override void OnUpdate()
@@ -31,7 +31,7 @@ public class PKnowledge : Stage
             {
                 waringHUD.gameObject.SetActive(true);
             }
-            waringHUD.TurnOn();            
+            waringHUD.TurnOn();
         }
         else
         {
