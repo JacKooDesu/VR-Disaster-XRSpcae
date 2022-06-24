@@ -242,23 +242,33 @@ public class CustomHandBehaviour : MonoBehaviour
     {
         if (_grabGo != null)
         {
+            //  設定 InteractableObject
+            InteracableObject interactable = null;
+            if (_grabGo.GetComponent<InteracableObject>() != null)
+            {
+                interactable = _grabGo.GetComponent<InteracableObject>();
+            }
+
+
             if (_grabGo.GetComponent<Rigidbody>() != null)
             {
                 var _rigidbody = _grabGo.GetComponent<Rigidbody>();
-                _rigidbody.useGravity = true;
-                _rigidbody.isKinematic = false;
+                if (interactable != null)
+                {
+                    interactable.ResetRig();
+                }
+                else
+                {
+                    _rigidbody.useGravity = true;
+                    _rigidbody.isKinematic = false;
+                }
+
                 if (_grabGo.transform.parent == HoldingAnchor)
                     _grabGo.transform.parent = null;
                 _rigidbody.AddForce(_handVector * 300, ForceMode.Impulse);
             }
-
-            //  設定 InteractableObject
-            InteracableObject interactable;
-            if (_grabGo.GetComponent<InteracableObject>() != null)
-            {
-                interactable = _grabGo.GetComponent<InteracableObject>();
-                interactable.Released();
-            }
+            
+            interactable?.Released();
 
             _grabGo = null;
             _isGrabGo = false;

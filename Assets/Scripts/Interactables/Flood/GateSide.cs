@@ -14,7 +14,10 @@ public class GateSide : InteracableObject
         foreach (Transform t in targetParent)
             targets.Add(t);
 
-        onReleaseEvent.AddListener(ResetCollider);
+        onReleaseEvent.AddListener(() =>
+        {
+            ResetCollider();
+        });
     }
 
     protected override void OnTriggerEnter(Collider other)

@@ -7,7 +7,9 @@ namespace JacDev.Audio
     public class Flood : AudioHandler
     {
         [Header("Audio")]
-        public AudioClip specWaterMeter;
+        public AudioClip specWaterMeter200;
+        public AudioClip specWaterMeter350;
+        public AudioClip specWaterMeter500;
         public AudioClip plantDown;
         public AudioClip instalGateSide;
         public AudioClip instalGateMid;

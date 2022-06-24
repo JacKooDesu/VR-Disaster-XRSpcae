@@ -26,7 +26,7 @@ public class HintCanvas : MonoBehaviour
 
     Timer timer;
 
-    private void Start()
+    private void Awake()
     {
         currentActiveCanvas = transform.GetChild(0).gameObject;
 
@@ -72,7 +72,7 @@ public class HintCanvas : MonoBehaviour
 
     private void Update()
     {
-        transform.localPosition = new Vector3(head.localPosition.x, 0, head.localPosition.z);
+        transform.position = new Vector3(head.position.x, 0, head.position.z);
         if (currentActiveCanvas == null)
         {
             var index = handlingCanvas.Count;

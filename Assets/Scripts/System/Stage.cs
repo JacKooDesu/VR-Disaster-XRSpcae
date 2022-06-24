@@ -21,6 +21,8 @@ public class Stage : MonoBehaviour
     public GameObject target;  // 目的地
     public System.Action onGetToTarget; // 如果有目的地，到達時觸發
 
+    public System.Action onFinishEvent;
+
     public bool isFinish = false;   // 是否結束
     public Stage nextStage;     // 下一個Stage
 
@@ -65,6 +67,8 @@ public class Stage : MonoBehaviour
             if (so.obj != null) so.obj.SetActive(!so.destroyOnFinish);
 
         GameHandler.Singleton.player.line.gameObject.SetActive(false);
+
+        if (onFinishEvent != null) onFinishEvent.Invoke();
     }
 
     public T FindStageObject<T>()

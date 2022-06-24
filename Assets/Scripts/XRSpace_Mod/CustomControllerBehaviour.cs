@@ -262,11 +262,10 @@ public class CustomControllerBehaviour : MonoBehaviour
     {
         if (grabbingObj != null)
         {
+
             if (grabbingObj.GetComponent<Rigidbody>() != null)
             {
-                var _rigidbody = grabbingObj.GetComponent<Rigidbody>();
-                _rigidbody.useGravity = true;
-                _rigidbody.isKinematic = false;
+                grabbingObj.ResetRig();
                 if (grabbingObj.transform.parent == transform)
                     grabbingObj.transform.parent = null;
                 // _rigidbody.AddForce(_handVector * 300, ForceMode.Impulse);

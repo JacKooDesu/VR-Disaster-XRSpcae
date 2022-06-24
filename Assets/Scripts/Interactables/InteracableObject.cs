@@ -268,6 +268,15 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         hoveringHand = null;
     }
 
+    public virtual void ResetRig()
+    {
+        if (rig == null)
+            return;
+            
+        rig.isKinematic = originIsKinematic;
+        rig.useGravity = originUseGravity;
+    }
+
     protected virtual async void ResetCollider()
     {
         col.enabled = false;

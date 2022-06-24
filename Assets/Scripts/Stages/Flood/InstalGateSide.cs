@@ -7,6 +7,7 @@ public class InstalGateSide : Stage
     public GameObject spotlight;
     public Transform targetParent;
     public Transform objParent;
+    GateSide[] gates;
 
     public override void OnBegin()
     {
@@ -20,6 +21,10 @@ public class InstalGateSide : Stage
             interact.Interactable = true;
         }
 
+        gates = new GateSide[objParent.childCount];
+        for (int i = 0; i < objParent.childCount; ++i)
+            gates[i] = objParent.GetChild(i).GetComponent<GateSide>();
+
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.instalGateSide);
     }
@@ -28,12 +33,12 @@ public class InstalGateSide : Stage
     {
         base.OnUpdate();
 
-        foreach (Transform t in objParent)
+        foreach (var g in gates)
         {
-            if (!t.GetComponent<GateSide>().hasInstalled)
+            if (!g.hasInstalled)
                 return;
         }
-        isFinish=true;
+        isFinish = true;
     }
 
     public override void OnFinish()

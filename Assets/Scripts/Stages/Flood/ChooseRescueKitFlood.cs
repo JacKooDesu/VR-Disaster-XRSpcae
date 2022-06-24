@@ -26,7 +26,7 @@ public class ChooseRescueKitFlood : Stage
                             4,
                             i =>
                             {
-                                SubScore(i * 5);
+                                SubScore((4 - i) * 5);
                                 isFinish = true;
                             },
                             4, 2, vipItem);
@@ -43,5 +43,6 @@ public class ChooseRescueKitFlood : Stage
         base.OnFinish();
         var player = GameHandler.Singleton.player;
         player.SetCanMove(true);
+        // player.kit.ForceStopMission();
     }
 }

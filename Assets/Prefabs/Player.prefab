@@ -797,7 +797,7 @@ MonoBehaviour:
   savedUp: {x: 0.002202476, y: 0.992005, z: 0.12617977}
   savedRectSize: {x: 98.07532, y: 19.908203}
   savedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  savedTextUV0: {x: 0.08129883, y: 0}
+  savedTextUV0: {x: 0.16259766, y: 0}
   savedFill: 0
 --- !u!114 &2106497579633198361
 MonoBehaviour:
@@ -2211,6 +2211,7 @@ MonoBehaviour:
   mainMenuEnable: 0
   mainMenuTime: 5
   debugMode: 0
+  DeviceType: 9
 --- !u!54 &6385771287745271681
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2475,6 +2476,7 @@ MonoBehaviour:
   mainMenuEnable: 0
   mainMenuTime: 5
   debugMode: 0
+  DeviceType: 10
 --- !u!54 &8759774343464450860
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -129,6 +129,7 @@ public class UIQuickSetting : MonoBehaviour
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1, .1f);
             yield return null;
         }
+        canvasGroup.alpha = 1;
     }
 
     IEnumerator FadingOut()
@@ -139,6 +140,7 @@ public class UIQuickSetting : MonoBehaviour
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 0, .1f);
             yield return null;
         }
+        canvasGroup.alpha = 0;
     }
 
     public IEnumerator WaitStatusChange(UnityAction action, bool status)

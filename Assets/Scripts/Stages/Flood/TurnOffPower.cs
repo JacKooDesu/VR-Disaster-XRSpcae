@@ -11,6 +11,7 @@ public class TurnOffPower : Stage
 
     public override void OnBegin()
     {
+        base.OnBegin();
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.turnOffSwitch);
 

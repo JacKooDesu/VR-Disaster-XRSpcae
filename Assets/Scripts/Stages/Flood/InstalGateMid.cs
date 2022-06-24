@@ -6,6 +6,7 @@ public class InstalGateMid : Stage
 {
     public GameObject spotlight;
     public Transform objParent;
+    GateMid[] gates;
     [SerializeField] List<Transform> targets = new List<Transform>();
 
     public override void OnBegin()
@@ -21,15 +22,19 @@ public class InstalGateMid : Stage
         a.PlaySound(a.instalGateMid);
 
         targets[0].gameObject.SetActive(true);
+
+        gates = new GateMid[objParent.childCount];
+        for (int i = 0; i < objParent.childCount; ++i)
+            gates[i] = objParent.GetChild(i).GetComponent<GateMid>();
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
 
-        foreach (Transform t in objParent)
+        foreach (var g in gates)
         {
-            if (!t.GetComponent<GateMid>().hasInstalled)
+            if (!g.hasInstalled)
                 return;
         }
         isFinish = true;

@@ -28,7 +28,7 @@ public class ChooseRescueKitEarthquake : Stage
                         4,
                         i =>
                         {
-                            SubScore(i * 5);
+                            SubScore((4 - i) * 5);
                             isFinish = true;
                         },
                         4, 2, vipItem);

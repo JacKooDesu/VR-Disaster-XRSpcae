@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XRSpace.Platform.InputDevice;
 
 public class HoverHandler : MonoBehaviour
 {
@@ -12,9 +13,14 @@ public class HoverHandler : MonoBehaviour
     static bool isCallingMenu;  // 雙手合十，回主選單
     static float timer;     // 秒數回主選單
 
+    public XRHandlerDeviceType DeviceType;
+    private XRHandlerData handlerData;
+
     private void Start()
     {
         ResetImage();
+
+        handlerData = XRInputManager.Instance.GetInputData<XRHandlerData>((XRDeviceType)DeviceType);
     }
 
     public void UpdateImage(float t)
@@ -29,6 +35,9 @@ public class HoverHandler : MonoBehaviour
 
     private void Update()
     {
+        if (handlerData.IsHandLostTracking || handlerData.IsHandNotFound)
+            return;
+            
         if (isCallingMenu)
         {
             timer += Time.deltaTime * .5f;
@@ -78,7 +87,7 @@ public class HoverHandler : MonoBehaviour
         {
             isCallingMenu = false;
             timer = 0f;
-            
+
             foreach (var hh in FindObjectsOfType<HoverHandler>())
                 hh.ResetImage();
         }

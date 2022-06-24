@@ -14,6 +14,9 @@ public class Escape : Stage
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.waterIn);
+        var player = GameHandler.Singleton.player;
+
+        player.SetCanMove(false);
 
         StartCoroutine(
             GameHandler.Singleton.Counter(
@@ -31,6 +34,8 @@ public class Escape : Stage
                 {
                     a.GetSoundAudioSource(a.broadcast2).volume = .4f;
                     a.PlaySound(a.escape);
+
+                    player.SetCanMove(true);
                 }
             )
         );
@@ -41,16 +46,13 @@ public class Escape : Stage
         waterfall.SetActive(true);
 
         brokenCell.SetActive(false);
+        onGetToTarget += () => isFinish = true;
     }
 
-    public override void OnUpdate()
-    {
-
-    }
-    
     public override void OnFinish()
     {
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
+        a.StopCurrent();
         a.PlaySound(a.stageClear);
     }
 }

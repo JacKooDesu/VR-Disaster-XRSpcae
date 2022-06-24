@@ -24,6 +24,8 @@ public class TurnOffGas : Stage
            boil.volume = .4f;
            a.PlaySound(a.turnOffGas);
        }));
+
+        onFinishEvent += () => boil.Stop();
     }
 
     public override void OnUpdate()

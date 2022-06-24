@@ -171,4 +171,12 @@ public class Kit : MonoBehaviour
 
         onComplete.Invoke(correctCount);
     }
+
+    public void ForceStopMission()
+    {
+        StopAllCoroutines();
+        foreach (var item in items)
+            item.gameObject.SetActive(false);
+        pack.gameObject.SetActive(false);
+    }
 }
