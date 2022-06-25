@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        hintCanvas.head = head;
+        // hintCanvas.head = head;
 
         // curveLine.gameObject.SetActive(false);
         originHeight = transform.position.y;

@@ -62,7 +62,8 @@ namespace CoroutineUtility
 
             while (t < time)
             {
-                update.Invoke(t);
+                if (update != null)
+                    update.Invoke(t);
                 t += Time.deltaTime;
                 current = t;
                 yield return null;
@@ -78,9 +79,9 @@ namespace CoroutineUtility
 
         public void Stop(bool forceComplete = false)
         {
-            if(!hasRun)
+            if (!hasRun)
                 return;
-            
+
             if (forceComplete)
                 complete.Invoke();
             CoroutineManager.Singleton.Stop($"timer-{id}");

@@ -9,6 +9,7 @@ public class TurnOffGas : Stage
     public InteracableObject gasSwitch;
     public Transform switchModel;
     public GameObject fire;
+    public UIQuickSetting hint;
 
     public override void OnBegin()
     {
@@ -26,6 +27,13 @@ public class TurnOffGas : Stage
        }));
 
         onFinishEvent += () => boil.Stop();
+        onGetToTarget += () =>
+        {
+            new CoroutineUtility.Timer(3f, hint.TurnOn, null, hint.TurnOff);
+            GameHandler.Singleton.player.hintCanvas.ForceAlign();
+        };
+
+        switchModel.GetComponent<Outline>().enabled = true;
     }
 
     public override void OnUpdate()
@@ -40,5 +48,7 @@ public class TurnOffGas : Stage
         fire.SetActive(false);
         switchModel.DORotate(Vector3.up * 90, .5f, RotateMode.LocalAxisAdd);
         GameHandler.Singleton.player.line.gameObject.SetActive(false);
+
+        switchModel.GetComponent<Outline>().enabled = false;
     }
 }

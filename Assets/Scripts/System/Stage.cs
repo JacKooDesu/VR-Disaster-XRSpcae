@@ -29,6 +29,12 @@ public class Stage : MonoBehaviour
     [Header("其他")]
     public int score;
 
+    protected virtual void Awake()
+    {
+        if (target != null)
+            target.SetActive(false);
+    }
+
     // Stage開始時
     public virtual void OnBegin()
     {
@@ -42,7 +48,11 @@ public class Stage : MonoBehaviour
         }
 
         if (target != null)
+        {
+            target.SetActive(true);
             GameHandler.Singleton.player.PathFinding(target.transform.position);
+        }
+
         //iTween.MoveTo(GameHandler.Singleton.player.gameObject, spawnpoint, .5f);
     }
 
@@ -55,6 +65,8 @@ public class Stage : MonoBehaviour
             GameHandler.Singleton.player.line.gameObject.SetActive(false);
             if (onGetToTarget != null)
                 onGetToTarget.Invoke();
+
+            target.SetActive(false);
             target = null;
         }
     }

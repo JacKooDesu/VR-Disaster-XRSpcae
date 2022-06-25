@@ -43,7 +43,7 @@ public class HintObject : MonoBehaviour
 
     private void OnDisable()
     {
-        ui.Hide();
+        ui?.Hide();
     }
 
     private void Update()

@@ -14,10 +14,11 @@ public class TakeExtinguisher : Stage
     {
         base.OnBegin();
         changer.ChangeColor();
-        GameHandler.Singleton.player.PathFinding(fireExtinguisherBody.transform.position);
 
         topExitAni.enabled = true;
-        GameHandler.Singleton.player.SetCanMove(true);
+
+        var player = GameHandler.Singleton.player;
+        player.SetCanMove(true);
 
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
 
@@ -32,7 +33,7 @@ public class TakeExtinguisher : Stage
         fireExtinguisherBody.onHoverEvent.AddListener(() => print("拿取滅火器"));
         fireExtinguisherBody.onHoverEvent.AddListener(() => isFinish = true);
 
-        FindObjectOfType<HintCanvas>().SetHintText("照著箭頭引導指示拿取滅火器", true);
+        player.hintCanvas.SetHintText("照著箭頭引導指示拿取滅火器", true);
     }
 
     public override void OnUpdate()
@@ -44,7 +45,6 @@ public class TakeExtinguisher : Stage
     {
         base.OnFinish();
         changer.BackOriginColor();
-        GameHandler.Singleton.player.line.gameObject.SetActive(false);
 
         fireExtinguisherBody.onHoverEvent.RemoveAllListeners();
     }

@@ -7,6 +7,7 @@ public class Escape : Stage
     public GameObject water;
     public GameObject waterfall;
     public GameObject brokenCell;
+    public UIQuickSetting hint;
 
     public override void OnBegin()
     {
@@ -54,5 +55,6 @@ public class Escape : Stage
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.StopCurrent();
         a.PlaySound(a.stageClear);
+        hint.TurnOn();
     }
 }

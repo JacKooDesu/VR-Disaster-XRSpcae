@@ -8,6 +8,7 @@ public class InstalGateSide : Stage
     public Transform targetParent;
     public Transform objParent;
     GateSide[] gates;
+    public UIQuickSetting hint;
 
     public override void OnBegin()
     {
@@ -27,6 +28,12 @@ public class InstalGateSide : Stage
 
         JacDev.Audio.Flood a = (JacDev.Audio.Flood)GameHandler.Singleton.audioHandler;
         a.PlaySound(a.instalGateSide);
+
+        onGetToTarget += () =>
+        {
+            new CoroutineUtility.Timer(3f, hint.TurnOn, null, hint.TurnOff);
+            GameHandler.Singleton.player.hintCanvas.ForceAlign();
+        };
     }
 
     public override void OnUpdate()

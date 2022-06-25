@@ -12,6 +12,8 @@ public class SprayFire : Stage
     public GameObject progressImage;
     CoroutineUtility.Timer uiTimer;
 
+
+    public UIQuickSetting hint; // 超過時間
     // private variable
     JacDev.Audio.FireTruck audioHandler;
     public override void OnBegin()
@@ -27,6 +29,10 @@ public class SprayFire : Stage
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
         audio.StopCurrent();
         audio.PlaySound(audio.sprayTutorial);
+
+        // 操作時間過長
+        var playTimer = new CoroutineUtility.Timer(10f, ShowHint);
+        onFinishEvent += () => playTimer.Stop();
     }
 
     public override void OnUpdate()
@@ -46,6 +52,15 @@ public class SprayFire : Stage
             if (GetComponentInChildren<AudioSource>())
                 Destroy(GetComponentInChildren<AudioSource>().gameObject);
         }
+    }
+
+    async void ShowHint()
+    {
+        hint.TurnOn();
+        SubScore(5);
+        await System.Threading.Tasks.Task.Delay(2000);
+
+        hint.TurnOff();
     }
 
     public override void OnFinish()

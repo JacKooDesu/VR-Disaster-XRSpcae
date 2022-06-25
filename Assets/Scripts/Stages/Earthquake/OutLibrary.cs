@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class OutLibrary : Stage
 {
+    public UIQuickSetting hint;
+
     public override void OnBegin()
     {
         base.OnBegin();
         JacDev.Audio.Earthquake audio = (JacDev.Audio.Earthquake)GameHandler.Singleton.audioHandler;
         audio.PlaySound(audio.missionComplete);
-        isFinish = true;
+        hint.TurnOn();
+        new CoroutineUtility.Timer(audio.missionComplete.length, () =>
+        {
+            isFinish = true;
+        });
+
     }
 }

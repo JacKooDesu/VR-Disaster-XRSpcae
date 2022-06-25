@@ -6,8 +6,10 @@ using DG.Tweening;
 public class TurnOffPower : Stage
 {
     public Transform electronicBoxDoor;
+    public Transform switchModel;
     public InteracableObject doorInteract;
     public InteracableObject switchInteract;
+    public UIQuickSetting hint;
 
     public override void OnBegin()
     {
@@ -21,7 +23,9 @@ public class TurnOffPower : Stage
             {
                 switchInteract.Interactable = true;
                 doorInteract.Interactable = false;
-                electronicBoxDoor.DORotate(Vector3.down * 180, 1f,RotateMode.WorldAxisAdd);
+                electronicBoxDoor.DORotate(Vector3.down * 180, 1f, RotateMode.WorldAxisAdd);
+                electronicBoxDoor.GetComponent<Outline>().enabled = false;
+                switchModel.GetComponent<Outline>().enabled = true;
             }
         );
 
@@ -31,9 +35,20 @@ public class TurnOffPower : Stage
             {
                 a.PlayAudio(a.switchSound, false, switchInteract.transform);
                 switchInteract.Interactable = false;
+                switchModel.DORotate(Vector3.up * 60, .2f, RotateMode.LocalAxisAdd);
                 isFinish = true;
+                switchModel.GetComponent<Outline>().enabled = false;
             }
         );
+
+
+        electronicBoxDoor.GetComponent<Outline>().enabled = true;
+
+        onGetToTarget += () =>
+        {
+            new CoroutineUtility.Timer(3f, hint.TurnOn, null, hint.TurnOff);
+            GameHandler.Singleton.player.hintCanvas.ForceAlign();
+        };
     }
 
     public override void OnUpdate()

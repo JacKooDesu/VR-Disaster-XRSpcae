@@ -6,7 +6,7 @@ using CoroutineUtility;
 
 public class HintCanvas : MonoBehaviour
 {
-    [HideInInspector] public Transform head;
+    public Transform head;
     bool headTracking = true;
     public bool HeadTracking
     {
@@ -72,7 +72,7 @@ public class HintCanvas : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(head.position.x, 0, head.position.z);
+        transform.position = new Vector3(head.position.x, transform.position.y, head.position.z);
         if (currentActiveCanvas == null)
         {
             var index = handlingCanvas.Count;
@@ -99,6 +99,11 @@ public class HintCanvas : MonoBehaviour
         {
             StartCoroutine(LerpToHeadAngle());
         }
+    }
+
+    public void ForceAlign()
+    {
+        trackingDelayCounter += trackingDelay;
     }
 
     IEnumerator LerpToHeadAngle()

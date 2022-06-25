@@ -14,7 +14,7 @@ public class SWave : Stage
 
     public Transform tableTop;
 
-    public GameObject waringHUD;
+    public UIQuickSetting waringHUD;
 
     public Animator elevator;
 
@@ -45,6 +45,16 @@ public class SWave : Stage
 
     public override void OnUpdate()
     {
+        var head = GameHandler.Singleton.player.head;
+        if (head.position.y > tableTop.position.y)
+        {
+            if (!waringHUD.Status)
+                waringHUD.TurnOn();
+        }
+        else if (waringHUD.Status)
+        {
+            waringHUD.TurnOff();
+        }
     }
 
     public override void OnFinish()
