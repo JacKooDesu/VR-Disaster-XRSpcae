@@ -18,9 +18,14 @@ public class AsyncLoadingScript : MonoBehaviour
     Button finishButton;
 
     AsyncOperation async;   // 異步加載設定
+    bool isLoading = false;
 
     public void LoadScene(string name)
     { // 傳入場景名稱
+        if (isLoading)
+            return;
+        
+        isLoading = true;
         targetSceneName = name;
         // SceneManager.LoadScene("AsyncLoadingScene");    // 跳到異步加載場景
         var fadeUtil = FindObjectOfType<CameraFadeUtil>();

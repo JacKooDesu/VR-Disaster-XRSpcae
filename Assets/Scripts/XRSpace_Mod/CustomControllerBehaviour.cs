@@ -197,14 +197,15 @@ public class CustomControllerBehaviour : MonoBehaviour
         //y shift is from player floor pos to teleportPos 
         playerShift.y = _teleportPos.y - XRManager.Instance.transform.parent.position.y;
         XRManager.Instance.transform.parent.position += playerShift;
-        if (!Application.isEditor || XRInputManager.Instance.EditorMode == XREditorMode.Simulator)
-            OnTeleportEnd(playerRotate);
 
         // teleport point event
         if (selectingPoint != null)
             selectingPoint.BeingTeleported();
 
         player.onTeleportEvent.Invoke();
+
+        if (!Application.isEditor || XRInputManager.Instance.EditorMode == XREditorMode.Simulator)
+            OnTeleportEnd(playerRotate);
     }
 
     #region Grab

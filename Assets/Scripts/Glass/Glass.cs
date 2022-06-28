@@ -16,6 +16,8 @@ public class Glass : MonoBehaviour
 
     public GameObject hint;
 
+    public UnityEvent onGlassBrokenEvent;
+
     public void Setup()
     {
         EnableBreaker(false);
@@ -58,5 +60,7 @@ public class Glass : MonoBehaviour
         // 關閉提示及碰撞檢測
         glassController.ShowHint(false);
         glassController.EnableBreakers(false);
+
+        onGlassBrokenEvent.Invoke();
     }
 }

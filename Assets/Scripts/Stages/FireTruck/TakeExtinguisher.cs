@@ -47,5 +47,6 @@ public class TakeExtinguisher : Stage
         changer.BackOriginColor();
 
         fireExtinguisherBody.onHoverEvent.RemoveAllListeners();
+        fireExtinguisherBody.Interactable = false;
     }
 }

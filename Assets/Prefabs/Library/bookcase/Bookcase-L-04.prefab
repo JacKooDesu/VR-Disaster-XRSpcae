@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 8292301350881921944}
   - component: {fileID: 8536122324663052982}
   - component: {fileID: 921889520598821339}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: cabinet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

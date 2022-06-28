@@ -73,5 +73,10 @@ public class SprayFire : Stage
         uiSwitcher.gameObject.SetActive(false);
 
         GameHandler.Singleton.player.SetCanMove(true);
+
+        // 移除噴霧及音效
+        powder.gameObject.SetActive(false);
+        if (GetComponentInChildren<AudioSource>())
+            Destroy(GetComponentInChildren<AudioSource>().gameObject);
     }
 }

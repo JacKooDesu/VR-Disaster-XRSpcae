@@ -26,11 +26,18 @@ public class AimFire : Stage
 
         changer.ChangeColor();
 
-        FindObjectOfType<HintCanvas>().SetHintText("靠近一點火源", true);
+        // FindObjectOfType<HintCanvas>().SetHintText("靠近一點火源", true);
 
         JacDev.Audio.FireTruck audio = (JacDev.Audio.FireTruck)GameHandler.Singleton.audioHandler;
         audio.StopCurrent();
         audio.PlaySound(audio.aimTutorial);
+
+        onGetToTarget += () =>
+        {
+            isNearFire = true;
+            GameHandler.Singleton.player.SetCanMove(false);
+            FindObjectOfType<HintCanvas>().SetHintText("瞄準火源", true);
+        };
     }
 
     public override void OnUpdate()
@@ -38,15 +45,7 @@ public class AimFire : Stage
         base.OnUpdate();
 
         if (!isNearFire)
-        {
-            if (Vector3.Distance(firespot.position, GameHandler.Singleton.player.transform.position) <= 3)
-            {
-                isNearFire = true;
-                GameHandler.Singleton.player.SetCanMove(false);
-                FindObjectOfType<HintCanvas>().SetHintText("瞄準火源", true);
-            }
             return;
-        }
 
         Transform origin = controller.transform;
 

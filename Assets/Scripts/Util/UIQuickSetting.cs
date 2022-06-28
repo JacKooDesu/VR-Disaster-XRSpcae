@@ -12,6 +12,7 @@ public class UIQuickSetting : MonoBehaviour
     public bool fadeOut;
 
     CanvasGroup canvasGroup;
+    bool originBlockRaycast;
 
     public bool bindSound = true;
 
@@ -22,7 +23,8 @@ public class UIQuickSetting : MonoBehaviour
     {
         private set
         {
-            canvasGroup.blocksRaycasts = value;
+            if (originBlockRaycast)
+                canvasGroup.blocksRaycasts = value;
             status = value;
         }
         get => status;
@@ -31,11 +33,13 @@ public class UIQuickSetting : MonoBehaviour
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        originBlockRaycast = canvasGroup.blocksRaycasts;
     }
 
     private void OnEnable()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        originBlockRaycast = canvasGroup.blocksRaycasts;
 
         if (bindSound)
             BindButton();
@@ -54,6 +58,9 @@ public class UIQuickSetting : MonoBehaviour
 
     public void TurnOn()
     {
+        if (status)
+            return;
+
         if (fadeIn)
         {
             StartCoroutine(FadingIn());
@@ -62,6 +69,8 @@ public class UIQuickSetting : MonoBehaviour
 
     public void TurnOff()
     {
+        if (!status)
+            return;
         if (fadeOut)
         {
             StartCoroutine(FadingOut());

@@ -48,10 +48,9 @@ public class SWave : Stage
         var head = GameHandler.Singleton.player.head;
         if (head.position.y > tableTop.position.y)
         {
-            if (!waringHUD.Status)
-                waringHUD.TurnOn();
+            waringHUD.TurnOn();
         }
-        else if (waringHUD.Status)
+        else
         {
             waringHUD.TurnOff();
         }
@@ -81,10 +80,15 @@ public class SWave : Stage
             t.GetComponent<Renderer>().sharedMaterials = mats;
         }
 
-        var matChanger = new MaterialChanger();
-        matChanger.parent = tempRoof;
-        matChanger.targetColor = new Color(.2f, .2f, .2f, .3f);
+        var matChanger = new MaterialChanger
+        {
+            parent = tempRoof,
+            effectAlpha = true,
+            targetColor = new Color(.2f, .2f, .2f, .3f)
+        };
         matChanger.ChangeColor();
+
+        waringHUD.TurnOff();
     }
 
     void BreakRoof()
