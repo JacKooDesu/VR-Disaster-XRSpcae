@@ -14027,6 +14027,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u95DC\u5361\u8D77\u59CB\u9EDE"
       objectReference: {fileID: 0}
+    - target: {fileID: 3072969159840319887, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072969159840319887, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.657
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072969159840319887, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072969159840319887, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.2252251
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072969159840319887, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2252251
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072969159840319887, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.67027885
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072969159840319887, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.67027885
+      objectReference: {fileID: 0}
     - target: {fileID: 4909433135875829036, guid: c4c96a41c2da6f449b6bd91cb5c7ad43,
         type: 3}
       propertyPath: objectName
@@ -17919,7 +17954,7 @@ PrefabInstance:
     - target: {fileID: 2525659767435877025, guid: b493cdd900e6b3843a453b06d8897f27,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2730833097128369920, guid: b493cdd900e6b3843a453b06d8897f27,
         type: 3}
@@ -18254,12 +18289,12 @@ PrefabInstance:
     - target: {fileID: 6668670176852510690, guid: b493cdd900e6b3843a453b06d8897f27,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6952935162512502898, guid: b493cdd900e6b3843a453b06d8897f27,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7118022839087615024, guid: b493cdd900e6b3843a453b06d8897f27,
         type: 3}
@@ -30577,7 +30612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1964025526}
-  firstStage: {fileID: 1261190016}
+  firstStage: {fileID: 1886265131}
   cam: {fileID: 0}
   uiCamera: {fileID: 0}
   audioHandler: {fileID: 5313913697285634682}

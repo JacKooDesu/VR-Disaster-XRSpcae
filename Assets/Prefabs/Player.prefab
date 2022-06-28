@@ -5979,6 +5979,16 @@ PrefabInstance:
       propertyPath: m_Parameters.numCornerVertices
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9075415797285164788, guid: a5582afd072fb0646bd0dc173a634325,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.76686984
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075415797285164788, guid: a5582afd072fb0646bd0dc173a634325,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.8207309
+      objectReference: {fileID: 0}
     - target: {fileID: 9075415797285164789, guid: a5582afd072fb0646bd0dc173a634325,
         type: 3}
       propertyPath: yOffset

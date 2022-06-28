@@ -32,8 +32,8 @@ public class UIQuickSetting : MonoBehaviour
 
     private void Start()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
-        originBlockRaycast = canvasGroup.blocksRaycasts;
+        // canvasGroup = GetComponent<CanvasGroup>();
+        // originBlockRaycast = canvasGroup.blocksRaycasts;
     }
 
     private void OnEnable()

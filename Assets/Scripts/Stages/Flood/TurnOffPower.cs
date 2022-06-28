@@ -35,7 +35,7 @@ public class TurnOffPower : Stage
             {
                 a.PlayAudio(a.switchSound, false, switchInteract.transform);
                 switchInteract.Interactable = false;
-                switchModel.DORotate(Vector3.up * 60, .2f, RotateMode.LocalAxisAdd);
+                switchModel.DORotate(Vector3.back * 60, .2f, RotateMode.LocalAxisAdd);
                 isFinish = true;
                 switchModel.GetComponent<Outline>().enabled = false;
             }
