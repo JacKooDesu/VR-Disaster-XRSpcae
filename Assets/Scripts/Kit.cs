@@ -95,10 +95,10 @@ public class Kit : MonoBehaviour
 
         defaultOrbitSetting.transforms = results.ToArray();
 
+        defaultOrbitSetting.Orbit();
+
         foreach (var item in results)
             item.gameObject.SetActive(true);
-
-        defaultOrbitSetting.Orbit();
     }
 
     [ContextMenu("Test Draw")]
@@ -120,6 +120,13 @@ public class Kit : MonoBehaviour
     {
         // Init Ui
         List<GameObject> checkedUis = new List<GameObject>();
+        foreach (Transform t in checkedUiParent)
+        {
+            if (t.gameObject == checkedUiObject) continue;
+
+            Destroy(t.gameObject);
+        }
+
         for (int i = 0; i < capacity; ++i)
         {
             var go = Instantiate(checkedUiObject, checkedUiParent);

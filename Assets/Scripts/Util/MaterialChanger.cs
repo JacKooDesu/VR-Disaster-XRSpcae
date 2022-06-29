@@ -73,7 +73,7 @@ public class MaterialChanger
         hasSetup = true;
     }
 
-    public void ChangeColor()
+    public void ChangeColor(float t = 1f)
     {
         if (!hasSetup)
             Setup();
@@ -103,20 +103,20 @@ public class MaterialChanger
                     continue;
 
                 var tempColor = targetColor;
-                if(!effectAlpha)
+                if (!effectAlpha)
                     tempColor.a = m.GetColor("_Color").a;
 
-                m.DOColor(tempColor, "_Color", 1f).SetId(id);
+                m.DOColor(tempColor, "_Color", t).SetId(id);
             }
         }
 
         if (skyboxInclude)
         {
-            RenderSettings.skybox.DOColor(targetColor, "_Tint", 1f);
+            RenderSettings.skybox.DOColor(targetColor, "_Tint", t);
         }
     }
 
-    public void BackOriginColor()
+    public void BackOriginColor(float t=1f)
     {
         if (!hasSetup)
             Setup();
@@ -138,7 +138,7 @@ public class MaterialChanger
                 if (!m.HasProperty("_Color"))
                     continue;
 
-                var tween = m.DOColor(originM.color, 1f).SetId(id);
+                var tween = m.DOColor(originM.color, t).SetId(id);
 
                 if (j == mats.Length - 1)
                     tween.OnComplete(() =>
@@ -156,7 +156,7 @@ public class MaterialChanger
 
         if (skyboxInclude)
         {
-            RenderSettings.skybox.DOColor(skyboxOrigin, "_Tint", 1f);
+            RenderSettings.skybox.DOColor(skyboxOrigin, "_Tint", t);
         }
     }
 }

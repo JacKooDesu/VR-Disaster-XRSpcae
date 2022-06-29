@@ -24,7 +24,7 @@ public class AsyncLoadingScript : MonoBehaviour
     { // 傳入場景名稱
         if (isLoading)
             return;
-        
+
         isLoading = true;
         targetSceneName = name;
         // SceneManager.LoadScene("AsyncLoadingScene");    // 跳到異步加載場景
@@ -78,4 +78,9 @@ public class AsyncLoadingScript : MonoBehaviour
     // {
     //     return SceneManager.GetActiveScene().name;
     // }
+
+    public void LeaveGame()
+    {
+        Application.Quit();
+    }
 }

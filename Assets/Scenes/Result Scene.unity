@@ -567,7 +567,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 236.46121, y: 75.77655}
   savedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  savedTextUV0: {x: 0.8659668, y: 0.092041016}
+  savedTextUV0: {x: 0, y: 0.5}
   savedFill: 0
 --- !u!114 &482289685
 MonoBehaviour:
@@ -601,7 +601,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56DE\u5230\u95DC\u5361\u9078\u64C7"
+  m_Text: "\u96E2\u958B\u904A\u6232"
 --- !u!222 &482289686
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 746432213}
   - component: {fileID: 746432212}
   m_Layer: 5
-  m_Name: "\u56DE\u4E3B\u9801 (1)"
+  m_Name: "\u56DE\u4E3B\u9801"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,8 +915,81 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 34.013367, y: 32.3396}
   savedColor: {r: 1, g: 0.9647059, b: 0.49803922, a: 1}
-  savedTextUV0: {x: 0.18945312, y: 0}
+  savedTextUV0: {x: 0.37890625, y: 0}
   savedFill: 0
+--- !u!1 &1260226040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260226043}
+  - component: {fileID: 1260226042}
+  - component: {fileID: 1260226041}
+  m_Layer: 5
+  m_Name: "\u56DE\u4E3B\u9801 - \u4E92\u52D5\u7269\u4EF6"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1260226041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260226040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1572625062}
+          m_MethodName: LoadScene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MissionSelect
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!65 &1260226042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260226040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5096092, y: 0.46639246, z: 0.03349468}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1260226043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260226040}
+  m_LocalRotation: {x: -0, y: -0.11171644, z: -0, w: 0.99374014}
+  m_LocalPosition: {x: -1.284, y: -0.29, z: 17.914}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: -12.829, z: 0}
 --- !u!1 &1280577907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1086,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 324.57596, y: 144.20212}
   savedColor: {r: 1, g: 0.9647059, b: 0.49803922, a: 1}
-  savedTextUV0: {x: 0.19262695, y: 0.30444336}
+  savedTextUV0: {x: 0.5517578, y: 0.099121094}
   savedFill: 0
 --- !u!1 &1389976920
 GameObject:
@@ -1028,7 +1101,7 @@ GameObject:
   - component: {fileID: 1389976923}
   - component: {fileID: 1389976922}
   m_Layer: 5
-  m_Name: "\u56DE\u4E3B\u9801"
+  m_Name: "\u96E2\u958B\u904A\u6232"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1122,7 +1195,7 @@ GameObject:
   - component: {fileID: 1497672557}
   - component: {fileID: 1497672556}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: "\u96E2\u958B\u904A\u6232 - \u4E92\u52D5\u7269\u4EF6"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,8 +1219,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1572625062}
-          m_MethodName: LoadScene
-          m_Mode: 5
+          m_MethodName: LeaveGame
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1176,13 +1249,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497672555}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31, y: -0.29, z: 17.987}
+  m_LocalRotation: {x: -0, y: 0.055012852, z: -0, w: 0.9984857}
+  m_LocalPosition: {x: 0.631, y: -0.29, z: 18.065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.307, z: 0}
 --- !u!1 &1528797029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1525,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 27.930946, y: 128.87082}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.17236328, y: 0.17651367}
+  savedTextUV0: {x: 0.34472656, y: 0.35302734}
   savedFill: 0
 --- !u!1 &1572625061
 GameObject:
@@ -2251,7 +2324,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 249.90295, y: 73.25828}
   savedColor: {r: 0.8862745, g: 0.8117647, b: 0.6431373, a: 1}
-  savedTextUV0: {x: 0.76831055, y: 0.28051758}
+  savedTextUV0: {x: 0.35253906, y: 0.7739258}
   savedFill: 0
 --- !u!1 &2143238877
 GameObject:
@@ -2308,7 +2381,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 236.46121, y: 75.77655}
   savedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  savedTextUV0: {x: 0.8659668, y: 0.092041016}
+  savedTextUV0: {x: 0.38232422, y: 0.39038086}
   savedFill: 0
 --- !u!114 &2143238880
 MonoBehaviour:

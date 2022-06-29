@@ -13,6 +13,11 @@ public class SelectMission : Stage
     public GameObject leave;
     public ObjectSwitcher switcher;
 
+    [Header("物件互動")]
+    public Kit kit;
+    public Plant plant;
+    public InteracableObject hoverTest;
+
     public override void OnBegin()
     {
         #region  Earthquake
@@ -155,8 +160,57 @@ public class SelectMission : Stage
         // CheckMission("FireTruck", fireTruck);
         // CheckMission("Flood", flood);
 
+        #region Interact
+        BindKit();
+        BindPlant();
+        BindHover();
+        #endregion
+
         JacDev.Audio.TitleScene a = (JacDev.Audio.TitleScene)GameHandler.Singleton.audioHandler;
         a.PlayAudio(a.bgm, true, GameHandler.Singleton.player.transform).volume = .05f;
+    }
+
+    async void BindKit()
+    {
+        await System.Threading.Tasks.Task.Delay(500);
+        kit.KitMissionSetup(4, i => BindKit(), 4, 2);
+    }
+
+    void BindPlant()
+    {
+        plant.onGrabEvent.AddListener(async () =>
+        {
+            var go = Instantiate(plant.gameObject, plant.transform.position, Quaternion.identity);
+            var interact = go.GetComponent<Plant>();
+            interact.Interactable = false;
+            await System.Threading.Tasks.Task.Delay(500);
+            interact.Interactable = true;
+
+            plant = interact;
+            BindPlant();
+        });
+
+        // plant.onReleaseEvent.AddListener(async () =>
+        // {
+        //     await System.Threading.Tasks.Task.Delay(10000);
+        //     Destroy(plant.gameObject);
+        // });
+    }
+
+    void BindHover()
+    {
+        hoverTest.onHoverEvent.AddListener(async () =>
+        {
+            var mChanger = new MaterialChanger
+            {
+                parent = hoverTest.transform,
+                targetColor = Color.red
+            };
+            mChanger.ChangeColor(2f);
+            hoverTest.GetComponentInChildren<ParticleSystem>().Play();
+            await System.Threading.Tasks.Task.Delay(2000);
+            mChanger.BackOriginColor();
+        });
     }
 
     public override void OnUpdate()
