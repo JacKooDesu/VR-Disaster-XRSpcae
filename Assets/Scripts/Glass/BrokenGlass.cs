@@ -18,20 +18,23 @@ public class BrokenGlass : MonoBehaviour
         JacDev.Audio.AudioHandler audio = GameHandler.Singleton.audioHandler;
         audio.PlayAudio(audio.soundList.glassBreak, false, transform);
 
-        GetComponent<Rigidbody>().isKinematic = false;
+        var rig = GetComponent<Rigidbody>();
+        rig.isKinematic = false;
+        rig.AddForce(transform.forward, ForceMode.Impulse);
 
         glassController.BreakCount++;
 
         var timer = new CoroutineUtility.Timer(3f, () => Destroy(gameObject));
+        hasHit = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (hasHit)
             return;
-        if (other.gameObject.layer != glassController.breakerLayer)
-            return;
-
+        // print($"{other.gameObject.layer} , {glassController.breakerLayer}");
+        // if (other.gameObject.layer != glassController.breakerLayer.value)
+        //     return;
         Hit();
     }
 }
