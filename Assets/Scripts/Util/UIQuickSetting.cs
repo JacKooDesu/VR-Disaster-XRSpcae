@@ -49,6 +49,10 @@ public class UIQuickSetting : MonoBehaviour
             canvasGroup.alpha = 0;
             Status = false;
         }
+        else
+        {
+            Status = true;
+        }
     }
 
     private void OnDisable()

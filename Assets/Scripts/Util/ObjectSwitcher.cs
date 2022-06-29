@@ -20,6 +20,29 @@ public class ObjectSwitcher : MonoBehaviour
     public bool tabMode = false;
     public Color tabModeColor;
 
+    // Getters
+    public GameObject CurrentButtonSelector
+    {  // 當前選到的 按鈕 / Ev Trigger
+        get
+        {
+            if (currentIndex >= buttons.Count || currentIndex < 0)
+                return null;
+
+            return buttons[currentIndex].gameObject;
+        }
+    }
+
+    public GameObject OldButtonSelector
+    {  // 當前選到的 按鈕 / Ev Trigger
+        get
+        {
+            if (oldIndex >= buttons.Count || oldIndex < 0)
+                return null;
+
+            return buttons[oldIndex].gameObject;
+        }
+    }
+
     private void Start()
     {
         if (autoBind)
