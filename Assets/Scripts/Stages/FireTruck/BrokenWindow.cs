@@ -24,9 +24,11 @@ public class BrokenWindow : Stage
         changer.ChangeColor();
     }
 
-    // public override void OnUpdate()
-    // {
-    // }
+    public override void OnUpdate()
+    {
+        if (glassController.BreakCount > needBreak)
+            isFinish = true;
+    }
 
     public override void OnFinish()
     {
