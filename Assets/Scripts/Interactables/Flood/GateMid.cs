@@ -17,6 +17,7 @@ public class GateMid : InteracableObject
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if (hasInstalled) return;
         base.OnTriggerEnter(other);
 
         if (isGrabbing) return;

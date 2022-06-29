@@ -46,7 +46,7 @@ public class TurnOffGas : Stage
         base.OnFinish();
         gasSwitch.Interactable = false;
         fire.SetActive(false);
-        switchModel.DORotate(Vector3.up * 90, .5f, RotateMode.LocalAxisAdd);
+        switchModel.DORotate(Vector3.forward * 90, .5f, RotateMode.LocalAxisAdd);
         GameHandler.Singleton.player.line.gameObject.SetActive(false);
 
         switchModel.GetComponent<Outline>().enabled = false;

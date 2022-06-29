@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class InstalGateMid : Stage
 {
@@ -47,6 +48,19 @@ public class InstalGateMid : Stage
             t.GetComponent<GateMid>().Interactable = false;
         }
 
+        RotateAnimation();
+
         spotlight.SetActive(false);
+    }
+
+    void RotateAnimation()
+    {
+        foreach (var ui in objParent.GetComponentsInChildren<UIQuickSetting>())
+        {
+            ui.TurnOn();
+            ui.transform.DORotate(Vector3.back * 360, 3f, RotateMode.LocalAxisAdd).OnComplete(
+                () => ui.TurnOff()
+            );
+        }
     }
 }
