@@ -115,9 +115,9 @@ public class Player : MonoBehaviour
     public async void ShowWarning()
     {
         hintCanvas.ForceAlign();
-        warningUi.TurnOn();
+        warningUi?.TurnOn();
         await System.Threading.Tasks.Task.Delay(2000);
-        warningUi.TurnOff();
+        warningUi?.TurnOff();
     }
     #endregion
 }

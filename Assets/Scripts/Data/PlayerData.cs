@@ -64,10 +64,9 @@ public class PlayerData    // still in progress
         else
         {
             mData.name = name;
-
             missionDatas.Add(mData);
-            current = mData;
         }
+        current = mData;
 
         mData.stgDatas = new List<MissionData.StgData>();
 

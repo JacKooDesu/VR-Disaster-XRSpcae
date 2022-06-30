@@ -78,6 +78,9 @@ public class Stage : MonoBehaviour
         foreach (StageObject so in stageObjects)
             if (so.obj != null) so.obj.SetActive(!so.destroyOnFinish);
 
+        if (target != null)
+            target.SetActive(false);
+
         GameHandler.Singleton.player.line.gameObject.SetActive(false);
 
         if (onFinishEvent != null) onFinishEvent.Invoke();

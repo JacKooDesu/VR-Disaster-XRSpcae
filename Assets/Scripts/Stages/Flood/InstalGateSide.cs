@@ -50,6 +50,7 @@ public class InstalGateSide : Stage
 
     public override void OnFinish()
     {
+        base.OnFinish();
         targetParent.gameObject.SetActive(false);
 
         foreach (Transform t in objParent)

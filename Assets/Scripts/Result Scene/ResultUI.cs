@@ -22,6 +22,8 @@ public class ResultUI : MonoBehaviour
 
     public void Start()
     {
+        if (PlayerData.current == null)
+            return;
         switch (PlayerData.current.name)
         {
             case "Earthquake":

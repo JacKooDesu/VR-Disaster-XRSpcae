@@ -567,7 +567,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 236.46121, y: 75.77655}
   savedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  savedTextUV0: {x: 0, y: 0.5}
+  savedTextUV0: {x: 0, y: 0.1706543}
   savedFill: 0
 --- !u!114 &482289685
 MonoBehaviour:
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 324.57596, y: 144.20212}
   savedColor: {r: 1, g: 0.9647059, b: 0.49803922, a: 1}
-  savedTextUV0: {x: 0.5517578, y: 0.099121094}
+  savedTextUV0: {x: 0.26538086, y: 0.3046875}
   savedFill: 0
 --- !u!1 &1389976920
 GameObject:
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 27.930946, y: 128.87082}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
-  savedTextUV0: {x: 0.34472656, y: 0.35302734}
+  savedTextUV0: {x: 0.34472656, y: 0.7060547}
   savedFill: 0
 --- !u!1 &1572625061
 GameObject:
@@ -2017,8 +2017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shape: 0
   quality: 1
-  interactable: 1
-  blocksRaycasts: 1
+  interactable: 0
+  blocksRaycasts: 0
   raycastMyLayerOnly: 1
   forceUseBoxCollider: 0
   angle: 90
@@ -2324,7 +2324,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 249.90295, y: 73.25828}
   savedColor: {r: 0.8862745, g: 0.8117647, b: 0.6431373, a: 1}
-  savedTextUV0: {x: 0.35253906, y: 0.7739258}
+  savedTextUV0: {x: 0.59033203, y: 0.37695312}
   savedFill: 0
 --- !u!1 &2143238877
 GameObject:
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 236.46121, y: 75.77655}
   savedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  savedTextUV0: {x: 0.38232422, y: 0.39038086}
+  savedTextUV0: {x: 0.65771484, y: 0.37768555}
   savedFill: 0
 --- !u!114 &2143238880
 MonoBehaviour:

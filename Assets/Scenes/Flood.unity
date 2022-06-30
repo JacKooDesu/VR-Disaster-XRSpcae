@@ -26229,6 +26229,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2110817865}
     m_Modifications:
+    - target: {fileID: 1282047440, guid: ca7288ac0558232459f1595301d565ab, type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7392172332179261976, guid: ca7288ac0558232459f1595301d565ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -58762,6 +58766,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2110817865}
     m_Modifications:
+    - target: {fileID: 1282047440, guid: ca7288ac0558232459f1595301d565ab, type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7392172332179261976, guid: ca7288ac0558232459f1595301d565ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -68711,6 +68719,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7009610768534171945, guid: 0c57cdc53ce1823498be9382ed095c91,
         type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009610768534171945, guid: 0c57cdc53ce1823498be9382ed095c91,
+        type: 3}
       propertyPath: targetParent
       value: 
       objectReference: {fileID: 492725453}
@@ -74472,7 +74485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1179174607}
-  firstStage: {fileID: 1633775086}
+  firstStage: {fileID: 1280986586}
   cam: {fileID: 0}
   uiCamera: {fileID: 0}
   audioHandler: {fileID: 8375018076752904026}
@@ -78854,6 +78867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2110817865}
     m_Modifications:
+    - target: {fileID: 1282047440, guid: ca7288ac0558232459f1595301d565ab, type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7392172332179261976, guid: ca7288ac0558232459f1595301d565ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -101610,6 +101627,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2110817865}
     m_Modifications:
+    - target: {fileID: 1282047440, guid: ca7288ac0558232459f1595301d565ab, type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7392172332179261976, guid: ca7288ac0558232459f1595301d565ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -101718,6 +101739,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1721736182}
     m_Modifications:
+    - target: {fileID: 7009610768534171945, guid: 0c57cdc53ce1823498be9382ed095c91,
+        type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7009610768534171945, guid: 0c57cdc53ce1823498be9382ed095c91,
         type: 3}
       propertyPath: targetParent

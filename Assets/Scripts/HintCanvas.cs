@@ -35,8 +35,9 @@ public class HintCanvas : MonoBehaviour
 
     public void SetHintText(string str, bool show, bool forceToForward = true, float time = 0f)
     {
-        SetHintText(str);
+        
         ShowHintText(show);
+        SetHintText(str);
 
         timer.Stop();
         timer = new Timer(

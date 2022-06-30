@@ -45,7 +45,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
             return interactable;
         }
     }
-    [SerializeField] bool interactable;
+    [SerializeField] protected bool interactable;
 
     // rigidbody 設定
     protected Rigidbody rig;
@@ -272,7 +272,7 @@ public class InteracableObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (rig == null)
             return;
-            
+
         rig.isKinematic = originIsKinematic;
         rig.useGravity = originUseGravity;
     }

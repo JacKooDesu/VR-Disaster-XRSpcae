@@ -183,8 +183,12 @@ public class SelectMission : Stage
             var go = Instantiate(plant.gameObject, plant.transform.position, Quaternion.identity);
             var interact = go.GetComponent<Plant>();
             interact.Interactable = false;
+            go.SetActive(false);
+            // 待確認
+            interact.GetComponent<Outline>().enabled = false;
             await System.Threading.Tasks.Task.Delay(500);
             interact.Interactable = true;
+            go.SetActive(true);
 
             plant = interact;
             BindPlant();
