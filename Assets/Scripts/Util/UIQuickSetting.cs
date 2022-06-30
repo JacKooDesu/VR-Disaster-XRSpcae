@@ -137,7 +137,7 @@ public class UIQuickSetting : MonoBehaviour
     IEnumerator FadingIn()
     {
         Status = true;
-        while (Mathf.Abs(canvasGroup.alpha - 1) > 0.01f && gameObject.activeInHierarchy)
+        while (Mathf.Abs(canvasGroup.alpha - 1) > 0.01f && Status)
         {
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1, .1f);
             yield return null;
@@ -148,7 +148,7 @@ public class UIQuickSetting : MonoBehaviour
     IEnumerator FadingOut()
     {
         Status = false;
-        while (Mathf.Abs(canvasGroup.alpha - 0) > 0.01f && gameObject.activeInHierarchy)
+        while (Mathf.Abs(canvasGroup.alpha - 0) > 0.01f && !Status)
         {
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 0, .1f);
             yield return null;

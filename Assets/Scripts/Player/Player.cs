@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
 
     public UnityEngine.Events.UnityEvent onTeleportEvent;
 
+    [Header("提示UI")]
+    [SerializeField] UIQuickSetting warningUi;
+    [SerializeField] UIQuickSetting nguUi;   //never give up
+
     private async void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -106,4 +110,14 @@ public class Player : MonoBehaviour
 
         line.gameObject.SetActive(true);
     }
+
+    #region Hint UI
+    public async void ShowWarning()
+    {
+        hintCanvas.ForceAlign();
+        warningUi.TurnOn();
+        await System.Threading.Tasks.Task.Delay(2000);
+        warningUi.TurnOff();
+    }
+    #endregion
 }

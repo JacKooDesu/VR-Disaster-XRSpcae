@@ -16,7 +16,9 @@ public class TeleportPoint : MonoBehaviour
     XRBaseRaycaster raycaster;
 
     // public System.Action onTeleportAction;
+    public UnityEvent onSelectAction;
     public UnityEvent onTeleportAction;
+
 
     [Header("自訂屬性")]
     public string pointName;
@@ -30,6 +32,7 @@ public class TeleportPoint : MonoBehaviour
             return;
 
         isSelected = true;
+        onSelectAction.Invoke();
         this.raycaster = raycaster;
         StartCoroutine(CheckSelecting());
 

@@ -73,6 +73,7 @@ public class SpecRainMeter : Stage
         {
             isFinish = true;
             ui.TurnOff();
+            audioSource.Stop();
         });
     }
 
@@ -91,7 +92,7 @@ public class SpecRainMeter : Stage
     {
         base.OnFinish();
 
-        ((JacDev.Audio.Flood)GameHandler.Singleton.audioHandler).StopAll();
+        // ((JacDev.Audio.Flood)GameHandler.Singleton.audioHandler).StopAll();
 
         if (currentSelectIndex != 1)
             score = 0;

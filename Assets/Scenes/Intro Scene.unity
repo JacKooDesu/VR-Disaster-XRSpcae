@@ -414,7 +414,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 893.39136, y: 492.0631}
+  m_SizeDelta: {x: 717.71716, y: 395.30505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &524940087
 MonoBehaviour:
@@ -459,7 +459,7 @@ MonoBehaviour:
   DoNotTesselate: 0
   savedPos: {x: 0, y: 0, z: 0}
   savedUp: {x: 0, y: 1, z: 0}
-  savedRectSize: {x: 893.39136, y: 492.0631}
+  savedRectSize: {x: 717.71716, y: 395.30505}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
   savedTextUV0: {x: 0, y: 0}
   savedFill: 1
@@ -538,7 +538,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 893.39136, y: 492.0631}
+  m_SizeDelta: {x: 717.71716, y: 395.30505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &569928593
 MonoBehaviour:
@@ -583,7 +583,7 @@ MonoBehaviour:
   DoNotTesselate: 0
   savedPos: {x: 0, y: 0, z: 0}
   savedUp: {x: 0, y: 1, z: 0}
-  savedRectSize: {x: 893.39136, y: 492.0631}
+  savedRectSize: {x: 717.71716, y: 395.30505}
   savedColor: {r: 1, g: 1, b: 1, a: 1}
   savedTextUV0: {x: 0, y: 0}
   savedFill: 1

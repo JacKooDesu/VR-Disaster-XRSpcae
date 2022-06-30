@@ -61,4 +61,12 @@ public class HintObject : MonoBehaviour
             hasRenderTime += Time.deltaTime;
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (minDst <= 0) return;
+
+        Gizmos.color = new Color(0, 1, 1, .2f);
+        Gizmos.DrawSphere(transform.position, minDst);
+    }
 }
